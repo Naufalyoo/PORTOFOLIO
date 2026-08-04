@@ -21,268 +21,231 @@
         }
 
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            cursor: none; /* Sembunyikan kursor asli untuk pakai kursor custom */
+            margin: 0; padding: 0; box-sizing: border-box;
+            cursor: none; 
         }
 
         body {
             background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 50% -20%, rgba(0, 240, 255, 0.15), transparent 50%),
+                linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
             color: var(--text-light);
             font-family: var(--font-ui);
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        /* --- EFEK SCANLINE MONITOR (Vibe Hacker) --- */
+        /* --- SCANLINE & KURSOR --- */
         .scanlines {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
-            background-size: 100% 4px;
-            z-index: 9999;
-            pointer-events: none; /* Agar tidak menghalangi klik */
+            background-size: 100% 4px; z-index: 9999; pointer-events: none;
         }
-
-        /* --- KURSOR CUSTOM NEON --- */
         .cursor-dot {
-            position: fixed; top: 0; left: 0;
-            width: 6px; height: 6px;
-            background-color: var(--neon-cyan);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10000;
-            pointer-events: none;
+            position: fixed; top: 0; left: 0; width: 6px; height: 6px;
+            background-color: var(--neon-cyan); border-radius: 50%; 
+            transform: translate(-50%, -50%); z-index: 10000; pointer-events: none;
             box-shadow: 0 0 10px var(--neon-cyan);
         }
-
         .cursor-outline {
-            position: fixed; top: 0; left: 0;
-            width: 30px; height: 30px;
-            border: 2px solid var(--neon-cyan);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10000;
-            pointer-events: none;
+            position: fixed; top: 0; left: 0; width: 30px; height: 30px;
+            border: 2px solid var(--neon-cyan); border-radius: 50%; 
+            transform: translate(-50%, -50%); z-index: 10000; pointer-events: none;
             transition: width 0.2s, height 0.2s;
         }
-
-        /* Membesar saat hover di tombol */
         .hovered-cursor {
-            width: 50px; height: 50px;
-            background-color: rgba(0, 240, 255, 0.1);
+            width: 50px; height: 50px; background-color: rgba(0, 240, 255, 0.1);
             border-color: var(--neon-green);
         }
 
         /* --- HEADER NAVBAR --- */
         header {
             position: fixed; top: 0; width: 100%;
-            padding: 20px 5%;
-            display: flex; justify-content: space-between; align-items: center;
-            background: rgba(3, 7, 18, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
-            z-index: 1000;
+            padding: 20px 5%; display: flex; justify-content: center;
+            background: rgba(3, 7, 18, 0.7); backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.1); z-index: 1000;
         }
-
         .logo {
-            font-family: var(--font-tech);
-            font-size: 1.5rem;
-            color: var(--neon-cyan);
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+            font-family: var(--font-tech); font-size: 1.2rem;
+            color: var(--neon-cyan); letter-spacing: 3px;
         }
 
         /* --- HERO SECTION --- */
-        main { padding-top: 100px; }
-        
-        section {
-            min-height: 100vh;
-            padding: 80px 5%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center; padding: 0 5%;
         }
-
-        .hero h3 {
-            font-family: var(--font-tech);
-            color: var(--neon-green);
-            letter-spacing: 2px;
-            margin-bottom: 10px;
+        .status-badge {
+            font-family: var(--font-tech); color: var(--bg-dark);
+            background-color: var(--neon-green); padding: 5px 15px; font-size: 0.9rem;
+            letter-spacing: 2px; border-radius: 20px; margin-bottom: 25px;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.4); animation: pulse 2s infinite;
         }
-
+        @keyframes pulse {
+            0% { box-shadow: 0 0 10px rgba(0, 255, 136, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(0, 255, 136, 0.8); }
+            100% { box-shadow: 0 0 10px rgba(0, 255, 136, 0.4); }
+        }
         .hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 20px;
+            font-size: 4.5rem; font-weight: 700; line-height: 1.1; margin-bottom: 15px;
+            color: white; text-transform: uppercase;
         }
-
-        /* Animasi Ketik */
-        .typewriter-text { color: var(--neon-cyan); }
-        .blinking-cursor {
-            font-weight: bold; color: var(--neon-green);
-            animation: blink 1s step-end infinite;
+        .hero h1 span.glitch-name {
+            color: var(--neon-cyan); text-shadow: 2px 0px 5px rgba(0,240,255,0.5);
         }
+        .type-container {
+            font-size: 1.8rem; font-family: var(--font-tech);
+            color: var(--neon-green); margin-bottom: 25px;
+        }
+        .blinking-cursor { animation: blink 1s step-end infinite; }
         @keyframes blink { 50% { opacity: 0; } }
-
         .hero p {
-            font-size: 1.2rem;
-            color: var(--text-dim);
-            max-width: 600px;
-            margin-bottom: 40px;
+            font-size: 1.1rem; color: var(--text-dim); max-width: 700px; line-height: 1.8;
         }
 
-        /* Tombol Glitch */
-        .cyber-btn {
-            padding: 15px 30px;
-            background: transparent;
-            color: var(--neon-green);
-            border: 2px solid var(--neon-green);
-            font-family: var(--font-tech);
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
-            transition: 0.3s;
-            overflow: hidden;
-            display: inline-block;
-            text-decoration: none;
+        /* --- GENERAL SECTION --- */
+        section { padding: 100px 5%; display: flex; flex-direction: column; align-items: center; }
+        
+        .sec-title {
+            font-family: var(--font-tech); font-size: 2rem;
+            margin-bottom: 50px; text-transform: uppercase;
+            border-bottom: 2px solid var(--neon-green); padding-bottom: 10px;
+            color: var(--text-light); text-align: center; width: auto;
         }
 
-        .cyber-btn:hover {
-            background: var(--neon-green);
-            color: var(--bg-dark);
-            box-shadow: 0 0 20px var(--neon-green);
-        }
-
-        /* --- TERMINAL WINDOW (KHUSUS ANAK TKJ) --- */
+        /* --- TERMINAL SECTION --- */
         .terminal-container {
-            width: 100%;
-            max-width: 800px;
-            background-color: #0c0c0c;
-            border-radius: 8px;
-            border: 1px solid #333;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(0, 240, 255, 0.2);
-            overflow: hidden;
-            margin: 40px 0;
-            font-family: var(--font-tech);
+            width: 100%; max-width: 850px; background-color: #0c0c0c;
+            border-radius: 8px; border: 1px solid #333;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 15px rgba(0, 240, 255, 0.1);
+            overflow: hidden; font-family: var(--font-tech); text-align: left;
         }
-
         .terminal-header {
-            background-color: #2d2d2d;
-            padding: 10px;
-            display: flex;
-            align-items: center;
+            background-color: #2d2d2d; padding: 12px; display: flex; align-items: center; border-bottom: 1px solid #111;
         }
-
-        .term-btn {
-            width: 12px; height: 12px;
-            border-radius: 50%; margin-right: 8px;
-        }
-        .close { background: #ff5f56; }
-        .min { background: #ffbd2e; }
-        .max { background: #27c93f; }
-
-        .term-title {
-            color: #ccc; font-size: 0.85rem;
-            margin-left: 20px;
-        }
-
-        .terminal-body {
-            padding: 20px;
-            color: #fff;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .prompt { color: var(--neon-green); }
+        .term-btn { width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
+        .close { background: #ff5f56; } .min { background: #ffbd2e; } .max { background: #27c93f; }
+        .term-title { color: #ccc; font-size: 0.85rem; margin-left: 15px; letter-spacing: 1px;}
+        .terminal-body { padding: 25px; color: #fff; font-size: 0.95rem; line-height: 1.8; }
+        .prompt { color: var(--neon-green); font-weight: bold; }
         .command { color: #fff; }
         .output-highlight { color: var(--neon-cyan); }
-        .term-line { margin-bottom: 10px; }
-
-        /* --- GRID KEAHLIAN (KARTU NEON) --- */
-        .sec-title {
-            font-family: var(--font-tech);
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            text-transform: uppercase;
-            border-bottom: 2px solid var(--neon-green);
-            display: inline-block;
-            padding-bottom: 10px;
+        
+        /* Naga Eropa ASCII */
+        .ascii-dragon {
+            color: var(--neon-green); font-weight: bold; white-space: pre; line-height: 1.2; text-shadow: 0 0 5px var(--neon-green);
         }
 
+        /* --- KARTU MODUL --- */
         .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; width: 100%; max-width: 1000px;
         }
-
         .cyber-card {
-            background: var(--dark-panel);
-            padding: 30px;
-            border: 1px solid rgba(0, 240, 255, 0.2);
-            border-left: 4px solid var(--neon-cyan);
-            transition: 0.4s;
-            position: relative;
+            background: rgba(17, 24, 39, 0.8); backdrop-filter: blur(5px);
+            padding: 35px 30px; border: 1px solid rgba(0, 255, 136, 0.2);
+            border-left: 5px solid var(--neon-cyan); transition: all 0.4s ease; position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 25px), calc(100% - 25px) 100%, 0 100%);
         }
-
+        .cyber-card::after {
+            content: ''; position: absolute; bottom: 0; right: 0; width: 25px; height: 25px; background: rgba(0, 255, 136, 0.2);
+        }
         .cyber-card:hover {
-            transform: translateY(-10px);
-            border-left-color: var(--neon-green);
-            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.1);
+            transform: translateY(-8px); background: rgba(17, 24, 39, 1);
+            border-left-color: var(--neon-green); box-shadow: 0 15px 30px rgba(0, 255, 136, 0.15);
         }
-
-        .cyber-card h4 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--text-light);
+        .card-number {
+            font-family: var(--font-tech); color: rgba(0, 240, 255, 0.3); font-size: 2.5rem;
+            position: absolute; top: 15px; right: 20px; font-weight: bold;
         }
+        .cyber-card h4 { font-size: 1.4rem; margin-bottom: 15px; color: var(--neon-cyan); position: relative; z-index: 2;}
+        .cyber-card p { color: var(--text-dim); font-size: 0.95rem; z-index: 2; position: relative;}
 
-        .cyber-card p {
-            color: var(--text-dim);
-            margin-bottom: 20px;
+        /* --- ARSENAL / GEAR SPESIFIKASI --- */
+        .gear-container {
+            width: 100%; max-width: 1000px;
+            display: flex; flex-wrap: wrap; gap: 30px;
         }
+        .gear-box {
+            flex: 1; min-width: 300px;
+            background: rgba(17, 24, 39, 0.5); border: 1px dashed rgba(0, 240, 255, 0.4);
+            padding: 25px; border-radius: 8px;
+        }
+        .gear-box h3 { color: var(--neon-cyan); margin-bottom: 20px; font-family: var(--font-tech); }
+        .stat-bar { margin-bottom: 15px; }
+        .stat-label { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 5px;}
+        .bar-bg { width: 100%; height: 8px; background: #222; border-radius: 4px; overflow: hidden; }
+        .bar-fill { height: 100%; background: var(--neon-green); }
 
-        /* --- RESPONSIVE --- */
+        /* --- TIMELINE LOG OPERASI --- */
+        .timeline {
+            width: 100%; max-width: 800px; position: relative; border-left: 2px solid var(--neon-cyan); padding-left: 30px; margin-left: 15px;
+        }
+        .timeline-item { margin-bottom: 40px; position: relative; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -37px; top: 0; width: 12px; height: 12px;
+            background: var(--bg-dark); border: 2px solid var(--neon-green); border-radius: 50%;
+        }
+        .timeline-date { font-family: var(--font-tech); color: var(--neon-cyan); font-size: 0.9rem; margin-bottom: 5px; }
+        .timeline-content {
+            background: rgba(255,255,255,0.03); padding: 15px 20px; border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .timeline-content h4 { color: white; margin-bottom: 8px; }
+        .timeline-content p { color: var(--text-dim); font-size: 0.95rem; }
+
+        /* --- FOOTER & SOSIAL --- */
+        footer {
+            padding: 60px 5%; text-align: center;
+            background: #030712; border-top: 1px solid rgba(0, 240, 255, 0.1);
+        }
+        .social-container {
+            display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px;
+        }
+        .cyber-btn {
+            padding: 12px 30px; background: transparent; color: var(--text-light);
+            border: 1px solid rgba(255,255,255,0.2); font-family: var(--font-tech); font-size: 1rem;
+            text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; text-decoration: none;
+        }
+        .cyber-btn:hover {
+            border-color: var(--neon-cyan); color: var(--bg-dark); background: var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+        }
+        .footer-text { font-family: var(--font-tech); color: var(--text-dim); font-size: 0.85rem; }
+
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 2.8rem; }
             .terminal-container { font-size: 0.85rem; }
-            * { cursor: auto; } /* Matikan custom cursor di HP */
+            * { cursor: auto; }
             .cursor-dot, .cursor-outline { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Efek Garis Monitor CRT -->
     <div class="scanlines"></div>
-
-    <!-- Kursor Kustom -->
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-outline" id="cursor-outline"></div>
 
     <header>
-        <div class="logo">SYS_ADMIN@NAUFAL</div>
+        <div class="logo">SYS_CORE_ACTIVE</div>
     </header>
 
     <main>
         <!-- HERO SECTION -->
         <section id="hero" class="hero">
-            <h3>STATUS: ONLINE</h3>
-            <h1>Sistem Pembangun<br>
-                <span class="typewriter-text" id="type-text"></span><span class="blinking-cursor">_</span>
-            </h1>
-            <p>Spesialisasi dalam infrastruktur perangkat keras, instalasi OS, jaringan dasar, dan pengembangan antarmuka web modern.</p>
-            <div>
-                <a href="#skills" class="cyber-btn hover-target">Jalankan Diagnostik</a>
-            </div>
+            <div class="status-badge">USER PROTOCOL INITIATED</div>
+            <h1>Hello, I am <br><span class="glitch-name">NAUFAL</span></h1>
+            <div class="type-container">> <span id="type-text"></span><span class="blinking-cursor">_</span></div>
+            <p>Seorang enthusiast IT dan teknisi jaringan. Merakit komponen, mengamankan OS, serta menuliskan baris kode untuk menciptakan pengalaman web yang fungsional. Selamat datang di ruang kerja digital saya.</p>
         </section>
 
-        <!-- TERMINAL SECTION -->
-        <section id="skills">
-            <h2 class="sec-title">Analisis_Sistem.exe</h2>
+        <!-- TERMINAL SECTION (LOGO NAGA EROPA) -->
+        <section id="terminal" style="padding-top: 20px;">
+            <h2 class="sec-title">ANALISIS_SISTEM.EXE</h2>
             
             <div class="terminal-container hover-target">
                 <div class="terminal-header">
@@ -304,15 +267,19 @@
                         <span class="prompt">root@naufal:~$</span> <span class="command">neofetch --hardware</span>
                     </div>
                     <div class="term-line" style="display: flex; gap: 20px; flex-wrap: wrap;">
-                        <div style="color: var(--neon-cyan); font-weight: bold; white-space: pre;">
-   .----.
-  /  ..  \
- |  /  \  |
- |  \  /  |
-  \  ''  /
-   '----'
+                        <!-- LOGO NAGA EROPA (ASCII) -->
+                        <div class="ascii-dragon">
+      ,  ,
+      \\ \\
+      ) \\ \\    _p_
+      )^\))\))  /  *\
+       \_|| || / /^`-'
+__     -\ \\--/ /
+&lt;' \\___/  ___. )'
+ `====\ )___/\\
+      //     `"
                         </div>
-                        <div>
+                        <div style="padding-top: 5px;">
                             <span class="output-highlight">OS:</span> Windows / Linux (Dual Boot Setup)<br>
                             <span class="output-highlight">Hardware:</span> PC Assembly & Troubleshooting<br>
                             <span class="output-highlight">Software:</span> Ms. Office, BIOS Config<br>
@@ -324,98 +291,145 @@
             </div>
         </section>
 
-        <!-- CARD SECTION -->
-        <section id="modules">
-            <h2 class="sec-title">Modul_Keahlian</h2>
+        <!-- KARTU MODUL KEAHLIAN -->
+        <section id="modules" style="background: rgba(0,0,0,0.3);">
+            <h2 class="sec-title">MODUL_KEAHLIAN</h2>
             <div class="card-grid">
                 <div class="cyber-card hover-target">
-                    <h4>[01] Hardware Setup</h4>
-                    <p>Perakitan komponen PC standar industri, manajemen kabel yang rapi, dan troubleshooting kerusakan perangkat keras (Motherboard, RAM, PSU).</p>
+                    <div class="card-number">01</div>
+                    <h4>HARDWARE SETUP</h4>
+                    <p>Mendiagnosis kerusakan komponen, melakukan perakitan PC dari nol dengan cable management, dan memastikan hardware berjalan stabil.</p>
                 </div>
                 <div class="cyber-card hover-target">
-                    <h4>[02] Software & OS</h4>
-                    <p>Instalasi sistem operasi (Windows), konfigurasi driver PC, pembaruan BIOS, dan pengaturan aplikasi produktivitas (Office).</p>
+                    <div class="card-number">02</div>
+                    <h4>OS & SOFTWARE</h4>
+                    <p>Melakukan instalasi OS bersih (Windows/Linux), manajemen partisi, update BIOS, dan optimalisasi software esensial untuk produktivitas.</p>
                 </div>
                 <div class="cyber-card hover-target">
-                    <h4>[03] Web Frontend</h4>
-                    <p>Pemrograman struktur web menggunakan HTML dan styling dengan CSS. Pembuatan portofolio dan landing page interaktif.</p>
+                    <div class="card-number">03</div>
+                    <h4>WEB DEV BASIC</h4>
+                    <p>Menerjemahkan ide ke dalam antarmuka layar menggunakan struktur HTML, styling CSS modern, dan sentuhan interaktif JavaScript.</p>
                 </div>
             </div>
-            
-            <div style="margin-top: 50px;">
-                <a href="https://instagram.com/username_kamu" target="_blank" class="cyber-btn hover-target">Akses Instagram</a>
-                <a href="https://tiktok.com/@username_kamu" target="_blank" class="cyber-btn hover-target" style="margin-left: 15px; border-color: var(--neon-cyan); color: var(--neon-cyan);">Akses TikTok</a>
+        </section>
+
+        <!-- ARSENAL / GEAR PC (BARU) -->
+        <section id="arsenal">
+            <h2 class="sec-title">ARSENAL_GEAR</h2>
+            <div class="gear-container">
+                <div class="gear-box hover-target">
+                    <h3>[ HARDWARE SPECS ]</h3>
+                    <!-- Bar CPU -->
+                    <div class="stat-bar">
+                        <div class="stat-label"><span>CPU Processing Power</span> <span>75%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 75%;"></div></div>
+                    </div>
+                    <!-- Bar RAM -->
+                    <div class="stat-bar">
+                        <div class="stat-label"><span>Memory (RAM) Capacity</span> <span>80%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 80%;"></div></div>
+                    </div>
+                    <!-- Bar Storage -->
+                    <div class="stat-bar">
+                        <div class="stat-label"><span>Storage & SSD Speed</span> <span>90%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 90%; background: var(--neon-cyan);"></div></div>
+                    </div>
+                </div>
+                
+                <div class="gear-box hover-target">
+                    <h3>[ SOFTWARE PROFICIENCY ]</h3>
+                    <div class="stat-bar">
+                        <div class="stat-label"><span>Windows / OS Config</span> <span>95%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
+                    </div>
+                    <div class="stat-bar">
+                        <div class="stat-label"><span>HTML & CSS Design</span> <span>85%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 85%; background: var(--neon-cyan);"></div></div>
+                    </div>
+                    <div class="stat-bar">
+                        <div class="stat-label"><span>Arduino C++ (Basic)</span> <span>60%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 60%;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOG OPERASI / TIMELINE (BARU) -->
+        <section id="timeline" style="background: rgba(0,0,0,0.3);">
+            <h2 class="sec-title">LOG_OPERASI (PROYEK)</h2>
+            <div class="timeline hover-target">
+                <div class="timeline-item">
+                    <div class="timeline-date">>> Fase 03 - Saat Ini</div>
+                    <div class="timeline-content">
+                        <h4>Sistem Portofolio Cyber</h4>
+                        <p>Mengembangkan website portofolio interaktif dengan desain UI/UX Cyberpunk menggunakan murni HTML, CSS, dan JavaScript statis yang dihosting melalui GitHub Pages.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">>> Fase 02</div>
+                    <div class="timeline-content">
+                        <h4>Kalkulator BMI "HealthyLife"</h4>
+                        <p>Membuat aplikasi berbasis web (Single Page Application) sederhana yang dapat menghitung Indeks Massa Tubuh secara otomatis menggunakan logika JavaScript dasar.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">>> Fase 01</div>
+                    <div class="timeline-content">
+                        <h4>Perakitan & Troubleshooting Hardware</h4>
+                        <p>Melakukan praktik perakitan Personal Computer (PC) standar, instalasi sistem operasi ganda (Dual Boot), serta manajemen jaringan skala kecil/laboratorium TKJ.</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
+    <!-- FOOTER & SOSIAL MEDIA -->
+    <footer>
+        <div class="social-container">
+            <a href="https://instagram.com/username_kamu" target="_blank" class="cyber-btn hover-target">[+] INSTAGRAM</a>
+            <a href="https://tiktok.com/@username_kamu" target="_blank" class="cyber-btn hover-target">[+] TIKTOK</a>
+            <a href="https://github.com/naufalyoo" target="_blank" class="cyber-btn hover-target">[+] GITHUB</a>
+        </div>
+        <p class="footer-text">TERMINAL DISCONNECTED. &copy; 2026 NAUFAL_TKJ.</p>
+    </footer>
+
     <!-- SCRIPT JAVASCRIPT -->
     <script>
-        // 1. EFEK KETIK OTOMATIS (Typewriter)
-        const texts = ["Teknisi Hardware", "Programmer Web", "Anak TKJ"];
-        let count = 0;
-        let index = 0;
-        let currentText = "";
-        let letter = "";
-        let isDeleting = false;
-
+        // TYPEWRITER EFFECT
+        const texts = ["IT Enthusiast", "Hardware Technician", "Web Developer"];
+        let count = 0; let index = 0; let currentText = ""; let letter = ""; let isDeleting = false;
         function type() {
             if (count === texts.length) { count = 0; }
             currentText = texts[count];
-
-            if (isDeleting) {
-                letter = currentText.slice(0, --index);
-            } else {
-                letter = currentText.slice(0, ++index);
-            }
+            if (isDeleting) { letter = currentText.slice(0, --index); } 
+            else { letter = currentText.slice(0, ++index); }
 
             document.getElementById('type-text').textContent = letter;
-
             let typeSpeed = isDeleting ? 100 : 150;
 
             if (!isDeleting && letter.length === currentText.length) {
-                typeSpeed = 2000; // Jeda saat teks selesai diketik
-                isDeleting = true;
+                typeSpeed = 2500; isDeleting = true;
             } else if (isDeleting && letter.length === 0) {
-                isDeleting = false;
-                count++;
-                typeSpeed = 500;
+                isDeleting = false; count++; typeSpeed = 500;
             }
-
             setTimeout(type, typeSpeed);
         }
-        
-        // Jalankan efek ketik saat web dimuat
         document.addEventListener("DOMContentLoaded", type);
 
-        // 2. KURSOR KUSTOM
+        // CUSTOM CURSOR
         const cursorDot = document.getElementById("cursor-dot");
         const cursorOutline = document.getElementById("cursor-outline");
         const hoverTargets = document.querySelectorAll(".hover-target");
 
-        // Gerakkan kursor sesuai mouse
         window.addEventListener("mousemove", function(e) {
-            const posX = e.clientX;
-            const posY = e.clientY;
-
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-            
-            // Animasi delay sedikit untuk lingkaran luar agar estetik
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
+            const posX = e.clientX; const posY = e.clientY;
+            cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
+            cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
         });
 
-        // Efek membesar saat mouse mengenai tombol atau elemen tertentu
         hoverTargets.forEach(target => {
-            target.addEventListener("mouseenter", () => {
-                cursorOutline.classList.add("hovered-cursor");
-            });
-            target.addEventListener("mouseleave", () => {
-                cursorOutline.classList.remove("hovered-cursor");
-            });
+            target.addEventListener("mouseenter", () => { cursorOutline.classList.add("hovered-cursor"); });
+            target.addEventListener("mouseleave", () => { cursorOutline.classList.remove("hovered-cursor"); });
         });
     </script>
 </body>
