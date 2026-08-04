@@ -3,464 +3,420 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Portofolio Digital | ID:USER_F12</title>
-    <!-- Font Modern & Monospaced untuk Tech Vibe -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=JetBrains+Mono:wght@300;500&display=swap" rel="stylesheet">
+    <title>Sistem Inti | Naufal_TKJ</title>
+    <!-- Font Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* --- CSS VARIABLES & RESET (Neo-Noir Palette) --- */
+        /* --- VARIABEL & RESET --- */
         :root {
-            --bg-deep: #050509;      
-            --bg-panel: #0d0f19;    
-            --accent-cyan: #00f2fe;   
-            --accent-glow: rgba(0, 242, 254, 0.4);
-            --text-main: #f0f0f5;   
-            --text-muted: #808dad;  
-            --font-main: 'Space Grotesk', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-            --ease: cubic-bezier(0.23, 1, 0.32, 1); 
+            --bg-dark: #030712;
+            --neon-green: #00ff88;
+            --neon-cyan: #00f0ff;
+            --dark-panel: #111827;
+            --text-light: #f3f4f6;
+            --text-dim: #9ca3af;
+            --font-tech: 'Share Tech Mono', monospace;
+            --font-ui: 'Rajdhani', sans-serif;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            outline: none;
+            cursor: none; /* Sembunyikan kursor asli untuk pakai kursor custom */
         }
 
         body {
-            background-color: var(--bg-deep);
-            color: var(--text-main);
-            font-family: var(--font-main);
-            line-height: 1.6;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: var(--font-ui);
             overflow-x: hidden;
-            position: relative;
+            scroll-behavior: smooth;
         }
 
-        /* --- JS PARTICLES CANVAS --- */
-        #particle-canvas {
+        /* --- EFEK SCANLINE MONITOR (Vibe Hacker) --- */
+        .scanlines {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; 
-            opacity: 0.6;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
+            background-size: 100% 4px;
+            z-index: 9999;
+            pointer-events: none; /* Agar tidak menghalangi klik */
         }
 
-        /* --- HEADER & NAVIGATION --- */
+        /* --- KURSOR CUSTOM NEON --- */
+        .cursor-dot {
+            position: fixed; top: 0; left: 0;
+            width: 6px; height: 6px;
+            background-color: var(--neon-cyan);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+            pointer-events: none;
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .cursor-outline {
+            position: fixed; top: 0; left: 0;
+            width: 30px; height: 30px;
+            border: 2px solid var(--neon-cyan);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+            pointer-events: none;
+            transition: width 0.2s, height 0.2s;
+        }
+
+        /* Membesar saat hover di tombol */
+        .hovered-cursor {
+            width: 50px; height: 50px;
+            background-color: rgba(0, 240, 255, 0.1);
+            border-color: var(--neon-green);
+        }
+
+        /* --- HEADER NAVBAR --- */
         header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            position: fixed; top: 0; width: 100%;
+            padding: 20px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
             z-index: 1000;
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         }
 
-        .sys-id {
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .sys-id span {
-            color: var(--accent-cyan);
-            font-weight: 600;
-            margin-right: 5px;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-        }
-
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        nav a:hover {
-            color: var(--text-main);
-            text-shadow: 0 0 10px var(--accent-glow);
-        }
-
-        /* --- CORE LAYOUT --- */
-        main {
-            padding-top: 120px;
-            padding-bottom: 100px;
-        }
-
-        section {
-            width: 88%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 80px 0;
+        .logo {
+            font-family: var(--font-tech);
+            font-size: 1.5rem;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
         }
 
         /* --- HERO SECTION --- */
-        .hero {
-            min-height: 80vh;
+        main { padding-top: 100px; }
+        
+        section {
+            min-height: 100vh;
+            padding: 80px 5%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start;
-        }
-
-        .tech-glitch-wrapper {
             position: relative;
-            margin-bottom: 10px;
         }
 
         .hero h3 {
-            font-family: var(--font-mono);
-            color: var(--accent-cyan);
-            font-size: 1.1rem;
-            font-weight: 300;
-            text-transform: uppercase;
-            letter-spacing: 4px;
+            font-family: var(--font-tech);
+            color: var(--neon-green);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
         }
 
         .hero h1 {
-            font-size: 4.5rem;
+            font-size: 4rem;
             font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 25px;
-            letter-spacing: -2px;
-            max-width: 900px;
-        }
-
-        .hero h1 span {
-            background: linear-gradient(90deg, #f0f0f5 0%, var(--accent-cyan) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            max-width: 650px;
-            margin-bottom: 50px;
-        }
-
-        /* Buttons Modern */
-        .btn-container {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .cta-btn {
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            font-weight: 500;
-            padding: 14px 30px;
-            background-color: transparent;
-            color: var(--accent-cyan);
-            border: 1px solid var(--accent-cyan);
-            border-radius: 4px;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .cta-btn:hover {
-            background-color: var(--accent-cyan);
-            color: var(--bg-deep);
-            box-shadow: 0 0 30px var(--accent-glow);
-        }
-
-        /* --- SKILLS SECTION (TKJ Stacks) --- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 50px;
-        }
-
-        .skill-node {
-            background-color: var(--bg-panel);
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.02);
-            transition: all 0.4s ease;
-            cursor: default;
-        }
-
-        .skill-node:hover {
-            border-color: var(--accent-cyan);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .skill-node h4 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .skill-node p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
+            line-height: 1.2;
             margin-bottom: 20px;
         }
 
-        /* Tech Tags */
-        .tag-container {
+        /* Animasi Ketik */
+        .typewriter-text { color: var(--neon-cyan); }
+        .blinking-cursor {
+            font-weight: bold; color: var(--neon-green);
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        /* Tombol Glitch */
+        .cyber-btn {
+            padding: 15px 30px;
+            background: transparent;
+            color: var(--neon-green);
+            border: 2px solid var(--neon-green);
+            font-family: var(--font-tech);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            transition: 0.3s;
+            overflow: hidden;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .cyber-btn:hover {
+            background: var(--neon-green);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px var(--neon-green);
+        }
+
+        /* --- TERMINAL WINDOW (KHUSUS ANAK TKJ) --- */
+        .terminal-container {
+            width: 100%;
+            max-width: 800px;
+            background-color: #0c0c0c;
+            border-radius: 8px;
+            border: 1px solid #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(0, 240, 255, 0.2);
+            overflow: hidden;
+            margin: 40px 0;
+            font-family: var(--font-tech);
+        }
+
+        .terminal-header {
+            background-color: #2d2d2d;
+            padding: 10px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+            align-items: center;
         }
 
-        .tech-tag {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            padding: 5px 12px;
-            background-color: rgba(0, 242, 254, 0.05);
-            color: var(--accent-cyan);
-            border-radius: 4px;
-            border: 1px solid rgba(0, 242, 254, 0.15);
+        .term-btn {
+            width: 12px; height: 12px;
+            border-radius: 50%; margin-right: 8px;
+        }
+        .close { background: #ff5f56; }
+        .min { background: #ffbd2e; }
+        .max { background: #27c93f; }
+
+        .term-title {
+            color: #ccc; font-size: 0.85rem;
+            margin-left: 20px;
         }
 
-        /* --- SECTION TITLE GENERAL --- */
-        .sec-header {
-            margin-bottom: 60px;
-            text-align: left;
+        .terminal-body {
+            padding: 20px;
+            color: #fff;
+            font-size: 1rem;
+            line-height: 1.6;
         }
 
-        .sec-id {
-            font-family: var(--font-mono);
-            color: var(--accent-cyan);
-            font-size: 0.9rem;
-            display: block;
-            margin-bottom: 10px;
+        .prompt { color: var(--neon-green); }
+        .command { color: #fff; }
+        .output-highlight { color: var(--neon-cyan); }
+        .term-line { margin-bottom: 10px; }
+
+        /* --- GRID KEAHLIAN (KARTU NEON) --- */
+        .sec-title {
+            font-family: var(--font-tech);
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--neon-green);
+            display: inline-block;
+            padding-bottom: 10px;
         }
 
-        .sec-header h2 {
-            font-size: 3rem;
-            font-weight: 700;
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
-        /* --- ANIMATION REVEAL --- */
-        .hidden {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s var(--ease);
+        .cyber-card {
+            background: var(--dark-panel);
+            padding: 30px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-left: 4px solid var(--neon-cyan);
+            transition: 0.4s;
+            position: relative;
         }
 
-        .show {
-            opacity: 1;
-            transform: translateY(0);
+        .cyber-card:hover {
+            transform: translateY(-10px);
+            border-left-color: var(--neon-green);
+            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.1);
         }
 
-        /* --- RESPONSIVE MOBILE --- */
-        @media (max-width: 992px) {
-            .hero h1 { font-size: 3rem; }
-            .sec-header h2 { font-size: 2.2rem; }
-            section { padding: 50px 0; }
+        .cyber-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .cyber-card p {
+            color: var(--text-dim);
+            margin-bottom: 20px;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .terminal-container { font-size: 0.85rem; }
+            * { cursor: auto; } /* Matikan custom cursor di HP */
+            .cursor-dot, .cursor-outline { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Latar Belakang Partikel (Complex Element) -->
-    <canvas id="particle-canvas"></canvas>
+    <!-- Efek Garis Monitor CRT -->
+    <div class="scanlines"></div>
+
+    <!-- Kursor Kustom -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
 
     <header>
-        <div class="sys-id"><span>ID:</span> USER_F12_TKJ</div>
-        <nav>
-            <ul>
-                <li><a href="#hero">Log</a></li>
-                <li><a href="#skills">Keahlian</a></li>
-                <li><a href="#kontak">Sosial</a></li>
-            </ul>
-        </nav>
+        <div class="logo">SYS_ADMIN@NAUFAL</div>
     </header>
 
     <main>
-        <section id="hero" class="hero hidden">
-            <div class="tech-glitch-wrapper">
-                <h3>// HARDWARE TECHNICIAN & WEB_</h3>
+        <!-- HERO SECTION -->
+        <section id="hero" class="hero">
+            <h3>STATUS: ONLINE</h3>
+            <h1>Sistem Pembangun<br>
+                <span class="typewriter-text" id="type-text"></span><span class="blinking-cursor">_</span>
+            </h1>
+            <p>Spesialisasi dalam infrastruktur perangkat keras, instalasi OS, jaringan dasar, dan pengembangan antarmuka web modern.</p>
+            <div>
+                <a href="#skills" class="cyber-btn hover-target">Jalankan Diagnostik</a>
             </div>
-            <h1>Sistem Pembangun <br><span>Perangkat & Antarmuka.</span></h1>
-            <p>Saya memiliki latar belakang di Teknik Komputer dan Jaringan (TKJ). Berpengalaman dalam perakitan perangkat keras, instalasi sistem operasi, dan memiliki fondasi dalam bahasa pemrograman web.</p>
-            <button class="cta-btn" onclick="document.getElementById('skills').scrollIntoView();">Inisialisasi Sistem</button>
         </section>
 
+        <!-- TERMINAL SECTION -->
         <section id="skills">
-            <div class="sec-header hidden">
-                <span class="sec-id">> /keahlian_sistem/</span>
-                <h2>Modul Kemampuan</h2>
-            </div>
+            <h2 class="sec-title">Analisis_Sistem.exe</h2>
             
-            <div class="skills-grid">
-                <!-- Skill 1: TKJ / Hardware -->
-                <div class="skill-node hidden">
-                    <h4>Infrastruktur Perangkat Keras</h4>
-                    <p>Mampu merakit PC dari nol, menangani instalasi sistem operasi (Windows), serta melakukan setup aplikasi esensial seperti Microsoft Office.</p>
-                    <div class="tag-container">
-                        <span class="tech-tag">Rakit PC</span>
-                        <span class="tech-tag">Instalasi Windows</span>
-                        <span class="tech-tag">Ms. Office</span>
-                        <span class="tech-tag">Troubleshooting</span>
-                    </div>
+            <div class="terminal-container hover-target">
+                <div class="terminal-header">
+                    <div class="term-btn close"></div>
+                    <div class="term-btn min"></div>
+                    <div class="term-btn max"></div>
+                    <div class="term-title">root@naufal-tkj:~</div>
                 </div>
-
-                <!-- Skill 2: Web HTML -->
-                <div class="skill-node hidden">
-                    <h4>Struktur Web Front-End</h4>
-                    <p>Memahami fundamental pembuatan antarmuka digital berbasis web statis menggunakan bahasa markup standar industri.</p>
-                    <div class="tag-container">
-                        <span class="tech-tag">HTML5</span>
-                        <span class="tech-tag">Web Structure</span>
-                        <span class="tech-tag">Web Design</span>
+                <div class="terminal-body">
+                    <div class="term-line">
+                        <span class="prompt">root@naufal:~$</span> <span class="command">whoami</span>
                     </div>
-                </div>
-
-                <!-- Skill 3: Arduino -->
-                <div class="skill-node hidden">
-                    <h4>Mikrokontroler Dasar</h4>
-                    <p>Memiliki pengalaman dalam memprogram papan mikrokontroler untuk proyek perangkat keras interaktif sederhana.</p>
-                    <div class="tag-container">
-                        <span class="tech-tag">Arduino Uno</span>
-                        <span class="tech-tag">Logika Dasar C</span>
-                        <span class="tech-tag">Hardware Sensor</span>
+                    <div class="term-line">
+                        > Siswa Teknik Komputer & Jaringan (TKJ)<br>
+                        > Teknisi Perangkat Keras & Web Developer Basic
+                    </div>
+                    <br>
+                    <div class="term-line">
+                        <span class="prompt">root@naufal:~$</span> <span class="command">neofetch --hardware</span>
+                    </div>
+                    <div class="term-line" style="display: flex; gap: 20px; flex-wrap: wrap;">
+                        <div style="color: var(--neon-cyan); font-weight: bold; white-space: pre;">
+   .----.
+  /  ..  \
+ |  /  \  |
+ |  \  /  |
+  \  ''  /
+   '----'
+                        </div>
+                        <div>
+                            <span class="output-highlight">OS:</span> Windows / Linux (Dual Boot Setup)<br>
+                            <span class="output-highlight">Hardware:</span> PC Assembly & Troubleshooting<br>
+                            <span class="output-highlight">Software:</span> Ms. Office, BIOS Config<br>
+                            <span class="output-highlight">Microcontroller:</span> Arduino Uno Basic<br>
+                            <span class="output-highlight">Web Stack:</span> HTML5, CSS3, JavaScript
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="kontak" class="hero hidden" style="align-items: center; text-align: center; min-height: 50vh;">
-            <div class="sec-header" style="text-align: center;">
-                <span class="sec-id">> /tautan_jaringan/</span>
-                <h2>Hubungkan Sistem</h2>
+        <!-- CARD SECTION -->
+        <section id="modules">
+            <h2 class="sec-title">Modul_Keahlian</h2>
+            <div class="card-grid">
+                <div class="cyber-card hover-target">
+                    <h4>[01] Hardware Setup</h4>
+                    <p>Perakitan komponen PC standar industri, manajemen kabel yang rapi, dan troubleshooting kerusakan perangkat keras (Motherboard, RAM, PSU).</p>
+                </div>
+                <div class="cyber-card hover-target">
+                    <h4>[02] Software & OS</h4>
+                    <p>Instalasi sistem operasi (Windows), konfigurasi driver PC, pembaruan BIOS, dan pengaturan aplikasi produktivitas (Office).</p>
+                </div>
+                <div class="cyber-card hover-target">
+                    <h4>[03] Web Frontend</h4>
+                    <p>Pemrograman struktur web menggunakan HTML dan styling dengan CSS. Pembuatan portofolio dan landing page interaktif.</p>
+                </div>
             </div>
-            <p style="margin: -20px auto 40px auto; max-width: 500px;">Temukan saya di jaringan sosial untuk melihat log aktivitas terbaru, portofolio perangkat keras, dan keseharian saya.</p>
             
-            <!-- TOMBOL SOSIAL MEDIA -->
-            <div class="btn-container">
-                <!-- EDIT LINK IG DI SINI (Ganti tanda # dengan link IG kamu) -->
-                <a href="#" target="_blank" class="cta-btn">[ IG ] @UsernameKamu</a>
-                
-                <!-- EDIT LINK TIKTOK DI SINI (Ganti tanda # dengan link TikTok kamu) -->
-                <a href="#" target="_blank" class="cta-btn">[ TIKTOK ] @UsernameKamu</a>
+            <div style="margin-top: 50px;">
+                <a href="https://instagram.com/username_kamu" target="_blank" class="cyber-btn hover-target">Akses Instagram</a>
+                <a href="https://tiktok.com/@username_kamu" target="_blank" class="cyber-btn hover-target" style="margin-left: 15px; border-color: var(--neon-cyan); color: var(--neon-cyan);">Akses TikTok</a>
             </div>
         </section>
     </main>
 
-    <!-- --- JAVASCRIPT: COMPLEX PARTICLES & INTERACTION --- -->
+    <!-- SCRIPT JAVASCRIPT -->
     <script>
-        // Scroll Reveal
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
-            });
-        }, { threshold: 0.1 });
+        // 1. EFEK KETIK OTOMATIS (Typewriter)
+        const texts = ["Teknisi Hardware", "Programmer Web", "Anak TKJ"];
+        let count = 0;
+        let index = 0;
+        let currentText = "";
+        let letter = "";
+        let isDeleting = false;
 
-        document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
+        function type() {
+            if (count === texts.length) { count = 0; }
+            currentText = texts[count];
 
-        // Particle Canvas
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        let particlesArray;
+            if (isDeleting) {
+                letter = currentText.slice(0, --index);
+            } else {
+                letter = currentText.slice(0, ++index);
+            }
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+            document.getElementById('type-text').textContent = letter;
 
-        window.addEventListener('resize', function(){
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            initParticles();
+            let typeSpeed = isDeleting ? 100 : 150;
+
+            if (!isDeleting && letter.length === currentText.length) {
+                typeSpeed = 2000; // Jeda saat teks selesai diketik
+                isDeleting = true;
+            } else if (isDeleting && letter.length === 0) {
+                isDeleting = false;
+                count++;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+        
+        // Jalankan efek ketik saat web dimuat
+        document.addEventListener("DOMContentLoaded", type);
+
+        // 2. KURSOR KUSTOM
+        const cursorDot = document.getElementById("cursor-dot");
+        const cursorOutline = document.getElementById("cursor-outline");
+        const hoverTargets = document.querySelectorAll(".hover-target");
+
+        // Gerakkan kursor sesuai mouse
+        window.addEventListener("mousemove", function(e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+            
+            // Animasi delay sedikit untuk lingkaran luar agar estetik
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
         });
 
-        class Particle {
-            constructor(x, y, directionX, directionY, size, color) {
-                this.x = x;
-                this.y = y;
-                this.directionX = directionX;
-                this.directionY = directionY;
-                this.size = size;
-                this.color = color;
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                ctx.fillStyle = '#00f2fe';
-                ctx.fill();
-            }
-            update() {
-                if (this.x > canvas.width || this.x < 0) {
-                    this.directionX = -this.directionX;
-                }
-                if (this.y > canvas.height || this.y < 0) {
-                    this.directionY = -this.directionY;
-                }
-                this.x += this.directionX;
-                this.y += this.directionY;
-                this.draw();
-            }
-        }
-
-        function initParticles() {
-            particlesArray = [];
-            let numberOfParticles = (canvas.height * canvas.width) / 11000;
-            for (let i = 0; i < numberOfParticles; i++) {
-                let size = (Math.random() * 2) + 1;
-                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
-                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-                let directionX = (Math.random() * 0.5) - 0.25;
-                let directionY = (Math.random() * 0.5) - 0.25;
-                let color = '#00f2fe';
-                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
-            }
-        }
-
-        function connectParticles() {
-            let opacityValue = 1;
-            for (let a = 0; a < particlesArray.length; a++) {
-                for (let b = a; b < particlesArray.length; b++) {
-                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) +
-                                   ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-                    
-                    if (distance < (canvas.width / 7) * (canvas.height / 7)) {
-                        opacityValue = 1 - (distance / 15000);
-                        ctx.strokeStyle = `rgba(0, 242, 254, ${opacityValue * 0.5})`;
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-            ctx.clearRect(0, 0, innerWidth, innerHeight);
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-            }
-            connectParticles();
-        }
-
-        initParticles();
-        animate();
+        // Efek membesar saat mouse mengenai tombol atau elemen tertentu
+        hoverTargets.forEach(target => {
+            target.addEventListener("mouseenter", () => {
+                cursorOutline.classList.add("hovered-cursor");
+            });
+            target.addEventListener("mouseleave", () => {
+                cursorOutline.classList.remove("hovered-cursor");
+            });
+        });
     </script>
 </body>
 </html>
