@@ -3,25 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Inti | Naufal_TKJ | Mega Build V6</title>
+    <title>Sistem Inti | Naufal_TKJ | V7 Ultimate</title>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         /* =========================================================
-           1. VARIABEL & RESET GLOBAL
+           1. VARIABEL & RESET GLOBAL (SYSTEM CORE)
         ========================================================= */
         :root {
-            --bg-base: #010205;
-            --bg-panel: #0a0e17;
-            --bg-card: rgba(17, 24, 39, 0.7);
-            --neon-green: #00fa9a;
-            --neon-cyan: #00f0ff;
-            --neon-pink: #ff007f;
-            --neon-warning: #ffbd2e;
-            --neon-danger: #ff5f56;
-            --text-main: #e2e8f0;
-            --text-muted: #94a3b8;
-            --text-dark: #0f172a;
+            --bg-base: #010205; --bg-panel: #0a0e17; --bg-card: rgba(17, 24, 39, 0.7);
+            --neon-green: #00fa9a; --neon-cyan: #00f0ff; --neon-pink: #ff007f;
+            --neon-warning: #ffbd2e; --neon-danger: #ff5f56;
+            --text-main: #e2e8f0; --text-muted: #94a3b8; --text-dark: #0f172a;
             --border-glow: rgba(0, 240, 255, 0.3);
             --font-mono: 'Share Tech Mono', monospace;
             --font-sans: 'Rajdhani', sans-serif;
@@ -31,12 +24,8 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            background-color: var(--bg-base);
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            line-height: 1.7;
-            overflow-x: hidden;
-            position: relative;
+            background-color: var(--bg-base); color: var(--text-main);
+            font-family: var(--font-sans); line-height: 1.7; overflow-x: hidden; position: relative;
         }
 
         ::-webkit-scrollbar { width: 8px; }
@@ -44,7 +33,7 @@
         ::-webkit-scrollbar-thumb { background: var(--neon-cyan); border-radius: 4px; }
 
         /* =========================================================
-           2. BACKGROUND MATRIKS & SCANLINE
+           2. BACKGROUND & ANIMATIONS
         ========================================================= */
         #matrix-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; opacity: 0.12; }
         .scanlines {
@@ -52,9 +41,12 @@
             background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%);
             background-size: 100% 4px; z-index: 9999; pointer-events: none;
         }
+        
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
         /* =========================================================
-           3. NAVBAR
+           3. NAVBAR (FIXED HEADER)
         ========================================================= */
         header {
             position: fixed; top: 0; width: 100%; padding: 15px 4%;
@@ -62,7 +54,7 @@
             background: rgba(1, 2, 5, 0.85); backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-glow); z-index: 1000;
         }
-        .logo { font-family: var(--font-mono); font-size: 1.5rem; color: var(--neon-cyan); text-decoration: none; text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+        .logo { font-family: var(--font-mono); font-size: 1.6rem; color: var(--neon-cyan); text-decoration: none; text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
         .logo span { color: white; }
         .nav-links { display: flex; gap: 25px; list-style: none; }
         .nav-links a {
@@ -72,7 +64,7 @@
         .nav-links a:hover { color: var(--neon-green); text-shadow: 0 0 10px var(--neon-green); }
 
         /* =========================================================
-           4. LAYOUT SECTION UMUM
+           4. GLOBAL SECTIONS
         ========================================================= */
         section { padding: 120px 5%; max-width: 1400px; margin: 0 auto; position: relative; }
         .sec-header { text-align: center; margin-bottom: 70px; }
@@ -121,7 +113,7 @@
         .btn-cyber:hover { color: var(--text-dark); box-shadow: 0 0 20px rgba(0, 240, 255, 0.6); }
 
         /* =========================================================
-           6. TERMINAL INTERAKTIF (BARU & BERFUNGSI)
+           6. ADVANCED INTERACTIVE TERMINAL
         ========================================================= */
         .interactive-terminal {
             width: 100%; max-width: 1000px; margin: 0 auto;
@@ -129,14 +121,12 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 20px rgba(0, 240, 255, 0.15);
             font-family: var(--font-mono); display: flex; flex-direction: column;
         }
-        .term-header {
-            background-color: #1a1a1a; padding: 12px 20px; display: flex; align-items: center; border-bottom: 1px solid #333;
-        }
+        .term-header { background-color: #1a1a1a; padding: 12px 20px; display: flex; align-items: center; border-bottom: 1px solid #333; }
         .term-dots { display: flex; gap: 8px; margin-right: 20px; }
         .dot { width: 12px; height: 12px; border-radius: 50%; }
         .dot.r { background: var(--neon-danger); } .dot.y { background: var(--neon-warning); } .dot.g { background: var(--neon-green); }
         .term-body {
-            padding: 25px; height: 450px; overflow-y: auto; color: var(--text-main); font-size: 1.05rem; line-height: 1.6;
+            padding: 25px; height: 500px; overflow-y: auto; color: var(--text-main); font-size: 1.05rem; line-height: 1.6;
         }
         .term-input-line { display: flex; margin-top: 10px; }
         .term-prompt { color: var(--neon-green); margin-right: 10px; white-space: nowrap; }
@@ -146,13 +136,14 @@
         }
         .term-output { margin-bottom: 15px; color: var(--text-muted); }
         .term-highlight { color: var(--neon-cyan); }
+        .term-table { width: 100%; display: table; margin-top: 10px; }
+        .term-row { display: table-row; }
+        .term-cell { display: table-cell; padding: 5px 15px 5px 0; }
 
         /* =========================================================
-           7. MODULES & KOMPETENSI TKJ (SUPER DETAIL)
+           7. MODULES & TKJ COMPETENCIES
         ========================================================= */
-        .tkj-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;
-        }
+        .tkj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
         .tkj-card {
             background: var(--bg-card); backdrop-filter: blur(10px);
             padding: 40px 30px; border: 1px solid rgba(255,255,255,0.05);
@@ -169,17 +160,15 @@
         .tkj-list li {
             position: relative; padding-left: 20px; margin-bottom: 8px; color: var(--text-main); font-family: var(--font-mono); font-size: 0.9rem;
         }
-        .tkj-list li::before {
-            content: '>'; position: absolute; left: 0; color: var(--neon-green);
-        }
+        .tkj-list li::before { content: '>'; position: absolute; left: 0; color: var(--neon-green); }
 
         /* =========================================================
-           8. PROJECT GALLERY (MEGA)
+           8. PROJECT GALLERY WITH MODAL FUNCTION
         ========================================================= */
         .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; }
         .project-card {
             background: var(--bg-panel); border: 1px solid rgba(0, 240, 255, 0.2);
-            position: relative; overflow: hidden; transition: var(--transition);
+            position: relative; overflow: hidden; transition: var(--transition); cursor: pointer;
         }
         .project-card::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
@@ -199,45 +188,68 @@
         }
         .project-card:hover { border-color: var(--neon-cyan); box-shadow: 0 0 30px rgba(0, 240, 255, 0.15); transform: scale(1.02); }
 
-        /* =========================================================
-           9. SYSTEM LOGS (ARTIKEL/BLOG)
-        ========================================================= */
-        .logs-container { max-width: 900px; margin: 0 auto; }
-        .log-item {
-            background: transparent; border-left: 2px solid var(--neon-cyan); padding: 0 0 40px 30px; position: relative;
+        /* MODAL (POPUP PROYEK) */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
+            z-index: 2000; display: none; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.3s ease;
         }
-        .log-item::before {
-            content: ''; position: absolute; left: -8px; top: 0; width: 14px; height: 14px;
-            background: var(--bg-base); border: 2px solid var(--neon-cyan); border-radius: 50%;
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-box {
+            background: var(--bg-panel); border: 1px solid var(--neon-cyan);
+            width: 90%; max-width: 700px; padding: 40px; border-radius: 8px;
+            position: relative; transform: translateY(-50px); transition: transform 0.3s ease;
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.2);
         }
-        .log-date { font-family: var(--font-mono); color: var(--neon-green); font-size: 1rem; margin-bottom: 10px; display: block; }
-        .log-title { font-size: 1.5rem; color: white; margin-bottom: 15px; }
-        .log-desc { color: var(--text-muted); line-height: 1.8; margin-bottom: 15px; text-align: justify; }
-        .log-readmore { color: var(--neon-cyan); font-family: var(--font-mono); text-decoration: none; font-weight: bold; }
-        .log-readmore:hover { text-decoration: underline; }
+        .modal-overlay.active .modal-box { transform: translateY(0); }
+        .close-modal {
+            position: absolute; top: 20px; right: 20px; color: var(--neon-danger);
+            font-size: 1.5rem; cursor: pointer; font-family: var(--font-mono); background: transparent; border: none;
+        }
+        .modal-box h2 { color: white; margin-bottom: 15px; font-family: var(--font-mono); }
+        .modal-box p { color: var(--text-muted); line-height: 1.8; margin-bottom: 20px; }
 
         /* =========================================================
-           10. CONTACT FORM (WEB3FORMS INTEGRATION)
+           9. TIMELINE & LOGS
+        ========================================================= */
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+        .timeline::before {
+            content: ''; position: absolute; top: 0; left: 20px; height: 100%; width: 2px; background: rgba(0, 240, 255, 0.2);
+        }
+        .timeline-item { position: relative; padding-left: 60px; margin-bottom: 50px; }
+        .timeline-icon {
+            position: absolute; left: 11px; top: 0; width: 20px; height: 20px;
+            background: var(--bg-base); border: 3px solid var(--neon-cyan); border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+        .timeline-content {
+            background: rgba(255,255,255,0.02); padding: 25px; border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px; transition: var(--transition);
+        }
+        .timeline-content:hover { border-color: var(--neon-green); background: rgba(255,255,255,0.05); }
+        .timeline-date { font-family: var(--font-mono); color: var(--neon-cyan); margin-bottom: 10px; display: block; }
+        .timeline-content h4 { color: white; font-size: 1.3rem; margin-bottom: 10px; }
+
+        /* =========================================================
+           10. CONTACT FORM (WEB3FORMS)
         ========================================================= */
         .contact-wrapper {
             max-width: 800px; margin: 0 auto; background: var(--bg-panel); padding: 50px;
             border: 1px dashed rgba(0, 250, 154, 0.4); border-radius: 4px;
         }
-        .contact-info { text-align: center; margin-bottom: 40px; font-family: var(--font-mono); color: var(--text-muted); }
         .input-group { margin-bottom: 30px; }
         .input-group label { display: block; font-family: var(--font-mono); color: var(--neon-green); margin-bottom: 10px; font-size: 1rem; }
         .input-group input, .input-group textarea {
             width: 100%; background: rgba(0,0,0,0.6); border: 1px solid #333; color: white;
             padding: 15px; font-family: var(--font-sans); font-size: 1.1rem; transition: var(--transition);
         }
-        .input-group input:focus, .input-group textarea:focus {
-            outline: none; border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
-        }
+        .input-group input:focus, .input-group textarea:focus { outline: none; border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); }
         .input-group textarea { resize: vertical; height: 150px; }
         .btn-submit { width: 100%; text-align: center; font-size: 1.2rem; }
 
         /* =========================================================
-           11. FOOTER & SOSIAL MEDIA
+           11. FOOTER
         ========================================================= */
         footer { background: #010204; padding: 80px 5% 40px; text-align: center; border-top: 1px solid #111; }
         .social-box { display: flex; justify-content: center; gap: 25px; margin-bottom: 50px; flex-wrap: wrap; }
@@ -269,13 +281,13 @@
             <li><a href="#terminal">// CLI_Mode</a></li>
             <li><a href="#kompetensi">// Modul_TKJ</a></li>
             <li><a href="#projects">// Eksekusi</a></li>
-            <li><a href="#logs">// Sys_Logs</a></li>
+            <li><a href="#timeline-sec">// Histori</a></li>
             <li><a href="#contact">// Ping</a></li>
         </ul>
     </header>
 
     <!-- HERO SECTION -->
-    <section id="home" class="hero">
+    <section id="home" class="hero fade-in">
         <div class="sys-status">SECURE CONNECTION ESTABLISHED</div>
         <h1><span class="glitch-text">Naufal.</span><br>Network & SysAdmin</h1>
         
@@ -291,13 +303,15 @@
         </div>
     </section>
 
-    <!-- TERMINAL INTERAKTIF (BISA DIKETIK SUNGGUHAN) -->
-    <section id="terminal">
+    <!-- TERMINAL INTERAKTIF -->
+    <section id="terminal" class="fade-in">
         <div class="sec-header">
-            <span class="sec-subtitle">>> INTERACTIVE_CLI</span>
-            <h2 class="sec-title">Terminal Akses</h2>
+            <span class="sec-subtitle">>> INTERACTIVE_CLI_V7</span>
+            <h2 class="sec-title">Terminal Akses Utama</h2>
         </div>
-        <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px; font-family: var(--font-mono);">[ Ketik <strong>help</strong> untuk melihat daftar perintah yang tersedia. Tekan Enter untuk mengeksekusi. ]</p>
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px; font-family: var(--font-mono);">
+            [ Sistem Virtual Terhubung. Ketik <strong>help</strong> lalu Enter. Cobalah perintah <strong>ls</strong> atau <strong>cat profile.txt</strong> ]
+        </p>
         
         <div class="interactive-terminal" onclick="document.getElementById('cmd-input').focus();">
             <div class="term-header">
@@ -308,23 +322,23 @@
             </div>
             <div class="term-body" id="term-display">
                 <div class="term-output">
-                    Welcome to NaufalOS v6.0.4 LTS (GNU/Linux 5.15.0-generic x86_64)<br>
+                    Welcome to NaufalOS v7.0.0 MegaBuild (GNU/Linux 5.15.0-generic x86_64)<br>
                     * Documentation:  https://naufalyoo.github.io<br>
-                    * System Load:    Optimal<br>
-                    * Memory Usage:   12%<br><br>
+                    * Environment:    Strictly Web Based<br>
+                    * Uptime:         100%<br><br>
                     Type 'help' to see available commands.
                 </div>
                 <!-- Input Line Dinamis -->
                 <div class="term-input-line" id="input-wrapper">
                     <span class="term-prompt">guest@naufal:~$</span>
-                    <input type="text" id="cmd-input" class="term-input" autocomplete="off" spellcheck="false" autofocus>
+                    <input type="text" id="cmd-input" class="term-input" autocomplete="off" spellcheck="false">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- KOMPETENSI TKJ (SUPER DETAIL) -->
-    <section id="kompetensi">
+    <!-- KOMPETENSI TKJ -->
+    <section id="kompetensi" class="fade-in">
         <div class="sec-header">
             <span class="sec-subtitle">>> CORE_COMPETENCIES</span>
             <h2 class="sec-title">Arsitektur Keahlian</h2>
@@ -334,79 +348,51 @@
             <div class="tkj-card">
                 <div class="tkj-icon">🖥️</div>
                 <h3>Hardware & Assembly</h3>
-                <p>Memahami anatomi fisik komputer. Mampu merakit PC dari nol, menganalisis *bottleneck*, hingga memperbaiki (*troubleshoot*) komponen yang bermasalah.</p>
+                <p>Mampu merakit PC dari nol, menganalisis *bottleneck*, hingga memperbaiki (*troubleshoot*) komponen bermasalah.</p>
                 <ul class="tkj-list">
-                    <li>Motherboard & Processor Selections</li>
-                    <li>Power Supply (PSU) Calculations</li>
-                    <li>Cable Management & Airflow Optimization</li>
-                    <li>BIOS/UEFI Configuration</li>
+                    <li>Motherboard & CPU Compatibility</li>
+                    <li>PSU Calculations & Cable Management</li>
+                    <li>Thermal Paste & Airflow Optimization</li>
                 </ul>
             </div>
 
             <div class="tkj-card">
                 <div class="tkj-icon">🌐</div>
                 <h3>Network Infrastructure</h3>
-                <p>Mendesain dan mengimplementasikan topologi jaringan LAN/WLAN. Memastikan setiap *node* terhubung dengan latensi minimal dan keamanan maksimal.</p>
+                <p>Mendesain topologi jaringan LAN/WLAN, memastikan koneksi stabil dengan konfigurasi kabel UTP standar.</p>
                 <ul class="tkj-list">
-                    <li>OSI Layer & TCP/IP Fundamental</li>
-                    <li>Subnetting & IP Addressing (IPv4/IPv6)</li>
-                    <li>Crimping UTP (Straight & Crossover)</li>
-                    <li>Basic Mikrotik & Cisco Routing</li>
+                    <li>TCP/IP & Subnetting Basics</li>
+                    <li>Crimping UTP (Straight/Crossover)</li>
+                    <li>Basic Router Configuration</li>
                 </ul>
             </div>
 
             <div class="tkj-card">
                 <div class="tkj-icon">🐧</div>
                 <h3>System Administration</h3>
-                <p>Mengelola server lokal dan memahami hierarki sistem operasi *open-source* maupun *proprietary* untuk kebutuhan laboratorium atau perusahaan.</p>
+                <p>Mengelola hierarki sistem operasi *open-source* dan *proprietary* untuk kebutuhan lab atau klien.</p>
                 <ul class="tkj-list">
-                    <li>Windows & Linux (Debian/Ubuntu) Installs</li>
-                    <li>CLI File Management (bash)</li>
-                    <li>Dual Boot & Partitioning (MBR/GPT)</li>
-                    <li>Basic Web Server (Apache/Nginx) Setup</li>
+                    <li>Windows & Linux Installs</li>
+                    <li>Dual Boot & UEFI/MBR Partitioning</li>
+                    <li>Command Line Interface (CLI) Nav</li>
                 </ul>
             </div>
-
+            
             <div class="tkj-card">
                 <div class="tkj-icon">💻</div>
                 <h3>Web Frontend Dev</h3>
-                <p>Menjembatani sistem *backend* dengan pengguna melalui antarmuka visual yang modern, responsif, dan interaktif di berbagai perangkat.</p>
+                <p>Merangkai antarmuka visual menggunakan kode agar sistem dapat berinteraksi langsung dengan *user* secara modern.</p>
                 <ul class="tkj-list">
-                    <li>HTML5 Semantic Structuring</li>
-                    <li>CSS3 (Flexbox, Grid, Animations)</li>
-                    <li>JavaScript (DOM Manipulation)</li>
-                    <li>Responsive UI/UX Design</li>
-                </ul>
-            </div>
-
-            <div class="tkj-card">
-                <div class="tkj-icon">🤖</div>
-                <h3>IoT & Microcontroller</h3>
-                <p>Memasukkan logika pemrograman ke dalam perangkat keras murni. Membaca data fisik melalui sensor dan memberikan respons otomatis.</p>
-                <ul class="tkj-list">
-                    <li>Arduino Uno Architecture</li>
-                    <li>C++ Basic Syntax</li>
-                    <li>Digital & Analog Sensor Reading</li>
-                    <li>LED & Relay Actuator Controls</li>
-                </ul>
-            </div>
-
-            <div class="tkj-card">
-                <div class="tkj-icon">🛡️</div>
-                <h3>Basic Cyber Security</h3>
-                <p>Menerapkan prinsip keamanan dasar untuk melindungi data pengguna dan menjaga integritas jaringan dari intrusi pihak luar.</p>
-                <ul class="tkj-list">
-                    <li>Firewall Configuration (Basic)</li>
-                    <li>Port Forwarding & Blocking</li>
-                    <li>User Access Control (Permissions)</li>
-                    <li>Data Encryption Concepts</li>
+                    <li>HTML5 Semantic Tagging</li>
+                    <li>CSS3 (Flex, Grid, Animation)</li>
+                    <li>JavaScript DOM Manipulation</li>
                 </ul>
             </div>
         </div>
     </section>
 
     <!-- PROJECT GALLERY MEGA -->
-    <section id="projects">
+    <section id="projects" class="fade-in">
         <div class="sec-header">
             <span class="sec-subtitle">>> PROJECT_REPOSITORIES</span>
             <h2 class="sec-title">Katalog Implementasi</h2>
@@ -414,105 +400,98 @@
 
         <div class="project-grid">
             <!-- P1 -->
-            <div class="project-card">
+            <div class="project-card" onclick="openModal('modal1')">
                 <div class="project-content">
                     <span class="project-status">STATUS: DEPLOYED</span>
-                    <h3>Mega Cyber Portfolio (V6.0)</h3>
-                    <p>Website portofolio interaktif tingkat lanjut. Dibangun untuk menyimulasikan antarmuka hacker/terminal OS sungguhan. Termasuk fitur JavaScript Terminal CLI interaktif, Matrix rain canvas, dan formulir kontak dinamis.</p>
+                    <h3>Mega Cyber Portfolio (V7.0)</h3>
+                    <p>Website portofolio interaktif tingkat lanjut dengan UI Hacker. [ Klik untuk Detail ]</p>
                     <div class="tech-tags">
-                        <span>HTML5</span><span>CSS Variables</span><span>JS OOP</span><span>Web3Forms</span>
+                        <span>HTML5</span><span>CSS Variables</span><span>JS CLI</span>
                     </div>
                 </div>
             </div>
 
             <!-- P2 -->
-            <div class="project-card">
+            <div class="project-card" onclick="openModal('modal2')">
                 <div class="project-content">
                     <span class="project-status">STATUS: DEPLOYED</span>
                     <h3>HealthyLife BMI Web App</h3>
-                    <p>Aplikasi kalkulator Indeks Massa Tubuh (BMI) berbasis web. Menerapkan pengolahan matematika di JavaScript untuk memberikan saran kesehatan secara *real-time* berdasarkan input berat dan tinggi badan pengguna.</p>
+                    <p>Aplikasi kalkulator Indeks Massa Tubuh (BMI) instan berbasis web. [ Klik untuk Detail ]</p>
                     <div class="tech-tags">
-                        <span>HTML5</span><span>CSS Flexbox</span><span>JS DOM</span><span>Github Pages</span>
+                        <span>HTML5</span><span>CSS</span><span>JavaScript</span>
                     </div>
                 </div>
             </div>
 
             <!-- P3 -->
-            <div class="project-card">
+            <div class="project-card" onclick="openModal('modal3')">
                 <div class="project-content">
-                    <span class="project-status">STATUS: LAB SIMULATION</span>
-                    <h3>Cisco Enterprise Topology</h3>
-                    <p>Simulasi arsitektur jaringan perusahaan menengah menggunakan Cisco Packet Tracer. Melibatkan pembagian VLAN, penerapan protokol routing dinamis (OSPF), dan DHCP server untuk distribusi IP otomatis.</p>
+                    <span class="project-status">STATUS: LAB EXPERIMENT</span>
+                    <h3>Arduino Smart Sensor</h3>
+                    <p>Membaca sensor fisik lingkungan menggunakan *board* mikrokontroler. [ Klik untuk Detail ]</p>
                     <div class="tech-tags">
-                        <span>Packet Tracer</span><span>VLAN</span><span>Routing</span><span>DHCP</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- P4 -->
-            <div class="project-card">
-                <div class="project-content">
-                    <span class="project-status">STATUS: HARDWARE TEST</span>
-                    <h3>Automated Smart Fan (Arduino)</h3>
-                    <p>Proyek mikrokontroler berbasis Arduino Uno yang terhubung dengan sensor suhu DHT11. Sistem akan secara otomatis menghidupkan kipas angin (via Relay) ketika suhu ruangan melewati batas *threshold* yang diprogram.</p>
-                    <div class="tech-tags">
-                        <span>Arduino Uno</span><span>C++</span><span>Sensor DHT11</span><span>Relay</span>
+                        <span>Arduino Uno</span><span>C++</span><span>IoT Basic</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SYSTEM LOGS / BLOG -->
-    <section id="logs">
+    <!-- TIMELINE PENDIDIKAN & HISTORI -->
+    <section id="timeline-sec" class="fade-in">
         <div class="sec-header">
-            <span class="sec-subtitle">>> KNOWLEDGE_BASE</span>
-            <h2 class="sec-title">System Logs & Catatan</h2>
+            <span class="sec-subtitle">>> LOG_HISTORI</span>
+            <h2 class="sec-title">Jejak Operasi</h2>
         </div>
 
-        <div class="logs-container">
-            <div class="log-item">
-                <span class="log-date">2026-08-01 14:30:00</span>
-                <h3 class="log-title">Log 001: Memahami Pentingnya Cable Management pada Perakitan PC</h3>
-                <p class="log-desc">Dalam merakit komputer, kabel yang berantakan bukan sekadar masalah estetika. Udara panas dari komponen seperti CPU dan GPU perlu dikeluarkan dari *casing* dengan cepat. Kabel yang menghalangi jalur udara (airflow) akan membuat suhu sistem meningkat, menyebabkan *thermal throttling* yang menurunkan performa drastis. Selalu gunakan rute kabel di belakang motherboard (cable routing) dan ikat menggunakan *zip ties*.</p>
-                <a href="#" class="log-readmore">READ_FULL_LOG ></a>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-icon"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Sekarang - Masa Depan</span>
+                    <h4>Pengembangan Mandiri (Web & Security)</h4>
+                    <p>Secara aktif bereksperimen dengan bahasa pemrograman web, mempelajari keamanan siber dasar, dan mengelola repositori portofolio GitHub Pages secara statis.</p>
+                </div>
             </div>
             
-            <div class="log-item">
-                <span class="log-date">2026-07-15 09:12:45</span>
-                <h3 class="log-title">Log 002: Perbedaan UTP Cat5e dan Cat6 dalam Infrastruktur Jaringan</h3>
-                <p class="log-desc">Sering menjadi perdebatan di lab TKJ, apakah harus upgrade ke kabel Cat6? Cat5e mendukung kecepatan hingga 1 Gbps pada frekuensi 100MHz. Sementara Cat6 bisa menangani 10 Gbps pada jarak pendek (hingga 55 meter) dengan frekuensi 250MHz dan pelindung *crosstalk* yang lebih baik. Untuk investasi jangka panjang di laboratorium server, Cat6 mutlak diperlukan meski proses *crimping*-nya sedikit lebih kaku.</p>
-                <a href="#" class="log-readmore">READ_FULL_LOG ></a>
+            <div class="timeline-item">
+                <div class="timeline-icon"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Fase Produktif</span>
+                    <h4>Siswa Teknik Komputer & Jaringan (TKJ)</h4>
+                    <p>Mempelajari fondasi perangkat keras industri, instalasi berbagai sistem operasi, konfigurasi BIOS, pengkabelan LAN, dan fundamental routing.</p>
+                </div>
             </div>
 
-            <div class="log-item">
-                <span class="log-date">2026-06-20 20:45:11</span>
-                <h3 class="log-title">Log 003: Mengatasi Bootloop Windows Akibat Update Gagal</h3>
-                <p class="log-desc">Menghadapi layar *Automatic Repair* yang berulang (bootloop) adalah makanan sehari-hari teknisi. Langkah paling efektif sebelum *install* ulang (format) adalah mengakses *Advanced Startup Options*, lalu masuk ke Command Prompt. Menjalankan perintah <code>chkdsk /f /r C:</code> atau menggunakan <code>bootrec /fixmbr</code> dan <code>bootrec /rebuildbcd</code> seringkali dapat menyelamatkan sistem dan data *user* tanpa harus format total.</p>
-                <a href="#" class="log-readmore">READ_FULL_LOG ></a>
+            <div class="timeline-item">
+                <div class="timeline-icon"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Fase Inisiasi</span>
+                    <h4>Eksplorasi Hardware & Mikrokontroler</h4>
+                    <p>Ketertarikan awal pada teknologi: membongkar perangkat keras PC lama, mempelajari logika sirkuit, dan bereksperimen dengan papan Arduino Uno.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- CONTACT FORM (WEB3FORMS - FUNCTIONAL) -->
-    <section id="contact">
+    <section id="contact" class="fade-in">
         <div class="sec-header">
             <span class="sec-subtitle">>> SECURE_COMMUNICATION_CHANNEL</span>
             <h2 class="sec-title">Ping Server Utama</h2>
         </div>
 
         <div class="contact-wrapper">
-            <p class="contact-info">Kirimkan paket data langsung ke server lokal saya. Pesan yang diinput di bawah ini akan dienkripsi dan dikirim ke alamat email saya secara *real-time*.</p>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px; font-family: var(--font-mono);">
+                Gunakan layanan form ini untuk mengirim pesan. Formulir ini terintegrasi API Web3Forms (Akan langsung masuk ke email jika Access Key disetel).
+            </p>
             
-            <!-- FORM INI SEKARANG BERFUNGSI MENGIRIM KE EMAIL (Perlu Access Key Web3Forms) -->
             <form action="https://api.web3forms.com/submit" method="POST">
-                
-                <!-- GANTI VALUE DI BAWAH DENGAN ACCESS KEY WEB3FORMS KAMU -->
                 <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
                 
                 <div class="input-group">
                     <label>> ID_PENGIRIM (Name)</label>
-                    <input type="text" name="name" placeholder="Masukkan identitas..." required>
+                    <input type="text" name="name" placeholder="Masukkan nama..." required>
                 </div>
                 <div class="input-group">
                     <label>> PROTOKOL_BALASAN (Email Address)</label>
@@ -520,12 +499,9 @@
                 </div>
                 <div class="input-group">
                     <label>> PAYLOAD_DATA (Message)</label>
-                    <textarea name="message" placeholder="Ketikkan tujuan komunikasi, tawaran proyek, atau sapaan..." required></textarea>
+                    <textarea name="message" placeholder="Ketikkan pesan, sapaan, atau diskusi proyek..." required></textarea>
                 </div>
-                
-                <!-- Fitur anti-spam bawaan Web3Forms (opsional, disembunyikan) -->
-                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
+                <input type="checkbox" name="botcheck" style="display: none;">
                 <button type="submit" class="btn-cyber btn-submit">Kirim Payload Data >></button>
             </form>
         </div>
@@ -546,138 +522,163 @@
         </div>
         <div class="footer-bottom">
             <p>SYSTEM <span>//</span> ONLINE <span>//</span> &copy; 2026 NAUFAL_TKJ.</p>
-            <p style="margin-top: 10px; font-size: 0.8rem; color: #444;">Built with HTML, CSS, JavaScript & Passion for IT.</p>
         </div>
     </footer>
 
     <!-- =========================================================
-         12. JAVASCRIPT (MATRIX, TYPEWRITER, INTERACTIVE CLI)
+         12. MODAL TEMPLATES (HTML HIDDEN)
+    ========================================================= -->
+    <div class="modal-overlay" id="modal1">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeModal('modal1')">X</button>
+            <h2>Mega Cyber Portfolio V7</h2>
+            <p><strong>Deskripsi:</strong> Proyek pamungkas pengembangan web statis. Dibangun tanpa framework, menggunakan ratusan baris CSS murni untuk menciptakan pengalaman *Sci-Fi* dan antarmuka layaknya terminal peretas.</p>
+            <p><strong>Fitur Kunci:</strong> Virtual JS Terminal File System, Matrix Rain Background, Modal Windows, Intersection Observer Animations.</p>
+            <p style="color: var(--neon-cyan); font-family: var(--font-mono);">> Tech Stack: HTML5, Advanced CSS3, DOM JS.</p>
+        </div>
+    </div>
+    <div class="modal-overlay" id="modal2">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeModal('modal2')">X</button>
+            <h2>HealthyLife BMI Web App</h2>
+            <p><strong>Deskripsi:</strong> Membantu pengguna memonitor kesehatan melalui kalkulasi indeks massa tubuh otomatis. Antarmuka didesain sebersih mungkin menggunakan gradien warna untuk kenyamanan visual.</p>
+            <p style="color: var(--neon-cyan); font-family: var(--font-mono);">> Tech Stack: HTML5, CSS Flexbox, JavaScript Math Logic.</p>
+        </div>
+    </div>
+    <div class="modal-overlay" id="modal3">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeModal('modal3')">X</button>
+            <h2>Arduino Smart Sensor</h2>
+            <p><strong>Deskripsi:</strong> Melibatkan perangkat keras mikrokontroler (Arduino Uno) untuk membaca data dari sensor analog/digital. Sebuah eksplorasi dasar tentang logika *Internet of Things (IoT)* dan otomasi komponen elektronika sederhana.</p>
+            <p style="color: var(--neon-cyan); font-family: var(--font-mono);">> Tech Stack: Arduino Uno Board, C++, Jumper Cables.</p>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         13. JAVASCRIPT MEGA ENGINE
     ========================================================= -->
     <script>
-        // --- A. EFEK MATRIX BACKGROUND ---
+        // --- A. MATRIX BACKGROUND ENGINE ---
         const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-
         const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/\|<>[]{}!@#$%';
         const fontSize = 16;
         const columns = canvas.width / fontSize;
         const drops = [];
-        for (let x = 0; x < columns; x++) { drops[x] = 1; }
-
+        for (let x = 0; x < columns; x++) drops[x] = 1;
         function drawMatrix() {
             ctx.fillStyle = 'rgba(1, 2, 5, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = 'rgba(0, 250, 154, 0.8)'; // Neon green text
+            ctx.fillStyle = 'rgba(0, 250, 154, 0.8)';
             ctx.font = fontSize + 'px monospace';
-
             for (let i = 0; i < drops.length; i++) {
                 const text = letters.charAt(Math.floor(Math.random() * letters.length));
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
                 drops[i]++;
             }
         }
         setInterval(drawMatrix, 50);
         window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
 
-        // --- B. EFEK TYPEWRITER HERO ---
+        // --- B. SCROLL REVEAL (Intersection Observer) ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+        // --- C. TYPEWRITER ---
         const texts = ["Siswa TKJ.", "Teknisi Hardware.", "Web Developer.", "Linux Enthusiast."];
-        let count = 0; let index = 0; let currentText = ""; let letter = ""; let isDeleting = false;
-        
+        let count = 0, index = 0, currentText = "", letter = "", isDeleting = false;
         function type() {
             if (count === texts.length) count = 0;
             currentText = texts[count];
             if (isDeleting) letter = currentText.slice(0, --index); 
             else letter = currentText.slice(0, ++index);
-
             document.getElementById('type-text').textContent = letter;
-            let typeSpeed = isDeleting ? 50 : 100;
-
-            if (!isDeleting && letter.length === currentText.length) {
-                typeSpeed = 2000; isDeleting = true;
-            } else if (isDeleting && letter.length === 0) {
-                isDeleting = false; count++; typeSpeed = 500;
-            }
+            let typeSpeed = isDeleting ? 40 : 100;
+            if (!isDeleting && letter.length === currentText.length) { typeSpeed = 2000; isDeleting = true; } 
+            else if (isDeleting && letter.length === 0) { isDeleting = false; count++; typeSpeed = 500; }
             setTimeout(type, typeSpeed);
         }
         document.addEventListener("DOMContentLoaded", type);
 
-        // --- C. INTERACTIVE TERMINAL LOGIC ---
+        // --- D. MODAL WINDOWS LOGIC ---
+        function openModal(id) { document.getElementById(id).classList.add('active'); }
+        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+            }
+        }
+
+        // --- E. ADVANCED TERMINAL LOGIC (VIRTUAL FILE SYSTEM) ---
         const cmdInput = document.getElementById('cmd-input');
         const termDisplay = document.getElementById('term-display');
         const inputWrapper = document.getElementById('input-wrapper');
+        
+        // Virtual File System
+        const vfs = {
+            'profile.txt': 'Nama: Naufal\nProfesi: Siswa TKJ & Web Dev\nMinat: Hardware, Jaringan, Coding.',
+            'skills.json': '{\n  "hardware": "Advance",\n  "networking": "Intermediate",\n  "web_dev": "Basic-Mid"\n}',
+            'secret.md': 'System Override: [ACCESS DENIED] Tingkat otorisasi terlalu rendah.'
+        };
 
-        // Database Respon Perintah
         const commands = {
-            'help': `Daftar perintah yang tersedia:<br>
-                     <span class="term-highlight">whoami</span>   - Tampilkan profil pengguna<br>
-                     <span class="term-highlight">skills</span>   - Lihat keahlian teknis<br>
-                     <span class="term-highlight">contact</span>  - Menampilkan saluran komunikasi<br>
-                     <span class="term-highlight">neofetch</span> - Tampilkan informasi sistem<br>
-                     <span class="term-highlight">clear</span>    - Bersihkan layar terminal<br>
-                     <span class="term-highlight">sudo</span>     - ?????`,
-            'whoami': `> Naufal<br>
-                       > Siswa Teknik Komputer & Jaringan<br>
-                       > Hardware Technician & Basic Frontend Dev<br>
-                       > "Mencari ilmu dari baris kode dan komponen sirkuit."`,
-            'skills': `> [Hardware]  Perakitan, Troubleshooting PC, Cable Management.<br>
-                       > [Network]   Routing Basic, Crimping UTP, TCP/IP, OSI.<br>
-                       > [Software]  Windows/Linux Install, Dual Boot, BIOS Config.<br>
-                       > [Web Dev]   HTML5, CSS3, JavaScript, UI/UX.<br>
-                       > [IoT]       Arduino C++, Sensor Config.`,
-            'contact': `> Instagram : @naufalorailing<br>
-                        > TikTok    : @naufal_yoo<br>
-                        > GitHub    : naufalyoo<br>
-                        > Email     : (Gunakan form Ping Server di bawah)`,
-            'neofetch': `<span class="term-highlight">OS:</span> Windows / Linux (Dual Boot Setup)<br>
-                         <span class="term-highlight">Host:</span> TKJ Workstation Build<br>
-                         <span class="term-highlight">Kernel:</span> x86_64 Linux 5.15<br>
-                         <span class="term-highlight">Shell:</span> bash 5.1<br>
-                         <span class="term-highlight">CPU:</span> Quad-Core Processor<br>
-                         <span class="term-highlight">Memory:</span> 16GB RAM<br>
-                         <span class="term-highlight">Disk:</span> 320GB Storage`,
-            'sudo': `<span style="color: var(--neon-danger);">[ERROR] User 'guest' is not in the sudoers file. This incident will be reported.</span>`
+            'help': `Perintah yang tersedia:<br>
+                     <span class="term-highlight">ls</span>       - List direktori saat ini<br>
+                     <span class="term-highlight">cat [file]</span> - Baca isi file (misal: cat profile.txt)<br>
+                     <span class="term-highlight">whoami</span>   - Info pengguna<br>
+                     <span class="term-highlight">date</span>     - Lihat waktu server<br>
+                     <span class="term-highlight">clear</span>    - Bersihkan layar<br>
+                     <span class="term-highlight">sudo</span>     - Super user (Bahaya!)`,
+            'whoami': `guest_user_1337`,
+            'date': new Date().toString(),
+            'sudo': `<span style="color: var(--neon-danger);">[!] Otorisasi gagal. Aksi telah dicatat oleh sistem keamanan.</span>`
         };
 
         cmdInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 const val = this.value.trim().toLowerCase();
+                const args = val.split(' ');
+                const cmd = args[0];
                 
-                // Buat elemen baru untuk baris yang baru diketik
                 const newCmdLine = document.createElement('div');
-                newCmdLine.innerHTML = \`<span class="term-prompt">guest@naufal:~$</span> <span class="command">\${val}</span>\`;
+                newCmdLine.innerHTML = `<span class="term-prompt">guest@naufal:~$</span> <span class="command">${val}</span>`;
                 termDisplay.insertBefore(newCmdLine, inputWrapper);
 
-                // Cek respon perintah
-                if (val === 'clear') {
-                    // Hapus semua isi kecuali input line
+                if (cmd === 'clear') {
                     const children = Array.from(termDisplay.children);
-                    children.forEach(child => {
-                        if (child !== inputWrapper) {
-                            termDisplay.removeChild(child);
-                        }
-                    });
-                } else if (val !== '') {
+                    children.forEach(child => { if (child !== inputWrapper) termDisplay.removeChild(child); });
+                } else if (cmd !== '') {
                     const responseLine = document.createElement('div');
                     responseLine.className = 'term-output';
                     
-                    if (commands[val]) {
-                        responseLine.innerHTML = commands[val];
+                    if (cmd === 'ls') {
+                        responseLine.innerHTML = `<span class="term-highlight">profile.txt &nbsp;&nbsp; skills.json &nbsp;&nbsp; secret.md</span>`;
+                    } else if (cmd === 'cat') {
+                        if (args[1] && vfs[args[1]]) {
+                            responseLine.innerHTML = `<pre style="font-family: var(--font-mono); margin:0;">${vfs[args[1]]}</pre>`;
+                        } else {
+                            responseLine.innerHTML = `cat: ${args[1] ? args[1] : ''}: No such file or directory`;
+                        }
+                    } else if (commands[cmd]) {
+                        // Perintah dasar (help, whoami, dll)
+                        responseLine.innerHTML = typeof commands[cmd] === 'function' ? commands[cmd]() : commands[cmd];
                     } else {
-                        responseLine.innerHTML = \`<span style="color: var(--neon-danger);">bash: \${val}: command not found</span>. Ketik 'help' untuk daftar perintah.\`;
+                        responseLine.innerHTML = `<span style="color: var(--neon-danger);">bash: ${cmd}: command not found</span>. Ketik 'help' untuk daftar.`;
                     }
                     termDisplay.insertBefore(responseLine, inputWrapper);
                 }
 
-                // Reset input
                 this.value = '';
-                
-                // Auto scroll ke bawah
-                termDisplay.scrollTop = termDisplay.scrollHeight;
+                termDisplay.scrollTop = termDisplay.scrollHeight; // Auto scroll bawah
             }
         });
     </script>
