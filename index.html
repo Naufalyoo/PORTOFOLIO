@@ -21,11 +21,21 @@
             --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
+        /* LIGHT MODE OVERRIDES */
+        body.light-mode {
+            --bg-base: #f8fafc; --bg-panel: #ffffff; --bg-card: rgba(255, 255, 255, 0.9);
+            --neon-green: #059669; --neon-cyan: #0284c7; --neon-pink: #e11d48;
+            --neon-warning: #d97706; --neon-danger: #dc2626;
+            --text-main: #1e293b; --text-muted: #64748b; --text-dark: #f8fafc;
+            --border-glow: rgba(2, 132, 199, 0.2);
+        }
+        
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
             background-color: var(--bg-base); color: var(--text-main);
             font-family: var(--font-sans); line-height: 1.7; overflow-x: hidden; position: relative;
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
 
         ::-webkit-scrollbar { width: 8px; }
@@ -41,7 +51,6 @@
             background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%);
             background-size: 100% 4px; z-index: 9999; pointer-events: none;
         }
-        
         .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
@@ -53,10 +62,13 @@
             display: flex; justify-content: space-between; align-items: center;
             background: rgba(1, 2, 5, 0.85); backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-glow); z-index: 1000;
+            transition: background 0.5s ease;
         }
+        body.light-mode header { background: rgba(248, 250, 252, 0.85); }
+        
         .logo { font-family: var(--font-mono); font-size: 1.6rem; color: var(--neon-cyan); text-decoration: none; text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
-        .logo span { color: white; }
-        .nav-links { display: flex; gap: 25px; list-style: none; }
+        .logo span { color: var(--text-main); }
+        .nav-links { display: flex; gap: 25px; list-style: none; align-items: center; }
         .nav-links a {
             color: var(--text-main); text-decoration: none; font-family: var(--font-mono);
             font-size: 0.95rem; text-transform: uppercase; transition: var(--transition);
@@ -84,11 +96,7 @@
             border: 1px solid var(--neon-green); color: var(--neon-green); font-family: var(--font-mono);
             border-radius: 4px; margin-bottom: 30px; animation: pulse-border 2s infinite;
         }
-        @keyframes pulse-border {
-            0% { box-shadow: 0 0 0 0 rgba(0, 250, 154, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(0, 250, 154, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 250, 154, 0); }
-        }
+        @keyframes pulse-border { 0% { box-shadow: 0 0 0 0 rgba(0, 250, 154, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(0, 250, 154, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 250, 154, 0); } }
         .hero h1 { font-size: 5.5rem; font-weight: 700; line-height: 1.1; margin-bottom: 20px; text-transform: uppercase; }
         .glitch-text { color: var(--neon-cyan); text-shadow: 2px 2px 0px var(--neon-pink); }
         .type-box {
@@ -105,10 +113,7 @@
             font-family: var(--font-mono); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;
             border: 1px solid var(--neon-cyan); text-decoration: none; transition: var(--transition); position: relative; z-index: 1; cursor: pointer;
         }
-        .btn-cyber::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 100%;
-            background: var(--neon-cyan); z-index: -1; transition: var(--transition);
-        }
+        .btn-cyber::before { content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 100%; background: var(--neon-cyan); z-index: -1; transition: var(--transition); }
         .btn-cyber:hover::before { width: 100%; }
         .btn-cyber:hover { color: var(--text-dark); box-shadow: 0 0 20px rgba(0, 240, 255, 0.6); }
 
@@ -119,26 +124,22 @@
             width: 100%; max-width: 1000px; margin: 0 auto;
             background-color: rgba(5, 5, 10, 0.95); border-radius: 8px; border: 1px solid #333;
             box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 20px rgba(0, 240, 255, 0.15);
-            font-family: var(--font-mono); display: flex; flex-direction: column;
+            font-family: var(--font-mono); display: flex; flex-direction: column; transition: all 0.5s ease;
         }
-        .term-header { background-color: #1a1a1a; padding: 12px 20px; display: flex; align-items: center; border-bottom: 1px solid #333; }
+        body.light-mode .interactive-terminal { background-color: #ffffff; border-color: #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.05), 0 0 20px rgba(2, 132, 199, 0.1); }
+        
+        .term-header { background-color: #1a1a1a; padding: 12px 20px; display: flex; align-items: center; border-bottom: 1px solid #333; transition: all 0.5s ease; }
+        body.light-mode .term-header { background-color: #f1f5f9; border-bottom-color: #e2e8f0; }
+        
         .term-dots { display: flex; gap: 8px; margin-right: 20px; }
         .dot { width: 12px; height: 12px; border-radius: 50%; }
         .dot.r { background: var(--neon-danger); } .dot.y { background: var(--neon-warning); } .dot.g { background: var(--neon-green); }
-        .term-body {
-            padding: 25px; height: 500px; overflow-y: auto; color: var(--text-main); font-size: 1.05rem; line-height: 1.6;
-        }
+        .term-body { padding: 25px; height: 500px; overflow-y: auto; color: var(--text-main); font-size: 1.05rem; line-height: 1.6; }
         .term-input-line { display: flex; margin-top: 10px; }
         .term-prompt { color: var(--neon-green); margin-right: 10px; white-space: nowrap; }
-        .term-input {
-            background: transparent; border: none; color: white; font-family: var(--font-mono); font-size: 1.05rem;
-            width: 100%; outline: none; caret-color: var(--neon-cyan);
-        }
+        .term-input { background: transparent; border: none; color: var(--text-main); font-family: var(--font-mono); font-size: 1.05rem; width: 100%; outline: none; caret-color: var(--neon-cyan); }
         .term-output { margin-bottom: 15px; color: var(--text-muted); }
         .term-highlight { color: var(--neon-cyan); }
-        .term-table { width: 100%; display: table; margin-top: 10px; }
-        .term-row { display: table-row; }
-        .term-cell { display: table-cell; padding: 5px 15px 5px 0; }
 
         /* =========================================================
            7. MODULES & TKJ COMPETENCIES
@@ -149,17 +150,13 @@
             padding: 40px 30px; border: 1px solid rgba(255,255,255,0.05);
             border-top: 4px solid var(--neon-cyan); transition: var(--transition);
         }
-        .tkj-card:hover {
-            transform: translateY(-10px); border-top-color: var(--neon-green); background: rgba(17, 24, 39, 0.95);
-            box-shadow: 0 15px 40px rgba(0, 250, 154, 0.1);
-        }
+        body.light-mode .tkj-card { border-color: #e2e8f0; border-top-color: var(--neon-cyan); }
+        .tkj-card:hover { transform: translateY(-10px); border-top-color: var(--neon-green); background: var(--bg-panel); box-shadow: 0 15px 40px rgba(0, 250, 154, 0.1); }
         .tkj-icon { font-size: 2.5rem; margin-bottom: 20px; color: var(--neon-cyan); }
-        .tkj-card h3 { font-size: 1.6rem; color: white; margin-bottom: 15px; }
+        .tkj-card h3 { font-size: 1.6rem; color: var(--text-main); margin-bottom: 15px; }
         .tkj-card p { color: var(--text-muted); margin-bottom: 20px; font-size: 1rem; }
         .tkj-list { list-style: none; }
-        .tkj-list li {
-            position: relative; padding-left: 20px; margin-bottom: 8px; color: var(--text-main); font-family: var(--font-mono); font-size: 0.9rem;
-        }
+        .tkj-list li { position: relative; padding-left: 20px; margin-bottom: 8px; color: var(--text-main); font-family: var(--font-mono); font-size: 0.9rem; }
         .tkj-list li::before { content: '>'; position: absolute; left: 0; color: var(--neon-green); }
 
         /* =========================================================
@@ -170,96 +167,84 @@
             background: var(--bg-panel); border: 1px solid rgba(0, 240, 255, 0.2);
             position: relative; overflow: hidden; transition: var(--transition); cursor: pointer;
         }
+        body.light-mode .project-card { border-color: #e2e8f0; }
         .project-card::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
             background: linear-gradient(90deg, var(--neon-cyan), var(--neon-green));
         }
         .project-content { padding: 40px; }
-        .project-status {
-            display: inline-block; padding: 4px 10px; background: rgba(0, 250, 154, 0.1);
-            color: var(--neon-green); font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: 15px; border-radius: 4px;
-        }
-        .project-card h3 { font-size: 1.8rem; color: white; margin-bottom: 15px; }
+        .project-status { display: inline-block; padding: 4px 10px; background: rgba(0, 250, 154, 0.1); color: var(--neon-green); font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: 15px; border-radius: 4px; }
+        .project-card h3 { font-size: 1.8rem; color: var(--text-main); margin-bottom: 15px; }
         .project-card p { color: var(--text-muted); margin-bottom: 25px; line-height: 1.8; }
         .tech-tags { display: flex; flex-wrap: wrap; gap: 10px; }
-        .tech-tags span {
-            font-family: var(--font-mono); font-size: 0.85rem; padding: 6px 12px;
-            background: rgba(255,255,255,0.03); color: var(--text-main); border: 1px solid rgba(255,255,255,0.1);
-        }
+        .tech-tags span { font-family: var(--font-mono); font-size: 0.85rem; padding: 6px 12px; background: rgba(128,128,128,0.05); color: var(--text-main); border: 1px solid rgba(128,128,128,0.2); }
         .project-card:hover { border-color: var(--neon-cyan); box-shadow: 0 0 30px rgba(0, 240, 255, 0.15); transform: scale(1.02); }
 
         /* MODAL (POPUP PROYEK) */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
-            z-index: 2000; display: none; justify-content: center; align-items: center;
-            opacity: 0; transition: opacity 0.3s ease;
+            z-index: 2000; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease;
         }
         .modal-overlay.active { display: flex; opacity: 1; }
         .modal-box {
             background: var(--bg-panel); border: 1px solid var(--neon-cyan);
             width: 90%; max-width: 700px; padding: 40px; border-radius: 8px;
-            position: relative; transform: translateY(-50px); transition: transform 0.3s ease;
-            box-shadow: 0 0 40px rgba(0, 240, 255, 0.2);
+            position: relative; transform: translateY(-50px); transition: transform 0.3s ease; box-shadow: 0 0 40px rgba(0, 240, 255, 0.2);
         }
         .modal-overlay.active .modal-box { transform: translateY(0); }
-        .close-modal {
-            position: absolute; top: 20px; right: 20px; color: var(--neon-danger);
-            font-size: 1.5rem; cursor: pointer; font-family: var(--font-mono); background: transparent; border: none;
-        }
-        .modal-box h2 { color: white; margin-bottom: 15px; font-family: var(--font-mono); }
+        .close-modal { position: absolute; top: 20px; right: 20px; color: var(--neon-danger); font-size: 1.5rem; cursor: pointer; font-family: var(--font-mono); background: transparent; border: none; }
+        .modal-box h2 { color: var(--text-main); margin-bottom: 15px; font-family: var(--font-mono); }
         .modal-box p { color: var(--text-muted); line-height: 1.8; margin-bottom: 20px; }
 
         /* =========================================================
            9. TIMELINE & LOGS
         ========================================================= */
         .timeline { position: relative; max-width: 800px; margin: 0 auto; }
-        .timeline::before {
-            content: ''; position: absolute; top: 0; left: 20px; height: 100%; width: 2px; background: rgba(0, 240, 255, 0.2);
-        }
+        .timeline::before { content: ''; position: absolute; top: 0; left: 20px; height: 100%; width: 2px; background: rgba(0, 240, 255, 0.2); }
         .timeline-item { position: relative; padding-left: 60px; margin-bottom: 50px; }
-        .timeline-icon {
-            position: absolute; left: 11px; top: 0; width: 20px; height: 20px;
-            background: var(--bg-base); border: 3px solid var(--neon-cyan); border-radius: 50%;
-            box-shadow: 0 0 10px var(--neon-cyan);
-        }
-        .timeline-content {
-            background: rgba(255,255,255,0.02); padding: 25px; border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 8px; transition: var(--transition);
-        }
-        .timeline-content:hover { border-color: var(--neon-green); background: rgba(255,255,255,0.05); }
+        .timeline-icon { position: absolute; left: 11px; top: 0; width: 20px; height: 20px; background: var(--bg-base); border: 3px solid var(--neon-cyan); border-radius: 50%; box-shadow: 0 0 10px var(--neon-cyan); }
+        .timeline-content { background: rgba(128,128,128,0.02); padding: 25px; border: 1px solid rgba(128,128,128,0.1); border-radius: 8px; transition: var(--transition); }
+        body.light-mode .timeline-content { border-color: #e2e8f0; }
+        .timeline-content:hover { border-color: var(--neon-green); background: rgba(128,128,128,0.05); }
         .timeline-date { font-family: var(--font-mono); color: var(--neon-cyan); margin-bottom: 10px; display: block; }
-        .timeline-content h4 { color: white; font-size: 1.3rem; margin-bottom: 10px; }
+        .timeline-content h4 { color: var(--text-main); font-size: 1.3rem; margin-bottom: 10px; }
 
         /* =========================================================
-           10. CONTACT FORM (WEB3FORMS)
+           10. CONTACT FORM
         ========================================================= */
-        .contact-wrapper {
-            max-width: 800px; margin: 0 auto; background: var(--bg-panel); padding: 50px;
-            border: 1px dashed rgba(0, 250, 154, 0.4); border-radius: 4px;
-        }
+        .contact-wrapper { max-width: 800px; margin: 0 auto; background: var(--bg-panel); padding: 50px; border: 1px dashed rgba(0, 250, 154, 0.4); border-radius: 4px; }
+        body.light-mode .contact-wrapper { border-color: #cbd5e1; }
         .input-group { margin-bottom: 30px; }
         .input-group label { display: block; font-family: var(--font-mono); color: var(--neon-green); margin-bottom: 10px; font-size: 1rem; }
         .input-group input, .input-group textarea {
-            width: 100%; background: rgba(0,0,0,0.6); border: 1px solid #333; color: white;
+            width: 100%; background: rgba(128,128,128,0.05); border: 1px solid rgba(128,128,128,0.2); color: var(--text-main);
             padding: 15px; font-family: var(--font-sans); font-size: 1.1rem; transition: var(--transition);
         }
+        body.light-mode .input-group input, body.light-mode .input-group textarea { background: #ffffff; border-color: #cbd5e1; }
         .input-group input:focus, .input-group textarea:focus { outline: none; border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); }
         .input-group textarea { resize: vertical; height: 150px; }
         .btn-submit { width: 100%; text-align: center; font-size: 1.2rem; }
 
         /* =========================================================
-           11. FOOTER
+           11. FOOTER 
         ========================================================= */
-        footer { background: #010204; padding: 80px 5% 40px; text-align: center; border-top: 1px solid #111; }
-        .social-box { display: flex; justify-content: center; gap: 25px; margin-bottom: 50px; flex-wrap: wrap; }
+        footer { background: #010204; padding: 70px 5% 30px; border-top: 1px solid #111; transition: background 0.5s ease; }
+        body.light-mode footer { background: #f1f5f9; border-top-color: #e2e8f0; }
+        .footer-container { max-width: 1200px; margin: 0 auto; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-bottom: 50px; text-align: left; }
+        .footer-info h3 { color: var(--neon-cyan); font-family: var(--font-mono); margin-bottom: 15px; font-size: 1.5rem; }
+        .footer-info p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; max-width: 400px; }
+        .sys-stats { font-family: var(--font-mono); font-size: 0.85rem; color: var(--neon-green); background: rgba(0,250,154,0.05); padding: 15px; border-left: 2px solid var(--neon-green); display: inline-block; }
+        .footer-social h3 { color: var(--text-main); font-family: var(--font-mono); margin-bottom: 20px; }
+        .social-box { display: flex; gap: 15px; flex-wrap: wrap; }
         .social-btn {
-            padding: 15px 35px; background: transparent; color: var(--text-main);
-            border: 1px solid rgba(255,255,255,0.2); font-family: var(--font-mono); text-decoration: none;
-            transition: var(--transition); font-size: 1.1rem;
+            padding: 12px 20px; background: rgba(128,128,128,0.05); color: var(--text-main);
+            border: 1px solid rgba(128,128,128,0.2); font-family: var(--font-mono); text-decoration: none;
+            transition: var(--transition); font-size: 0.95rem;
         }
-        .social-btn:hover { background: white; color: black; border-color: white; box-shadow: 0 0 20px rgba(255,255,255,0.5); }
-        .footer-bottom { font-family: var(--font-mono); color: var(--text-muted); font-size: 1rem; }
+        .social-btn:hover { background: rgba(0, 240, 255, 0.1); color: var(--text-main); border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 240, 255, 0.3); }
+        .footer-bottom { text-align: center; font-family: var(--font-mono); color: var(--text-muted); font-size: 0.9rem; padding-top: 30px; border-top: 1px dashed rgba(128,128,128,0.2); }
         .footer-bottom span { color: var(--neon-cyan); }
 
         /* RESPONSIVE */
@@ -277,12 +262,14 @@
     <header>
         <a href="#" class="logo">Portofolio<span></span></a>
         <ul class="nav-links">
-            <li><a href="#home">// Home</a></li>
-            <li><a href="#terminal">// CLI_Mode</a></li>
-            <li><a href="#kompetensi">// Modul_TKJ</a></li>
-            <li><a href="#projects">// Eksekusi</a></li>
-            <li><a href="#timeline-sec">// Histori</a></li>
-            <li><a href="#contact">// Ping</a></li>
+            <li><a href="#home">// HOME</a></li>
+            <li><a href="#terminal">// CLI_MODE</a></li>
+            <li><a href="#kompetensi">// MODUL_TKJ</a></li>
+            <li><a href="#projects">// EKSEKUSI</a></li>
+            <li><a href="#timeline-sec">// HISTORI</a></li>
+            <li><a href="#contact">// PING</a></li>
+            <!-- TOMBOL THEME TOGGLE -->
+            <li><a href="#" id="theme-toggle" style="color: var(--neon-warning);">[ MODE: DARK ]</a></li>
         </ul>
     </header>
 
@@ -328,7 +315,6 @@
                     * Uptime:         100%<br><br>
                     Type 'help' to see available commands.
                 </div>
-                <!-- Input Line Dinamis -->
                 <div class="term-input-line" id="input-wrapper">
                     <span class="term-prompt">guest@naufal:~$</span>
                     <input type="text" id="cmd-input" class="term-input" autocomplete="off" spellcheck="false">
@@ -355,7 +341,6 @@
                     <li>Thermal Paste & Airflow Optimization</li>
                 </ul>
             </div>
-
             <div class="tkj-card">
                 <div class="tkj-icon">🌐</div>
                 <h3>Network Infrastructure</h3>
@@ -366,7 +351,6 @@
                     <li>Basic Router Configuration</li>
                 </ul>
             </div>
-
             <div class="tkj-card">
                 <div class="tkj-icon">🐧</div>
                 <h3>System Administration</h3>
@@ -377,7 +361,6 @@
                     <li>Command Line Interface (CLI) Nav</li>
                 </ul>
             </div>
-            
             <div class="tkj-card">
                 <div class="tkj-icon">💻</div>
                 <h3>Web Frontend Dev</h3>
@@ -399,7 +382,6 @@
         </div>
 
         <div class="project-grid">
-            <!-- P1 -->
             <div class="project-card" onclick="openModal('modal1')">
                 <div class="project-content">
                     <span class="project-status">STATUS: DEPLOYED</span>
@@ -410,8 +392,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- P2 -->
             <div class="project-card" onclick="openModal('modal2')">
                 <div class="project-content">
                     <span class="project-status">STATUS: DEPLOYED</span>
@@ -422,8 +402,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- P3 -->
             <div class="project-card" onclick="openModal('modal3')">
                 <div class="project-content">
                     <span class="project-status">STATUS: LAB EXPERIMENT</span>
@@ -453,7 +431,6 @@
                     <p>Secara aktif bereksperimen dengan bahasa pemrograman web, mempelajari keamanan siber dasar, dan mengelola repositori portofolio GitHub Pages secara statis.</p>
                 </div>
             </div>
-            
             <div class="timeline-item">
                 <div class="timeline-icon"></div>
                 <div class="timeline-content">
@@ -462,7 +439,6 @@
                     <p>Mempelajari fondasi perangkat keras industri, instalasi berbagai sistem operasi, konfigurasi BIOS, pengkabelan LAN, dan fundamental routing.</p>
                 </div>
             </div>
-
             <div class="timeline-item">
                 <div class="timeline-icon"></div>
                 <div class="timeline-content">
@@ -474,7 +450,7 @@
         </div>
     </section>
 
-    <!-- CONTACT FORM (WEB3FORMS - FUNCTIONAL) -->
+    <!-- CONTACT FORM -->
     <section id="contact" class="fade-in">
         <div class="sec-header">
             <span class="sec-subtitle">>> SECURE_COMMUNICATION_CHANNEL</span>
@@ -488,7 +464,6 @@
             
             <form action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-                
                 <div class="input-group">
                     <label>> ID_PENGIRIM (Name)</label>
                     <input type="text" name="name" placeholder="Masukkan nama..." required>
@@ -509,25 +484,39 @@
 
     <!-- FOOTER & SOCIAL LINKS -->
     <footer>
-        <div class="social-box">
-            <a href="https://www.instagram.com/naufalorailing?igsh=bnk4MTRwM3JvbzBu" target="_blank" class="social-btn">
-                <span style="color:var(--neon-pink)">[ IG ]</span> @naufalorailing
-            </a>
-            <a href="https://www.tiktok.com/@naufal_yoo?_r=1&_t=ZS-935Qg4qAuPo" target="_blank" class="social-btn">
-                <span style="color:white">[ TT ]</span> @naufal_yoo
-            </a>
-            <a href="https://github.com/naufalyoo" target="_blank" class="social-btn">
-                <span style="color:var(--neon-cyan)">[ GH ]</span> naufalyoo
-            </a>
-        </div>
-        <div class="footer-bottom">
-            <p>SYSTEM <span>//</span> ONLINE <span>//</span> &copy; 2026 NAUFAL_TKJ.</p>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <h3>// NAUFAL_SYSTEM</h3>
+                    <p>Membangun infrastruktur jaringan dan antarmuka web dengan tingkat keamanan serta performa yang optimal.</p>
+                    <div class="sys-stats">
+                        > Server Status: ONLINE<br>
+                        > Ping Latency: 12ms<br>
+                        > System Uptime: 99.9%
+                    </div>
+                </div>
+                <div class="footer-social">
+                    <h3>>> EXTERNAL_LINKS</h3>
+                    <div class="social-box">
+                        <a href="https://www.instagram.com/naufalorailing?igsh=bnk4MTRwM3JvbzBu" target="_blank" class="social-btn">
+                            <span style="color:var(--neon-pink)">[ IG ]</span> @naufalorailing
+                        </a>
+                        <a href="https://www.tiktok.com/@naufal_yoo?_r=1&_t=ZS-935Qg4qAuPo" target="_blank" class="social-btn">
+                            <span style="color:var(--text-main)">[ TT ]</span> @naufal_yoo
+                        </a>
+                        <a href="https://github.com/naufalyoo" target="_blank" class="social-btn">
+                            <span style="color:var(--neon-cyan)">[ GH ]</span> naufalyoo
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>SYSTEM <span>//</span> SECURED <span>//</span> &copy; 2026 NAUFAL_TKJ.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- =========================================================
-         12. MODAL TEMPLATES (HTML HIDDEN)
-    ========================================================= -->
+    <!-- MODAL TEMPLATES -->
     <div class="modal-overlay" id="modal1">
         <div class="modal-box">
             <button class="close-modal" onclick="closeModal('modal1')">X</button>
@@ -554,11 +543,31 @@
         </div>
     </div>
 
-    <!-- =========================================================
-         13. JAVASCRIPT MEGA ENGINE
-    ========================================================= -->
+    <!-- JAVASCRIPT MEGA ENGINE -->
     <script>
-        // --- A. MATRIX BACKGROUND ENGINE ---
+        // --- A. THEME TOGGLE (DARK/LIGHT MODE) ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+        
+        if (localStorage.getItem('theme') === 'light') {
+            body.classList.add('light-mode');
+            themeToggleBtn.innerHTML = '[ MODE: LIGHT ]';
+        }
+
+        themeToggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light');
+                themeToggleBtn.innerHTML = '[ MODE: LIGHT ]';
+            } else {
+                localStorage.setItem('theme', 'dark');
+                themeToggleBtn.innerHTML = '[ MODE: DARK ]';
+            }
+        });
+
+        // --- B. MATRIX BACKGROUND ENGINE ---
         const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
@@ -568,11 +577,14 @@
         const columns = canvas.width / fontSize;
         const drops = [];
         for (let x = 0; x < columns; x++) drops[x] = 1;
+        
         function drawMatrix() {
-            ctx.fillStyle = 'rgba(1, 2, 5, 0.05)';
+            const isLight = document.body.classList.contains('light-mode');
+            ctx.fillStyle = isLight ? 'rgba(248, 250, 252, 0.1)' : 'rgba(1, 2, 5, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = 'rgba(0, 250, 154, 0.8)';
+            ctx.fillStyle = isLight ? 'rgba(5, 150, 105, 0.8)' : 'rgba(0, 250, 154, 0.8)';
             ctx.font = fontSize + 'px monospace';
+            
             for (let i = 0; i < drops.length; i++) {
                 const text = letters.charAt(Math.floor(Math.random() * letters.length));
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
@@ -583,17 +595,13 @@
         setInterval(drawMatrix, 50);
         window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
 
-        // --- B. SCROLL REVEAL (Intersection Observer) ---
+        // --- C. SCROLL REVEAL ---
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
+            entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
 
-        // --- C. TYPEWRITER ---
+        // --- D. TYPEWRITER ---
         const texts = ["Siswa TKJ.", "Teknisi Hardware.", "Web Developer.", "Linux Enthusiast."];
         let count = 0, index = 0, currentText = "", letter = "", isDeleting = false;
         function type() {
@@ -609,37 +617,23 @@
         }
         document.addEventListener("DOMContentLoaded", type);
 
-        // --- D. MODAL WINDOWS LOGIC ---
+        // --- E. MODAL WINDOWS LOGIC ---
         function openModal(id) { document.getElementById(id).classList.add('active'); }
         function closeModal(id) { document.getElementById(id).classList.remove('active'); }
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal-overlay')) {
-                event.target.classList.remove('active');
-            }
-        }
+        window.onclick = function(event) { if (event.target.classList.contains('modal-overlay')) event.target.classList.remove('active'); }
 
-        // --- E. ADVANCED TERMINAL LOGIC (VIRTUAL FILE SYSTEM) ---
+        // --- F. ADVANCED TERMINAL LOGIC ---
         const cmdInput = document.getElementById('cmd-input');
         const termDisplay = document.getElementById('term-display');
         const inputWrapper = document.getElementById('input-wrapper');
-        
-        // Virtual File System
         const vfs = {
             'profile.txt': 'Nama: Naufal\nProfesi: Siswa TKJ & Web Dev\nMinat: Hardware, Jaringan, Coding.',
             'skills.json': '{\n  "hardware": "Advance",\n  "networking": "Intermediate",\n  "web_dev": "Basic-Mid"\n}',
             'secret.md': 'System Override: [ACCESS DENIED] Tingkat otorisasi terlalu rendah.'
         };
-
         const commands = {
-            'help': `Perintah yang tersedia:<br>
-                     <span class="term-highlight">ls</span>       - List direktori saat ini<br>
-                     <span class="term-highlight">cat [file]</span> - Baca isi file (misal: cat profile.txt)<br>
-                     <span class="term-highlight">whoami</span>   - Info pengguna<br>
-                     <span class="term-highlight">date</span>     - Lihat waktu server<br>
-                     <span class="term-highlight">clear</span>    - Bersihkan layar<br>
-                     <span class="term-highlight">sudo</span>     - Super user (Bahaya!)`,
-            'whoami': `guest_user_1337`,
-            'date': new Date().toString(),
+            'help': `Perintah yang tersedia:<br><span class="term-highlight">ls</span>        - List direktori saat ini<br><span class="term-highlight">cat [file]</span> - Baca isi file (misal: cat profile.txt)<br><span class="term-highlight">whoami</span>   - Info pengguna<br><span class="term-highlight">date</span>     - Lihat waktu server<br><span class="term-highlight">clear</span>    - Bersihkan layar<br><span class="term-highlight">sudo</span>     - Super user (Bahaya!)`,
+            'whoami': `guest_user_1337`, 'date': new Date().toString(),
             'sudo': `<span style="color: var(--neon-danger);">[!] Otorisasi gagal. Aksi telah dicatat oleh sistem keamanan.</span>`
         };
 
@@ -648,7 +642,6 @@
                 const val = this.value.trim().toLowerCase();
                 const args = val.split(' ');
                 const cmd = args[0];
-                
                 const newCmdLine = document.createElement('div');
                 newCmdLine.innerHTML = `<span class="term-prompt">guest@naufal:~$</span> <span class="command">${val}</span>`;
                 termDisplay.insertBefore(newCmdLine, inputWrapper);
@@ -659,27 +652,28 @@
                 } else if (cmd !== '') {
                     const responseLine = document.createElement('div');
                     responseLine.className = 'term-output';
-                    
-                    if (cmd === 'ls') {
-                        responseLine.innerHTML = `<span class="term-highlight">profile.txt &nbsp;&nbsp; skills.json &nbsp;&nbsp; secret.md</span>`;
-                    } else if (cmd === 'cat') {
-                        if (args[1] && vfs[args[1]]) {
-                            responseLine.innerHTML = `<pre style="font-family: var(--font-mono); margin:0;">${vfs[args[1]]}</pre>`;
-                        } else {
-                            responseLine.innerHTML = `cat: ${args[1] ? args[1] : ''}: No such file or directory`;
-                        }
-                    } else if (commands[cmd]) {
-                        // Perintah dasar (help, whoami, dll)
-                        responseLine.innerHTML = typeof commands[cmd] === 'function' ? commands[cmd]() : commands[cmd];
-                    } else {
-                        responseLine.innerHTML = `<span style="color: var(--neon-danger);">bash: ${cmd}: command not found</span>. Ketik 'help' untuk daftar.`;
-                    }
+                    if (cmd === 'ls') responseLine.innerHTML = `<span class="term-highlight">profile.txt &nbsp;&nbsp; skills.json &nbsp;&nbsp; secret.md</span>`;
+                    else if (cmd === 'cat') {
+                        if (args[1] && vfs[args[1]]) responseLine.innerHTML = `<pre style="font-family: var(--font-mono); margin:0;">${vfs[args[1]]}</pre>`;
+                        else responseLine.innerHTML = `cat: ${args[1] ? args[1] : ''}: No such file or directory`;
+                    } else if (commands[cmd]) responseLine.innerHTML = typeof commands[cmd] === 'function' ? commands[cmd]() : commands[cmd];
+                    else responseLine.innerHTML = `<span style="color: var(--neon-danger);">bash: ${cmd}: command not found</span>. Ketik 'help' untuk daftar.`;
                     termDisplay.insertBefore(responseLine, inputWrapper);
                 }
-
-                this.value = '';
-                termDisplay.scrollTop = termDisplay.scrollHeight; // Auto scroll bawah
+                this.value = ''; termDisplay.scrollTop = termDisplay.scrollHeight;
             }
+        });
+
+        // --- G. SMOOTH SCROLL (ANTI UBAH URL) ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#') {
+                    e.preventDefault(); 
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
         });
     </script>
 </body>
