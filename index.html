@@ -21,13 +21,19 @@
             --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* LIGHT MODE OVERRIDES */
+        /* LIGHT MODE OVERRIDES (REVISI WARNA) */
         body.light-mode {
-            --bg-base: #f8fafc; --bg-panel: #ffffff; --bg-card: rgba(255, 255, 255, 0.9);
-            --neon-green: #059669; --neon-cyan: #0284c7; --neon-pink: #e11d48;
-            --neon-warning: #d97706; --neon-danger: #dc2626;
-            --text-main: #1e293b; --text-muted: #64748b; --text-dark: #f8fafc;
-            --border-glow: rgba(2, 132, 199, 0.2);
+            --bg-base: #e2e8f0; /* Abu-abu silver tech */
+            --bg-panel: #f8fafc;
+            --bg-card: rgba(255, 255, 255, 0.85);
+            --neon-green: #059669; /* Hijau zamrud padat */
+            --neon-cyan: #0284c7; /* Biru laut padat */
+            --neon-pink: #db2777;
+            --neon-warning: #d97706; 
+            --neon-danger: #dc2626;
+            --text-main: #0f172a; /* Teks sangat gelap agar kontras */
+            --text-muted: #475569; 
+            --border-glow: rgba(2, 132, 199, 0.25);
         }
         
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -64,7 +70,7 @@
             border-bottom: 1px solid var(--border-glow); z-index: 1000;
             transition: background 0.5s ease;
         }
-        body.light-mode header { background: rgba(248, 250, 252, 0.85); }
+        body.light-mode header { background: rgba(226, 232, 240, 0.85); }
         
         .logo { font-family: var(--font-mono); font-size: 1.6rem; color: var(--neon-cyan); text-decoration: none; text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
         .logo span { color: var(--text-main); }
@@ -126,10 +132,10 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 20px rgba(0, 240, 255, 0.15);
             font-family: var(--font-mono); display: flex; flex-direction: column; transition: all 0.5s ease;
         }
-        body.light-mode .interactive-terminal { background-color: #ffffff; border-color: #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.05), 0 0 20px rgba(2, 132, 199, 0.1); }
+        body.light-mode .interactive-terminal { background-color: #ffffff; border-color: #cbd5e1; box-shadow: 0 10px 30px rgba(0,0,0,0.05), 0 0 20px rgba(2, 132, 199, 0.1); }
         
         .term-header { background-color: #1a1a1a; padding: 12px 20px; display: flex; align-items: center; border-bottom: 1px solid #333; transition: all 0.5s ease; }
-        body.light-mode .term-header { background-color: #f1f5f9; border-bottom-color: #e2e8f0; }
+        body.light-mode .term-header { background-color: #f1f5f9; border-bottom-color: #cbd5e1; }
         
         .term-dots { display: flex; gap: 8px; margin-right: 20px; }
         .dot { width: 12px; height: 12px; border-radius: 50%; }
@@ -150,7 +156,7 @@
             padding: 40px 30px; border: 1px solid rgba(255,255,255,0.05);
             border-top: 4px solid var(--neon-cyan); transition: var(--transition);
         }
-        body.light-mode .tkj-card { border-color: #e2e8f0; border-top-color: var(--neon-cyan); }
+        body.light-mode .tkj-card { border-color: #cbd5e1; border-top-color: var(--neon-cyan); }
         .tkj-card:hover { transform: translateY(-10px); border-top-color: var(--neon-green); background: var(--bg-panel); box-shadow: 0 15px 40px rgba(0, 250, 154, 0.1); }
         .tkj-icon { font-size: 2.5rem; margin-bottom: 20px; color: var(--neon-cyan); }
         .tkj-card h3 { font-size: 1.6rem; color: var(--text-main); margin-bottom: 15px; }
@@ -160,14 +166,14 @@
         .tkj-list li::before { content: '>'; position: absolute; left: 0; color: var(--neon-green); }
 
         /* =========================================================
-           8. PROJECT GALLERY WITH MODAL FUNCTION
+           8. PROJECT GALLERY
         ========================================================= */
         .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; }
         .project-card {
             background: var(--bg-panel); border: 1px solid rgba(0, 240, 255, 0.2);
             position: relative; overflow: hidden; transition: var(--transition); cursor: pointer;
         }
-        body.light-mode .project-card { border-color: #e2e8f0; }
+        body.light-mode .project-card { border-color: #cbd5e1; }
         .project-card::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
             background: linear-gradient(90deg, var(--neon-cyan), var(--neon-green));
@@ -180,7 +186,7 @@
         .tech-tags span { font-family: var(--font-mono); font-size: 0.85rem; padding: 6px 12px; background: rgba(128,128,128,0.05); color: var(--text-main); border: 1px solid rgba(128,128,128,0.2); }
         .project-card:hover { border-color: var(--neon-cyan); box-shadow: 0 0 30px rgba(0, 240, 255, 0.15); transform: scale(1.02); }
 
-        /* MODAL (POPUP PROYEK) */
+        /* MODAL */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
@@ -205,46 +211,35 @@
         .timeline-item { position: relative; padding-left: 60px; margin-bottom: 50px; }
         .timeline-icon { position: absolute; left: 11px; top: 0; width: 20px; height: 20px; background: var(--bg-base); border: 3px solid var(--neon-cyan); border-radius: 50%; box-shadow: 0 0 10px var(--neon-cyan); }
         .timeline-content { background: rgba(128,128,128,0.02); padding: 25px; border: 1px solid rgba(128,128,128,0.1); border-radius: 8px; transition: var(--transition); }
-        body.light-mode .timeline-content { border-color: #e2e8f0; }
+        body.light-mode .timeline-content { border-color: #cbd5e1; }
         .timeline-content:hover { border-color: var(--neon-green); background: rgba(128,128,128,0.05); }
         .timeline-date { font-family: var(--font-mono); color: var(--neon-cyan); margin-bottom: 10px; display: block; }
         .timeline-content h4 { color: var(--text-main); font-size: 1.3rem; margin-bottom: 10px; }
 
         /* =========================================================
-           10. CONTACT FORM
+           10. CONTACT (PING) - REVISI MENJADI SOSIAL MEDIA
         ========================================================= */
-        .contact-wrapper { max-width: 800px; margin: 0 auto; background: var(--bg-panel); padding: 50px; border: 1px dashed rgba(0, 250, 154, 0.4); border-radius: 4px; }
-        body.light-mode .contact-wrapper { border-color: #cbd5e1; }
-        .input-group { margin-bottom: 30px; }
-        .input-group label { display: block; font-family: var(--font-mono); color: var(--neon-green); margin-bottom: 10px; font-size: 1rem; }
-        .input-group input, .input-group textarea {
-            width: 100%; background: rgba(128,128,128,0.05); border: 1px solid rgba(128,128,128,0.2); color: var(--text-main);
-            padding: 15px; font-family: var(--font-sans); font-size: 1.1rem; transition: var(--transition);
+        .contact-wrapper { 
+            max-width: 800px; margin: 0 auto; background: var(--bg-panel); padding: 50px; 
+            border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 8px; text-align: center;
         }
-        body.light-mode .input-group input, body.light-mode .input-group textarea { background: #ffffff; border-color: #cbd5e1; }
-        .input-group input:focus, .input-group textarea:focus { outline: none; border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); }
-        .input-group textarea { resize: vertical; height: 150px; }
-        .btn-submit { width: 100%; text-align: center; font-size: 1.2rem; }
+        body.light-mode .contact-wrapper { border-color: #cbd5e1; }
+        .social-box { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 30px; }
+        .social-btn {
+            padding: 16px 30px; background: rgba(128,128,128,0.05); color: var(--text-main);
+            border: 1px solid rgba(128,128,128,0.2); font-family: var(--font-mono); text-decoration: none;
+            transition: var(--transition); font-size: 1.1rem; border-radius: 4px;
+        }
+        .social-btn:hover { background: rgba(0, 240, 255, 0.1); border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0, 240, 255, 0.2); transform: translateY(-3px); }
 
         /* =========================================================
-           11. FOOTER 
+           11. FOOTER (DIPERSINGKAT)
         ========================================================= */
-        footer { background: #010204; padding: 70px 5% 30px; border-top: 1px solid #111; transition: background 0.5s ease; }
-        body.light-mode footer { background: #f1f5f9; border-top-color: #e2e8f0; }
-        .footer-container { max-width: 1200px; margin: 0 auto; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-bottom: 50px; text-align: left; }
-        .footer-info h3 { color: var(--neon-cyan); font-family: var(--font-mono); margin-bottom: 15px; font-size: 1.5rem; }
-        .footer-info p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; max-width: 400px; }
-        .sys-stats { font-family: var(--font-mono); font-size: 0.85rem; color: var(--neon-green); background: rgba(0,250,154,0.05); padding: 15px; border-left: 2px solid var(--neon-green); display: inline-block; }
-        .footer-social h3 { color: var(--text-main); font-family: var(--font-mono); margin-bottom: 20px; }
-        .social-box { display: flex; gap: 15px; flex-wrap: wrap; }
-        .social-btn {
-            padding: 12px 20px; background: rgba(128,128,128,0.05); color: var(--text-main);
-            border: 1px solid rgba(128,128,128,0.2); font-family: var(--font-mono); text-decoration: none;
-            transition: var(--transition); font-size: 0.95rem;
-        }
-        .social-btn:hover { background: rgba(0, 240, 255, 0.1); color: var(--text-main); border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 240, 255, 0.3); }
-        .footer-bottom { text-align: center; font-family: var(--font-mono); color: var(--text-muted); font-size: 0.9rem; padding-top: 30px; border-top: 1px dashed rgba(128,128,128,0.2); }
+        footer { background: #010204; padding: 40px 5%; border-top: 1px solid #111; transition: background 0.5s ease; text-align: center; }
+        body.light-mode footer { background: #f1f5f9; border-top-color: #cbd5e1; }
+        .footer-info h3 { color: var(--neon-cyan); font-family: var(--font-mono); margin-bottom: 10px; font-size: 1.2rem; }
+        .sys-stats { font-family: var(--font-mono); font-size: 0.85rem; color: var(--neon-green); margin-bottom: 20px; }
+        .footer-bottom { font-family: var(--font-mono); color: var(--text-muted); font-size: 0.9rem; padding-top: 20px; border-top: 1px dashed rgba(128,128,128,0.2); }
         .footer-bottom span { color: var(--neon-cyan); }
 
         /* RESPONSIVE */
@@ -268,7 +263,6 @@
             <li><a href="#projects">// EKSEKUSI</a></li>
             <li><a href="#timeline-sec">// HISTORI</a></li>
             <li><a href="#contact">// PING</a></li>
-            <!-- TOMBOL THEME TOGGLE -->
             <li><a href="#" id="theme-toggle" style="color: var(--neon-warning);">[ MODE: DARK ]</a></li>
         </ul>
     </header>
@@ -415,7 +409,7 @@
         </div>
     </section>
 
-    <!-- TIMELINE PENDIDIKAN & HISTORI -->
+    <!-- TIMELINE -->
     <section id="timeline-sec" class="fade-in">
         <div class="sec-header">
             <span class="sec-subtitle">>> LOG_HISTORI</span>
@@ -450,7 +444,7 @@
         </div>
     </section>
 
-    <!-- CONTACT FORM -->
+    <!-- CONTACT (PING) - REVISI MENJADI SOSIAL MEDIA LINK -->
     <section id="contact" class="fade-in">
         <div class="sec-header">
             <span class="sec-subtitle">>> SECURE_COMMUNICATION_CHANNEL</span>
@@ -458,61 +452,34 @@
         </div>
 
         <div class="contact-wrapper">
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px; font-family: var(--font-mono);">
-                Gunakan layanan form ini untuk mengirim pesan. Formulir ini terintegrasi API Web3Forms (Akan langsung masuk ke email jika Access Key disetel).
+            <p style="color: var(--text-muted); font-family: var(--font-mono); font-size: 1.1rem;">
+                [ Jalur komunikasi publik telah dibuka. Pilih salah satu protokol di bawah ini untuk mengirim pesan secara langsung. ]
             </p>
             
-            <form action="https://api.web3forms.com/submit" method="POST">
-                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-                <div class="input-group">
-                    <label>> ID_PENGIRIM (Name)</label>
-                    <input type="text" name="name" placeholder="Masukkan nama..." required>
-                </div>
-                <div class="input-group">
-                    <label>> PROTOKOL_BALASAN (Email Address)</label>
-                    <input type="email" name="email" placeholder="email@domain.com" required>
-                </div>
-                <div class="input-group">
-                    <label>> PAYLOAD_DATA (Message)</label>
-                    <textarea name="message" placeholder="Ketikkan pesan, sapaan, atau diskusi proyek..." required></textarea>
-                </div>
-                <input type="checkbox" name="botcheck" style="display: none;">
-                <button type="submit" class="btn-cyber btn-submit">Kirim Payload Data >></button>
-            </form>
+            <div class="social-box">
+                <a href="https://www.instagram.com/naufalorailing?igsh=bnk4MTRwM3JvbzBu" target="_blank" class="social-btn">
+                    <span style="color:var(--neon-pink)">[ IG ]</span> @naufalorailing
+                </a>
+                <a href="https://www.tiktok.com/@naufal_yoo?_r=1&_t=ZS-935Qg4qAuPo" target="_blank" class="social-btn">
+                    <span style="color:var(--text-main)">[ TT ]</span> @naufal_yoo
+                </a>
+                <a href="https://github.com/naufalyoo" target="_blank" class="social-btn">
+                    <span style="color:var(--neon-cyan)">[ GH ]</span> naufalyoo
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- FOOTER & SOCIAL LINKS -->
+    <!-- FOOTER (DIPERSINGKAT) -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-info">
-                    <h3>// NAUFAL_SYSTEM</h3>
-                    <p>Membangun infrastruktur jaringan dan antarmuka web dengan tingkat keamanan serta performa yang optimal.</p>
-                    <div class="sys-stats">
-                        > Server Status: ONLINE<br>
-                        > Ping Latency: 12ms<br>
-                        > System Uptime: 99.9%
-                    </div>
-                </div>
-                <div class="footer-social">
-                    <h3>>> EXTERNAL_LINKS</h3>
-                    <div class="social-box">
-                        <a href="https://www.instagram.com/naufalorailing?igsh=bnk4MTRwM3JvbzBu" target="_blank" class="social-btn">
-                            <span style="color:var(--neon-pink)">[ IG ]</span> @naufalorailing
-                        </a>
-                        <a href="https://www.tiktok.com/@naufal_yoo?_r=1&_t=ZS-935Qg4qAuPo" target="_blank" class="social-btn">
-                            <span style="color:var(--text-main)">[ TT ]</span> @naufal_yoo
-                        </a>
-                        <a href="https://github.com/naufalyoo" target="_blank" class="social-btn">
-                            <span style="color:var(--neon-cyan)">[ GH ]</span> naufalyoo
-                        </a>
-                    </div>
-                </div>
+        <div class="footer-info">
+            <h3>// NAUFAL_SYSTEM</h3>
+            <div class="sys-stats">
+                > Server Status: ONLINE &nbsp;|&nbsp; Ping Latency: 12ms &nbsp;|&nbsp; System Uptime: 99.9%
             </div>
-            <div class="footer-bottom">
-                <p>SYSTEM <span>//</span> SECURED <span>//</span> &copy; 2026 NAUFAL_TKJ.</p>
-            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>SYSTEM <span>//</span> SECURED <span>//</span> &copy; 2026 NAUFAL_TKJ.</p>
         </div>
     </footer>
 
@@ -580,7 +547,7 @@
         
         function drawMatrix() {
             const isLight = document.body.classList.contains('light-mode');
-            ctx.fillStyle = isLight ? 'rgba(248, 250, 252, 0.1)' : 'rgba(1, 2, 5, 0.05)';
+            ctx.fillStyle = isLight ? 'rgba(226, 232, 240, 0.15)' : 'rgba(1, 2, 5, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = isLight ? 'rgba(5, 150, 105, 0.8)' : 'rgba(0, 250, 154, 0.8)';
             ctx.font = fontSize + 'px monospace';
