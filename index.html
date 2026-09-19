@@ -124,6 +124,36 @@
         .btn-cyber:hover { color: var(--text-dark); box-shadow: 0 0 20px rgba(0, 240, 255, 0.6); }
 
         /* =========================================================
+           5.5 ABOUT SECTION
+        ========================================================= */
+        .about-container { display: grid; grid-template-columns: 1fr 280px; gap: 40px; align-items: center; }
+        .about-text { 
+            background: var(--bg-card); padding: 40px; 
+            border-left: 4px solid var(--neon-cyan); border-radius: 4px; 
+            backdrop-filter: blur(10px); transition: var(--transition);
+        }
+        body.light-mode .about-text { border-color: var(--neon-cyan); }
+        .about-text p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 20px; line-height: 1.8; }
+        .about-text p strong { color: var(--neon-green); font-weight: normal; font-family: var(--font-mono); }
+        .about-text p:last-child { margin-bottom: 0; }
+        
+        .about-stats { display: flex; flex-direction: column; gap: 20px; }
+        .stat-box { 
+            background: rgba(128,128,128,0.05); border: 1px solid rgba(0, 240, 255, 0.2); 
+            padding: 25px 20px; text-align: center; border-radius: 4px; transition: var(--transition); 
+        }
+        body.light-mode .stat-box { border-color: #cbd5e1; background: #ffffff; }
+        .stat-box:hover { border-color: var(--neon-green); background: rgba(0, 250, 154, 0.05); transform: translateX(-10px); }
+        .stat-num { display: block; font-family: var(--font-mono); font-size: 2.5rem; color: var(--text-main); font-weight: 700; line-height: 1; margin-bottom: 5px; }
+        .stat-label { font-family: var(--font-mono); font-size: 0.85rem; color: var(--neon-cyan); text-transform: uppercase; letter-spacing: 1px; }
+
+        @media (max-width: 900px) {
+            .about-container { grid-template-columns: 1fr; }
+            .about-stats { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+            .stat-box { flex: 1; min-width: 120px; }
+        }
+
+        /* =========================================================
            6. ADVANCED INTERACTIVE TERMINAL
         ========================================================= */
         .interactive-terminal {
@@ -258,6 +288,7 @@
         <a href="#" class="logo">Portofolio<span></span></a>
         <ul class="nav-links">
             <li><a href="#home">// HOME</a></li>
+            <li><a href="#about">// ABOUT</a></li>
             <li><a href="#terminal">// CLI_MODE</a></li>
             <li><a href="#kompetensi">// MODUL_TKJ</a></li>
             <li><a href="#projects">// EKSEKUSI</a></li>
@@ -281,6 +312,35 @@
         <div style="display:flex; gap: 20px; flex-wrap: wrap;">
             <a href="#terminal" class="btn-cyber">Buka Terminal</a>
             <a href="#projects" class="btn-cyber" style="border-color: var(--neon-green); color: var(--neon-green);">Lihat Proyek</a>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION (BARU) -->
+    <section id="about" class="fade-in">
+        <div class="sec-header">
+            <span class="sec-subtitle">>> SYSTEM_INFO</span>
+            <h2 class="sec-title">Identitas Operasi</h2>
+        </div>
+        <div class="about-container">
+            <div class="about-text">
+                <p>Saya adalah pengguna sistem kelas <strong>XII TKJ (Teknik Komputer & Jaringan)</strong> yang sedang menjalani masa magang industri. Saat ini saya memproyeksikan lintasan pembaruan (*upgrade*) menuju jenjang studi <strong>Teknik Informatika</strong>.</p>
+                <p>Fokus inti saya mencakup optimasi perangkat keras (PC Building, instalasi Windows LTSC), manajemen *storage*, perancangan jaringan dasar, hingga pengembangan antarmuka web interaktif (*Front-End HTML/CSS/JS*). Saya juga aktif merangkai *logic* mikrokontroler seperti Arduino Uno untuk eksperimen sirkuit elektronika.</p>
+                <p>Bagi saya, teknologi bukan sebatas perangkat lunak layar datar, melainkan integrasi mutlak antara *hardware* fisik yang tangguh dan baris kode yang presisi.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-box">
+                    <span class="stat-num">XII</span>
+                    <span class="stat-label">Grade_Level</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-num">TKJ</span>
+                    <span class="stat-label">Current_Module</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-num">IT</span>
+                    <span class="stat-label">Next_Target</span>
+                </div>
+            </div>
         </div>
     </section>
 
