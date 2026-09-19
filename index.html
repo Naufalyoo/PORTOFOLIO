@@ -15,7 +15,7 @@
             --neon-green: #00fa9a; --neon-cyan: #00f0ff; --neon-pink: #ff007f;
             --neon-warning: #ffbd2e; --neon-danger: #ff5f56;
             --text-main: #e2e8f0; --text-muted: #94a3b8; --text-dark: #0f172a;
-            --border-glow: rgba(0, 240, 255, 0.3);
+            --border-glow: rgba(0, 250, 154, 0.2);
             --font-mono: 'Share Tech Mono', monospace;
             --font-sans: 'Rajdhani', sans-serif;
             --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -23,15 +23,15 @@
 
         /* LIGHT MODE OVERRIDES (REVISI WARNA) */
         body.light-mode {
-            --bg-base: #e2e8f0; /* Abu-abu silver tech */
+            --bg-base: #e2e8f0; 
             --bg-panel: #f8fafc;
             --bg-card: rgba(255, 255, 255, 0.85);
-            --neon-green: #059669; /* Hijau zamrud padat */
-            --neon-cyan: #0284c7; /* Biru laut padat */
+            --neon-green: #059669; 
+            --neon-cyan: #0284c7; 
             --neon-pink: #db2777;
             --neon-warning: #d97706; 
             --neon-danger: #dc2626;
-            --text-main: #0f172a; /* Teks sangat gelap agar kontras */
+            --text-main: #0f172a; 
             --text-muted: #475569; 
             --border-glow: rgba(2, 132, 199, 0.25);
         }
@@ -61,30 +61,63 @@
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
         /* =========================================================
-           3. NAVBAR (FIXED HEADER)
+           3. NAVBAR (FLOATING PILL DESIGN UI)
         ========================================================= */
-        header {
-            position: fixed; top: 0; width: 100%; padding: 15px 4%;
+        header.hacker-navbar {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 1050px; padding: 12px 25px;
             display: flex; justify-content: space-between; align-items: center;
-            background: rgba(1, 2, 5, 0.85); backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-glow); z-index: 1000;
-            transition: background 0.5s ease;
+            background: rgba(8, 12, 18, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glow); border-radius: 999px;
+            z-index: 1000; box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            transition: var(--transition);
         }
-        body.light-mode header { background: rgba(226, 232, 240, 0.85); }
-        
-        .logo { font-family: var(--font-mono); font-size: 1.6rem; color: var(--neon-cyan); text-decoration: none; text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
-        .logo span { color: var(--text-main); }
-        .nav-links { display: flex; gap: 25px; list-style: none; align-items: center; }
-        .nav-links a {
-            color: var(--text-main); text-decoration: none; font-family: var(--font-mono);
-            font-size: 0.95rem; text-transform: uppercase; transition: var(--transition);
+        body.light-mode header.hacker-navbar { background: rgba(255, 255, 255, 0.85); box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
+
+        .logo { 
+            font-family: var(--font-sans); font-size: 1.8rem; font-weight: 800; 
+            color: var(--text-main); text-decoration: none; letter-spacing: -1px;
+            display: flex; align-items: center; line-height: 1;
         }
-        .nav-links a:hover { color: var(--neon-green); text-shadow: 0 0 10px var(--neon-green); }
+        .logo span { color: var(--neon-green); font-size: 2rem; margin-left: 2px; text-shadow: 0 0 10px var(--neon-green); }
+        body.light-mode .logo span { text-shadow: none; }
+
+        .nav-links { display: flex; gap: 8px; align-items: center; }
+        .nav-item {
+            color: var(--text-muted); text-decoration: none; font-family: var(--font-sans);
+            font-size: 1.05rem; font-weight: 600; padding: 8px 18px; border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .nav-item:hover { color: var(--text-main); }
+        .nav-item.active { 
+            color: var(--neon-green); 
+            background: rgba(255, 255, 255, 0.05); 
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+        body.light-mode .nav-item.active { 
+            background: rgba(0, 0, 0, 0.05); color: var(--neon-cyan); box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+        }
+
+        .theme-btn {
+            background: transparent; border: 1px solid rgba(255, 255, 255, 0.1); 
+            color: var(--text-main); width: 42px; height: 42px; border-radius: 12px; 
+            cursor: pointer; display: flex; align-items: center; justify-content: center; 
+            font-size: 1.2rem; transition: var(--transition);
+        }
+        body.light-mode .theme-btn { border-color: rgba(0,0,0,0.1); }
+        .theme-btn:hover { background: rgba(255, 255, 255, 0.05); border-color: var(--neon-cyan); }
+        body.light-mode .theme-btn:hover { background: rgba(0, 0, 0, 0.05); }
+
+        /* Responsive Mobile Nav */
+        @media (max-width: 850px) {
+            .nav-links { display: none; } /* Tersembunyi di mobile sementara */
+            header.hacker-navbar { border-radius: 20px; padding: 15px 20px; top: 15px; }
+        }
 
         /* =========================================================
            4. GLOBAL SECTIONS
         ========================================================= */
-        section { padding: 120px 5%; max-width: 1400px; margin: 0 auto; position: relative; }
+        section { padding: 140px 5% 100px; max-width: 1400px; margin: 0 auto; position: relative; }
         .sec-header { text-align: center; margin-bottom: 70px; }
         .sec-title {
             font-family: var(--font-mono); font-size: 2.8rem; color: var(--text-main);
@@ -247,7 +280,7 @@
         .timeline-content h4 { color: var(--text-main); font-size: 1.3rem; margin-bottom: 10px; }
 
         /* =========================================================
-           10. CONTACT (PING) - REVISI MENJADI SOSIAL MEDIA
+           10. CONTACT (PING)
         ========================================================= */
         .contact-wrapper { 
             max-width: 800px; margin: 0 auto; background: var(--bg-panel); padding: 50px; 
@@ -263,7 +296,7 @@
         .social-btn:hover { background: rgba(0, 240, 255, 0.1); border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0, 240, 255, 0.2); transform: translateY(-3px); }
 
         /* =========================================================
-           11. FOOTER (DIPERSINGKAT)
+           11. FOOTER
         ========================================================= */
         footer { background: #010204; padding: 40px 5%; border-top: 1px solid #111; transition: background 0.5s ease; text-align: center; }
         body.light-mode footer { background: #f1f5f9; border-top-color: #cbd5e1; }
@@ -274,7 +307,7 @@
 
         /* RESPONSIVE */
         @media (max-width: 900px) { .hero h1 { font-size: 4rem; } .project-grid { grid-template-columns: 1fr; } }
-        @media (max-width: 768px) { .nav-links { display: none; } section { padding: 80px 5%; } .hero h1 { font-size: 3rem; } }
+        @media (max-width: 768px) { section { padding: 80px 5%; } .hero h1 { font-size: 3rem; } }
     </style>
 </head>
 <body>
@@ -283,19 +316,20 @@
     <canvas id="matrix-canvas"></canvas>
     <div class="scanlines"></div>
 
-    <!-- NAVBAR -->
-    <header>
-        <a href="#" class="logo">Portofolio<span></span></a>
-        <ul class="nav-links">
-            <li><a href="#home">HOME</a></li>
-            <li><a href="#about">ABOUT</a></li>
-            <li><a href="#terminal">CMD</a></li>
-            <li><a href="#kompetensi">SKILLS</a></li>
-            <li><a href="#projects">PROJECTS</a></li>
-            <li><a href="#timeline-sec">HISTORI</a></li>
-            <li><a href="#contact">CONTACT</a></li>
-            <li><a href="#" id="theme-toggle" style="color: var(--neon-warning);">[ MODE: DARK ]</a></li>
-        </ul>
+    <!-- NAVBAR PILL UPDATE -->
+    <header class="hacker-navbar">
+        <a href="#home" class="logo">N<span>.</span></a>
+        
+        <nav class="nav-links">
+            <a href="#home" class="nav-item active">Home</a>
+            <a href="#about" class="nav-item">About</a>
+            <a href="#kompetensi" class="nav-item">Skills</a>
+            <a href="#projects" class="nav-item">Projects</a>
+            <a href="#timeline-sec" class="nav-item">Journey</a>
+            <a href="#contact" class="nav-item">Contact</a>
+        </nav>
+        
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">☀️</button>
     </header>
 
     <!-- HERO SECTION -->
@@ -315,7 +349,7 @@
         </div>
     </section>
 
-    <!-- ABOUT SECTION (BARU) -->
+    <!-- ABOUT SECTION -->
     <section id="about" class="fade-in">
         <div class="sec-header">
             <span class="sec-subtitle">>> SYSTEM_INFO</span>
@@ -504,7 +538,7 @@
         </div>
     </section>
 
-    <!-- CONTACT (PING) - REVISI MENJADI SOSIAL MEDIA LINK -->
+    <!-- CONTACT (PING) -->
     <section id="contact" class="fade-in">
         <div class="sec-header">
             <span class="sec-subtitle">>> SECURE_COMMUNICATION_CHANNEL</span>
@@ -530,7 +564,7 @@
         </div>
     </section>
 
-    <!-- FOOTER (DIPERSINGKAT) -->
+    <!-- FOOTER -->
     <footer>
         <div class="footer-info">
             <h3>// NAUFAL_SYSTEM</h3>
@@ -578,7 +612,9 @@
         
         if (localStorage.getItem('theme') === 'light') {
             body.classList.add('light-mode');
-            themeToggleBtn.innerHTML = '[ MODE: LIGHT ]';
+            themeToggleBtn.innerHTML = '🌙';
+        } else {
+            themeToggleBtn.innerHTML = '☀️';
         }
 
         themeToggleBtn.addEventListener('click', (e) => {
@@ -587,11 +623,31 @@
             
             if (body.classList.contains('light-mode')) {
                 localStorage.setItem('theme', 'light');
-                themeToggleBtn.innerHTML = '[ MODE: LIGHT ]';
+                themeToggleBtn.innerHTML = '🌙';
             } else {
                 localStorage.setItem('theme', 'dark');
-                themeToggleBtn.innerHTML = '[ MODE: DARK ]';
+                themeToggleBtn.innerHTML = '☀️';
             }
+        });
+
+        // --- SCROLL SPY NAVBAR (ACTIVE LINK AUTO UPDATE) ---
+        const sections = document.querySelectorAll("section[id]");
+        const navItems = document.querySelectorAll(".nav-item");
+
+        window.addEventListener("scroll", () => {
+            let current = "home";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 200;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute("id");
+                }
+            });
+            navItems.forEach(item => {
+                item.classList.remove("active");
+                if (item.getAttribute("href") === `#${current}`) {
+                    item.classList.add("active");
+                }
+            });
         });
 
         // --- B. MATRIX BACKGROUND ENGINE ---
