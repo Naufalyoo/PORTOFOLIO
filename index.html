@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[NAMA KAMU] | Portofolio</title>
+<meta name="description" content="Portofolio [NAMA KAMU], [PERAN KAMU]. Lihat proyek, keahlian, dan cara menghubungi saya.">
+<meta name="theme-color" content="#080C1E">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;700&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.classList.add('js');</script>
+<noscript><style>#loader{display:none!important}body.is-loading{overflow:auto!important}</style></noscript>
+</head>
+<body id="atas" class="is-loading">
+
+<!-- Layar loading: tampil saat website dibuka -->
+<div id="loader" class="loader" role="status" aria-live="polite">
+  <div class="loader__stage">
+    <span class="loader__orbit" aria-hidden="true"></span>
+    <div class="loader__ship">
+      <img class="loader__astro" src="assets/astronaut.svg" alt="" width="480" height="540">
+    </div>
+  </div>
+  <p class="loader__status" id="loaderStatus">Memeriksa sistem...</p>
+  <div class="loader__bar" aria-hidden="true"><span id="loaderBar"></span></div>
+  <p class="loader__count"><span id="loaderCount">0</span>%</p>
+</div>
+
+<!-- Wallpaper bergerak (digambar oleh js/main.js) -->
+<canvas id="space" aria-hidden="true"></canvas>
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="#atas" aria-label="[NAMA], kembali ke atas">
+      <svg aria-hidden="true" viewBox="0 0 32 32" width="34" height="34">
+        <circle cx="16" cy="16" r="15" fill="#F4F7FC"/>
+        <rect x="6" y="9" width="20" height="14" rx="7" fill="#141B34"/>
+        <circle cx="21" cy="14" r="2" fill="#FF8A3D"/>
+      </svg>
+      <span>[NAMA]</span>
+    </a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Buka menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="menu" class="nav__menu" aria-label="Navigasi utama">
+      <a href="#tentang">Tentang</a>
+      <a href="#proyek">Proyek</a>
+      <a href="#keahlian">Keahlian</a>
+      <a href="#perjalanan">Perjalanan</a>
+      <a class="btn btn--line" href="#kontak">Hubungi saya</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="wrap hero" aria-labelledby="judul">
+    <div class="hero__copy">
+      <p class="badge rise" style="--d:.1s"><span class="badge__dot" aria-hidden="true"></span>Siap untuk misi berikutnya</p>
+      <h1 id="judul" class="rise" style="--d:.22s">Halo, saya [NAMA KAMU]</h1>
+      <p class="lead rise" style="--d:.34s">[PERAN KAMU] yang merancang dan membangun situs, aplikasi, dan antarmuka yang rapi, cepat, dan nyaman dipakai.</p>
+      <div class="actions rise" style="--d:.46s">
+        <a class="btn btn--solid" href="#proyek">Lihat proyek</a>
+        <a class="btn btn--line" href="#">Unduh CV</a>
+      </div>
+      <p class="clock rise" style="--d:.58s" aria-hidden="true"><span>Waktu di orbit</span><time id="clock">00:00:00</time></p>
+    </div>
+    <div class="hero__art rise" style="--d:.3s">
+      <img class="hero__astro" src="assets/astronaut.svg" alt="Ilustrasi astronot melambai di orbit" width="480" height="540">
+    </div>
+  </section>
+
+  <!-- RINGKASAN -->
+  <section class="wrap" aria-label="Ringkasan">
+    <div class="stats">
+      <div><b>[X]+</b><span>Tahun pengalaman</span></div>
+      <div><b>[X]</b><span>Proyek diluncurkan</span></div>
+      <div><b>[X]</b><span>Klien dan kolaborator</span></div>
+    </div>
+  </section>
+
+  <!-- TENTANG -->
+  <section id="tentang" class="wrap section about" aria-labelledby="h-tentang">
+    <div class="about__text">
+      <h2 id="h-tentang">Membuat hal rumit terasa sederhana</h2>
+      <p>[Ceritakan singkat siapa kamu, apa yang kamu kerjakan, dan apa yang membuatmu bersemangat. Dua sampai tiga kalimat sudah cukup.]</p>
+      <p>[Tambahkan satu paragraf tentang cara kerjamu: bagaimana kamu berkolaborasi, apa yang kamu utamakan, dan jenis proyek yang kamu cari.]</p>
+    </div>
+    <aside class="brief" aria-label="Ringkasan misi">
+      <h3>Ringkasan misi</h3>
+      <dl>
+        <div><dt>Nama panggilan</dt><dd>[NAMA PANGGILAN]</dd></div>
+        <div><dt>Basis</dt><dd>[KOTA], Indonesia</dd></div>
+        <div><dt>Fokus</dt><dd>[BIDANG UTAMA]</dd></div>
+        <div><dt>Status</dt><dd>[STATUS KETERSEDIAAN]</dd></div>
+      </dl>
+    </aside>
+  </section>
+
+  <!-- PROYEK -->
+  <section id="proyek" class="wrap section" aria-labelledby="h-proyek">
+    <h2 id="h-proyek">Proyek terpilih</h2>
+    <div class="projects">
+
+      <article class="project project--lead">
+        <div class="thumb">
+          <svg aria-hidden="true" viewBox="0 0 200 150" class="thumb__art">
+            <circle cx="100" cy="75" r="40" fill="#18213F" stroke="#3A4A7A" stroke-width="1.5"/>
+            <ellipse cx="100" cy="75" rx="78" ry="20" transform="rotate(-18 100 75)" fill="none" stroke="#FF8A3D" stroke-width="2"/>
+          </svg>
+          <span class="thumb__label">[Tempat gambar proyek]</span>
+        </div>
+        <div class="project__body">
+          <h3>[Nama proyek unggulan]</h3>
+          <p>[Dua atau tiga kalimat tentang masalah yang diselesaikan, peranmu, dan hasil yang dicapai. Proyek ini diberi tempat paling besar karena paling mewakili kemampuanmu.]</p>
+          <ul class="tags"><li>[Teknologi]</li><li>[Peran]</li><li>[Tahun]</li></ul>
+          <a class="link" href="#">Baca studi kasus</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="thumb">
+          <svg aria-hidden="true" viewBox="0 0 200 150" class="thumb__art">
+            <circle cx="100" cy="75" r="14" fill="#FF8A3D"/>
+            <circle cx="100" cy="75" r="36" fill="none" stroke="#3A4A7A" stroke-width="1.5" stroke-dasharray="3 6"/>
+            <circle cx="100" cy="75" r="60" fill="none" stroke="#2E3B66" stroke-width="1.5" stroke-dasharray="3 6"/>
+            <circle cx="152" cy="46" r="7" fill="#7FE0FF"/>
+          </svg>
+          <span class="thumb__label">[Tempat gambar proyek]</span>
+        </div>
+        <div class="project__body">
+          <h3>[Nama proyek]</h3>
+          <p>[Satu atau dua kalimat tentang masalah, peranmu, dan hasilnya.]</p>
+          <ul class="tags"><li>[Teknologi]</li><li>[Peran]</li></ul>
+          <a class="link" href="#">Baca studi kasus</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="thumb">
+          <svg aria-hidden="true" viewBox="0 0 200 150" class="thumb__art">
+            <circle cx="70" cy="80" r="32" fill="#18213F" stroke="#3A4A7A" stroke-width="1.5"/>
+            <circle cx="140" cy="56" r="17" fill="#7FE0FF"/>
+            <path d="M 24 124 Q 100 100 176 120" fill="none" stroke="#3A4A7A" stroke-width="1.5" stroke-dasharray="3 6"/>
+          </svg>
+          <span class="thumb__label">[Tempat gambar proyek]</span>
+        </div>
+        <div class="project__body">
+          <h3>[Nama proyek]</h3>
+          <p>[Satu atau dua kalimat tentang masalah, peranmu, dan hasilnya.]</p>
+          <ul class="tags"><li>[Teknologi]</li><li>[Peran]</li></ul>
+          <a class="link" href="#">Baca studi kasus</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- KEAHLIAN -->
+  <section id="keahlian" class="wrap section" aria-labelledby="h-keahlian">
+    <h2 id="h-keahlian">Perlengkapan misi</h2>
+    <dl class="kit">
+      <div>
+        <dt>Desain</dt>
+        <dd><ul class="tags"><li>[Keahlian 1]</li><li>[Keahlian 2]</li><li>[Keahlian 3]</li></ul></dd>
+      </div>
+      <div>
+        <dt>Pengembangan</dt>
+        <dd><ul class="tags"><li>[Keahlian 1]</li><li>[Keahlian 2]</li><li>[Keahlian 3]</li></ul></dd>
+      </div>
+      <div>
+        <dt>Alat dan kolaborasi</dt>
+        <dd><ul class="tags"><li>[Alat 1]</li><li>[Alat 2]</li><li>[Alat 3]</li></ul></dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- PERJALANAN -->
+  <section id="perjalanan" class="wrap section" aria-labelledby="h-perjalanan">
+    <h2 id="h-perjalanan">Log perjalanan</h2>
+    <ol class="log">
+      <li>
+        <time>[2024 — Sekarang]</time>
+        <div>
+          <h3>[Posisi]</h3>
+          <p class="org">[Perusahaan atau klien]</p>
+          <p>[Ringkasan tanggung jawab dan pencapaian utama.]</p>
+        </div>
+      </li>
+      <li>
+        <time>[2022 — 2024]</time>
+        <div>
+          <h3>[Posisi]</h3>
+          <p class="org">[Perusahaan atau klien]</p>
+          <p>[Ringkasan tanggung jawab dan pencapaian utama.]</p>
+        </div>
+      </li>
+      <li>
+        <time>[2020 — 2022]</time>
+        <div>
+          <h3>[Posisi atau pendidikan]</h3>
+          <p class="org">[Institusi atau perusahaan]</p>
+          <p>[Ringkasan tanggung jawab dan pencapaian utama.]</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- KONTAK -->
+  <section id="kontak" class="wrap section" aria-labelledby="h-kontak">
+    <div class="contact">
+      <h2 id="h-kontak">Ada proyek yang siap diluncurkan?</h2>
+      <p>Ceritakan idenya. Saya akan membalas secepatnya.</p>
+      <a class="btn btn--solid" href="mailto:">[EMAIL KAMU]</a>
+      <ul class="socials">
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">GitHub</a></li>
+        <li><a href="#">Instagram</a></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap footer">
+  <p>© <span id="year">2026</span> [NAMA KAMU]. Dibuat dengan rasa ingin tahu.</p>
+  <a class="link" href="#atas">Kembali ke atas</a>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
