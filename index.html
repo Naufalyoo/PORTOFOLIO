@@ -3,25 +3,76 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NAUFAL | Portofolio</title>
-<meta name="description" content="Portofolio [NAMA KAMU], [PERAN KAMU]. Lihat proyek, keahlian, dan cara menghubungi saya.">
+<title>Naufal | Portofolio</title>
+<meta name="description" content="Portofolio [NAMA KAMU], [PERAN KAMU]. Lihat proyek, layanan, proses kerja, dan cara menghubungi saya.">
 <meta name="theme-color" content="#080C1E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="[NAMA KAMU] | Portofolio">
+<meta property="og:description" content="Portofolio [NAMA KAMU], [PERAN KAMU]. Lihat proyek, layanan, dan cara menghubungi saya.">
 <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;700&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./style.css">
-<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="./sections.css">
+<script>
+(function () {
+  var d = document.documentElement;
+  d.classList.add('js');
+  try {
+    var t = localStorage.getItem('astro-theme');
+    if (t && t !== 'orange') d.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
 <noscript><style>#loader{display:none!important}body.is-loading{overflow:auto!important}</style></noscript>
 </head>
 <body id="atas" class="is-loading">
+
+<!-- Sprite SVG: astronot dan bintang dipakai ulang lewat <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="astro" viewBox="0 0 480 540">
+    <ellipse cx="240" cy="290" rx="228" ry="64" transform="rotate(-16 240 290)" fill="none" stroke="#7FE0FF" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="4 8"/>
+    <circle cx="70" cy="110" r="38" fill="#18213F" stroke="#2E3B66" stroke-width="1.5"/>
+    <circle cx="58" cy="100" r="7" fill="#222C52"/>
+    <circle cx="82" cy="124" r="5" fill="#222C52"/>
+    <circle class="a-acc" cx="434" cy="236" r="14"/>
+    <path class="a-acc-s" d="M 340 330 C 440 340 450 450 410 520" fill="none" stroke-width="4" stroke-linecap="round"/>
+    <rect x="140" y="215" width="200" height="190" rx="34" fill="#26315A"/>
+    <rect x="186" y="385" width="54" height="100" rx="26" fill="#CED5E8"/>
+    <rect x="240" y="385" width="54" height="100" rx="26" fill="#CED5E8"/>
+    <rect x="180" y="470" width="64" height="38" rx="16" fill="#26315A"/>
+    <rect x="236" y="470" width="64" height="38" rx="16" fill="#26315A"/>
+    <rect x="166" y="235" width="148" height="170" rx="52" fill="#EEF2FA"/>
+    <rect x="208" y="290" width="64" height="46" rx="10" fill="#141B34"/>
+    <circle class="a-acc" cx="226" cy="313" r="7"/>
+    <rect x="240" y="306" width="22" height="6" rx="3" fill="#5B6A9A"/>
+    <rect x="240" y="318" width="14" height="6" rx="3" fill="#5B6A9A"/>
+    <rect x="88" y="232" width="100" height="44" rx="22" fill="#EEF2FA" transform="rotate(38 168 254)"/>
+    <circle class="a-acc" cx="100" cy="200" r="25"/>
+    <rect x="292" y="262" width="96" height="44" rx="22" fill="#EEF2FA" transform="rotate(28 300 284)"/>
+    <circle class="a-acc" cx="380" cy="328" r="24"/>
+    <rect x="186" y="238" width="108" height="24" rx="12" fill="#C3CBE0"/>
+    <line x1="300" y1="82" x2="322" y2="44" stroke="#C3CBE0" stroke-width="5" stroke-linecap="round"/>
+    <circle class="a-acc" cx="324" cy="40" r="8"/>
+    <rect x="136" y="150" width="20" height="40" rx="10" fill="#C3CBE0"/>
+    <rect x="324" y="150" width="20" height="40" rx="10" fill="#C3CBE0"/>
+    <circle cx="240" cy="165" r="98" fill="#F4F7FC"/>
+    <rect x="166" y="118" width="148" height="96" rx="46" fill="#141B34"/>
+    <path d="M 186 150 Q 200 130 226 128" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity="0.5"/>
+    <circle cx="288" cy="190" r="5" fill="#7FE0FF" opacity="0.9"/>
+  </symbol>
+  <symbol id="spark" viewBox="0 0 24 24">
+    <path d="M12 0c.8 6.6 5.4 11.2 12 12-6.6.8-11.2 5.4-12 12-.8-6.6-5.4-11.2-12-12C6.6 11.2 11.2 6.6 12 0Z"/>
+  </symbol>
+</svg>
 
 <!-- Layar loading: tampil saat website dibuka -->
 <div id="loader" class="loader" role="status" aria-live="polite">
   <div class="loader__stage">
     <span class="loader__orbit" aria-hidden="true"></span>
     <div class="loader__ship">
-      <img class="loader__astro" src="./astronaut.svg" alt="" width="480" height="540">
+      <svg class="loader__astro" viewBox="0 0 480 540" aria-hidden="true"><use href="#astro"/></svg>
     </div>
   </div>
   <p class="loader__status" id="loaderStatus">Memeriksa sistem...</p>
@@ -32,15 +83,17 @@
 <!-- Wallpaper bergerak (digambar oleh js/main.js) -->
 <canvas id="space" aria-hidden="true"></canvas>
 
+<div class="progress" id="progress" aria-hidden="true"><span></span></div>
+
 <header class="nav">
   <div class="wrap nav__inner">
     <a class="brand" href="#atas" aria-label="[NAMA], kembali ke atas">
       <svg aria-hidden="true" viewBox="0 0 32 32" width="34" height="34">
         <circle cx="16" cy="16" r="15" fill="#F4F7FC"/>
         <rect x="6" y="9" width="20" height="14" rx="7" fill="#141B34"/>
-        <circle cx="21" cy="14" r="2" fill="#FF8A3D"/>
+        <circle class="t-acc" cx="21" cy="14" r="2"/>
       </svg>
-      <span>Fall</span>
+      <span>[NAMA]</span>
     </a>
     <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Buka menu">
       <span></span><span></span><span></span>
@@ -48,8 +101,15 @@
     <nav id="menu" class="nav__menu" aria-label="Navigasi utama">
       <a href="#tentang">Tentang</a>
       <a href="#proyek">Proyek</a>
-      <a href="#keahlian">Keahlian</a>
-      <a href="#perjalanan">Perjalanan</a>
+      <a href="#layanan">Layanan</a>
+      <a href="#proses">Proses</a>
+      <a href="#faq">FAQ</a>
+      <div class="swatches" role="group" aria-label="Warna tema">
+        <button class="swatch" type="button" data-theme="orange" aria-pressed="true"  aria-label="Tema oranye"  style="--c:#FF8A3D"></button>
+        <button class="swatch" type="button" data-theme="mint"   aria-pressed="false" aria-label="Tema tosca"   style="--c:#5EEAD4"></button>
+        <button class="swatch" type="button" data-theme="violet" aria-pressed="false" aria-label="Tema ungu"    style="--c:#B79CFF"></button>
+        <button class="swatch" type="button" data-theme="rose"   aria-pressed="false" aria-label="Tema merah muda" style="--c:#FF7A9C"></button>
+      </div>
       <a class="btn btn--line" href="#kontak">Hubungi saya</a>
     </nav>
   </div>
@@ -61,7 +121,7 @@
   <section class="wrap hero" aria-labelledby="judul">
     <div class="hero__copy">
       <p class="badge rise" style="--d:.1s"><span class="badge__dot" aria-hidden="true"></span>Siap untuk misi berikutnya</p>
-      <h1 id="judul" class="rise" style="--d:.22s">Halo, saya Muhammad Naufal Athaillah Ghani</h1>
+      <h1 id="judul" class="rise" style="--d:.22s">Halo, saya [NAMA KAMU]</h1>
       <p class="lead rise" style="--d:.34s">[PERAN KAMU] yang merancang dan membangun situs, aplikasi, dan antarmuka yang rapi, cepat, dan nyaman dipakai.</p>
       <div class="actions rise" style="--d:.46s">
         <a class="btn btn--solid" href="#proyek">Lihat proyek</a>
@@ -70,9 +130,34 @@
       <p class="clock rise" style="--d:.58s" aria-hidden="true"><span>Waktu di orbit</span><time id="clock">00:00:00</time></p>
     </div>
     <div class="hero__art rise" style="--d:.3s">
-      <img class="hero__astro" src="./astronaut.svg" alt="Ilustrasi astronot melambai di orbit" width="480" height="540">
+      <button class="hero__astro-btn" id="astroBtn" type="button" aria-label="Astronot melambai. Klik untuk memanggil bintang jatuh">
+        <svg class="hero__astro" viewBox="0 0 480 540" aria-hidden="true"><use href="#astro"/></svg>
+      </button>
+      <p class="hint" aria-hidden="true">Coba klik astronotnya</p>
     </div>
   </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-label="Bidang kerja">
+    <div class="marquee__track">
+      <ul class="marquee__group">
+        <li>Riset pengguna <svg class="spark" aria-hidden="true"><use href="#spark"/></svg></li>
+        <li>Desain antarmuka <svg class="spark" aria-hidden="true"><use href="#spark"/></svg></li>
+        <li>Pengembangan web <svg class="spark" aria-hidden="true"><use href="#spark"/></svg></li>
+        <li>Animasi dan interaksi <svg class="spark" aria-hidden="true"><use href="#spark"/></svg></li>
+        <li>Aksesibilitas <svg class="spark" aria-hidden="true"><use href="#spark"/></svg></li>
+        <li>Optimasi performa <svg class="spark" aria-hidden="true"><use href="#spark"/></svg></li>
+      </ul>
+      <ul class="marquee__group" aria-hidden="true">
+        <li>Riset pengguna <svg class="spark" aria-hidden="true"><use href="#spark"/></svg></li>
+        <li>Desain antarmuka <svg class="spark" aria-hidden="true"><use href="#spark"/></svg></li>
+        <li>Pengembangan web <svg class="spark" aria-hidden="true"><use href="#spark"/></svg></li>
+        <li>Animasi dan interaksi <svg class="spark" aria-hidden="true"><use href="#spark"/></svg></li>
+        <li>Aksesibilitas <svg class="spark" aria-hidden="true"><use href="#spark"/></svg></li>
+        <li>Optimasi performa <svg class="spark" aria-hidden="true"><use href="#spark"/></svg></li>
+      </ul>
+    </div>
+  </div>
 
   <!-- RINGKASAN -->
   <section class="wrap" aria-label="Ringkasan">
@@ -89,46 +174,59 @@
       <h2 id="h-tentang">Membuat hal rumit terasa sederhana</h2>
       <p>[Ceritakan singkat siapa kamu, apa yang kamu kerjakan, dan apa yang membuatmu bersemangat. Dua sampai tiga kalimat sudah cukup.]</p>
       <p>[Tambahkan satu paragraf tentang cara kerjamu: bagaimana kamu berkolaborasi, apa yang kamu utamakan, dan jenis proyek yang kamu cari.]</p>
+      <a class="btn btn--line" style="margin-top:32px" href="#">Unduh CV</a>
     </div>
-    <aside class="brief" aria-label="Ringkasan misi">
-      <h3>Ringkasan misi</h3>
-      <dl>
-        <div><dt>Nama panggilan</dt><dd>Naufal</dd></div>
-        <div><dt>Basis</dt><dd>Tuban, Indonesia</dd></div>
-        <div><dt>Fokus</dt><dd>[BIDANG UTAMA]</dd></div>
-        <div><dt>Status</dt><dd>[STATUS KETERSEDIAAN]</dd></div>
-      </dl>
-    </aside>
+    <div class="about__side">
+      <div class="portrait" role="img" aria-label="Tempat foto profil">[Foto kamu]</div>
+      <aside class="brief" aria-label="Ringkasan misi">
+        <h3>Ringkasan misi</h3>
+        <dl>
+          <div><dt>Nama panggilan</dt><dd>[NAMA PANGGILAN]</dd></div>
+          <div><dt>Basis</dt><dd>[KOTA], Indonesia</dd></div>
+          <div><dt>Fokus</dt><dd>[BIDANG UTAMA]</dd></div>
+          <div><dt>Status</dt><dd>[STATUS KETERSEDIAAN]</dd></div>
+        </dl>
+      </aside>
+    </div>
   </section>
 
   <!-- PROYEK -->
   <section id="proyek" class="wrap section" aria-labelledby="h-proyek">
     <h2 id="h-proyek">Proyek terpilih</h2>
-    <div class="projects">
 
-      <article class="project project--lead">
+    <div class="filters" role="group" aria-label="Filter proyek">
+      <button class="chip" type="button" data-filter="all" aria-pressed="true">Semua</button>
+      <button class="chip" type="button" data-filter="web" aria-pressed="false">Situs web</button>
+      <button class="chip" type="button" data-filter="aplikasi" aria-pressed="false">Aplikasi</button>
+      <button class="chip" type="button" data-filter="desain" aria-pressed="false">Desain</button>
+      <p class="filters__count" id="projectCount" role="status" aria-live="polite">Menampilkan 5 proyek</p>
+    </div>
+
+    <div class="projects" id="projectGrid">
+
+      <article class="project project--lead" data-cat="web desain">
         <div class="thumb">
           <svg aria-hidden="true" viewBox="0 0 200 150" class="thumb__art">
             <circle cx="100" cy="75" r="40" fill="#18213F" stroke="#3A4A7A" stroke-width="1.5"/>
-            <ellipse cx="100" cy="75" rx="78" ry="20" transform="rotate(-18 100 75)" fill="none" stroke="#FF8A3D" stroke-width="2"/>
+            <ellipse class="t-acc-s" cx="100" cy="75" rx="78" ry="20" transform="rotate(-18 100 75)" fill="none" stroke-width="2"/>
           </svg>
           <span class="thumb__label">[Tempat gambar proyek]</span>
         </div>
         <div class="project__body">
           <h3>[Nama proyek unggulan]</h3>
-          <p>[Dua atau tiga kalimat tentang masalah yang diselesaikan, peranmu, dan hasil yang dicapai. Proyek ini diberi tempat paling besar karena paling mewakili kemampuanmu.]</p>
+          <p>[Dua atau tiga kalimat tentang masalah yang diselesaikan, peranmu, dan hasil yang dicapai. Proyek pertama tampil paling besar, jadi pilih yang paling mewakili kemampuanmu.]</p>
           <ul class="tags"><li>[Teknologi]</li><li>[Peran]</li><li>[Tahun]</li></ul>
-          <a class="link" href="#">Baca studi kasus</a>
+          <button class="link" type="button" data-open>Lihat detail</button>
         </div>
       </article>
 
-      <article class="project">
+      <article class="project" data-cat="aplikasi">
         <div class="thumb">
           <svg aria-hidden="true" viewBox="0 0 200 150" class="thumb__art">
-            <circle cx="100" cy="75" r="14" fill="#FF8A3D"/>
+            <circle class="t-acc" cx="100" cy="75" r="14"/>
             <circle cx="100" cy="75" r="36" fill="none" stroke="#3A4A7A" stroke-width="1.5" stroke-dasharray="3 6"/>
             <circle cx="100" cy="75" r="60" fill="none" stroke="#2E3B66" stroke-width="1.5" stroke-dasharray="3 6"/>
-            <circle cx="152" cy="46" r="7" fill="#7FE0FF"/>
+            <circle class="t-vis" cx="152" cy="46" r="7"/>
           </svg>
           <span class="thumb__label">[Tempat gambar proyek]</span>
         </div>
@@ -136,15 +234,15 @@
           <h3>[Nama proyek]</h3>
           <p>[Satu atau dua kalimat tentang masalah, peranmu, dan hasilnya.]</p>
           <ul class="tags"><li>[Teknologi]</li><li>[Peran]</li></ul>
-          <a class="link" href="#">Baca studi kasus</a>
+          <button class="link" type="button" data-open>Lihat detail</button>
         </div>
       </article>
 
-      <article class="project">
+      <article class="project" data-cat="web">
         <div class="thumb">
           <svg aria-hidden="true" viewBox="0 0 200 150" class="thumb__art">
             <circle cx="70" cy="80" r="32" fill="#18213F" stroke="#3A4A7A" stroke-width="1.5"/>
-            <circle cx="140" cy="56" r="17" fill="#7FE0FF"/>
+            <circle class="t-vis" cx="140" cy="56" r="17"/>
             <path d="M 24 124 Q 100 100 176 120" fill="none" stroke="#3A4A7A" stroke-width="1.5" stroke-dasharray="3 6"/>
           </svg>
           <span class="thumb__label">[Tempat gambar proyek]</span>
@@ -153,11 +251,120 @@
           <h3>[Nama proyek]</h3>
           <p>[Satu atau dua kalimat tentang masalah, peranmu, dan hasilnya.]</p>
           <ul class="tags"><li>[Teknologi]</li><li>[Peran]</li></ul>
-          <a class="link" href="#">Baca studi kasus</a>
+          <button class="link" type="button" data-open>Lihat detail</button>
+        </div>
+      </article>
+
+      <article class="project" data-cat="desain">
+        <div class="thumb">
+          <svg aria-hidden="true" viewBox="0 0 200 150" class="thumb__art">
+            <rect x="46" y="30" width="108" height="90" rx="14" fill="#18213F" stroke="#3A4A7A" stroke-width="1.5"/>
+            <path d="M46 56h108M78 56v64" stroke="#3A4A7A" stroke-width="1.5" fill="none"/>
+            <circle class="t-acc" cx="62" cy="43" r="5"/>
+          </svg>
+          <span class="thumb__label">[Tempat gambar proyek]</span>
+        </div>
+        <div class="project__body">
+          <h3>[Nama proyek]</h3>
+          <p>[Satu atau dua kalimat tentang masalah, peranmu, dan hasilnya.]</p>
+          <ul class="tags"><li>[Teknologi]</li><li>[Peran]</li></ul>
+          <button class="link" type="button" data-open>Lihat detail</button>
+        </div>
+      </article>
+
+      <article class="project" data-cat="aplikasi desain">
+        <div class="thumb">
+          <svg aria-hidden="true" viewBox="0 0 200 150" class="thumb__art">
+            <circle cx="100" cy="75" r="46" fill="none" stroke="#2E3B66" stroke-width="1.5"/>
+            <circle cx="100" cy="75" r="28" fill="#18213F" stroke="#3A4A7A" stroke-width="1.5"/>
+            <circle class="t-acc" cx="146" cy="75" r="8"/>
+            <circle class="t-vis" cx="62" cy="48" r="5"/>
+          </svg>
+          <span class="thumb__label">[Tempat gambar proyek]</span>
+        </div>
+        <div class="project__body">
+          <h3>[Nama proyek]</h3>
+          <p>[Satu atau dua kalimat tentang masalah, peranmu, dan hasilnya.]</p>
+          <ul class="tags"><li>[Teknologi]</li><li>[Peran]</li></ul>
+          <button class="link" type="button" data-open>Lihat detail</button>
         </div>
       </article>
 
     </div>
+  </section>
+
+  <!-- LAYANAN -->
+  <section id="layanan" class="wrap section" aria-labelledby="h-layanan">
+    <div class="services">
+      <div class="services__intro">
+        <h2 id="h-layanan">Apa yang bisa kita kerjakan bersama</h2>
+        <p class="lede">[Sesuaikan daftar layanan di samping dengan yang benar-benar kamu tawarkan.]</p>
+        <a class="btn btn--solid" style="margin-top:32px" href="#kontak">Ceritakan proyekmu</a>
+      </div>
+      <div class="services__list">
+        <article class="service">
+          <svg class="service__icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="4" y="4" width="40" height="40" rx="8"/><path d="M4 18h40M18 18v26"/></svg>
+          <div>
+            <h3>Desain antarmuka</h3>
+            <p>Dari wireframe sampai desain visual yang konsisten, lengkap dengan komponen yang siap dipakai tim pengembang.</p>
+            <ul class="tags"><li>[Alat desain]</li><li>[Hasil kerja]</li></ul>
+          </div>
+        </article>
+        <article class="service">
+          <svg class="service__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M18 14 6 24l12 10M30 14l12 10-12 10"/></svg>
+          <div>
+            <h3>Pengembangan web</h3>
+            <p>Situs dan aplikasi web yang cepat, aman, dan mudah dirawat, dari halaman promosi sampai dasbor.</p>
+            <ul class="tags"><li>[Teknologi]</li><li>[Hasil kerja]</li></ul>
+          </div>
+        </article>
+        <article class="service">
+          <svg class="service__icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="6"/><ellipse cx="24" cy="24" rx="20" ry="8" transform="rotate(-25 24 24)"/></svg>
+          <div>
+            <h3>Animasi dan interaksi</h3>
+            <p>Gerak yang membantu pengguna memahami apa yang berubah, bukan sekadar hiasan.</p>
+            <ul class="tags"><li>[Alat animasi]</li><li>[Hasil kerja]</li></ul>
+          </div>
+        </article>
+        <article class="service">
+          <svg class="service__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 34a18 18 0 1 1 36 0"/><path d="M24 34 33 20"/></svg>
+          <div>
+            <h3>Perawatan dan optimasi</h3>
+            <p>Perbaikan performa, aksesibilitas, dan SEO setelah situs diluncurkan, supaya tetap sehat dalam jangka panjang.</p>
+            <ul class="tags"><li>[Cakupan]</li><li>[Hasil kerja]</li></ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROSES -->
+  <section id="proses" class="wrap section" aria-labelledby="h-proses">
+    <div class="section__head">
+      <h2 id="h-proses">Empat tahap dari ide sampai meluncur</h2>
+    </div>
+    <ol class="steps">
+      <li>
+        <span class="step__n">1</span>
+        <h3>Brief</h3>
+        <p>Kita samakan tujuan, target pengguna, dan batas waktu sebelum apa pun dikerjakan.</p>
+      </li>
+      <li>
+        <span class="step__n">2</span>
+        <h3>Desain</h3>
+        <p>Wireframe dan prototipe untuk disetujui bersama, supaya tidak ada kejutan saat dibangun.</p>
+      </li>
+      <li>
+        <span class="step__n">3</span>
+        <h3>Bangun</h3>
+        <p>Pengembangan bertahap dengan demo rutin, sehingga kamu bisa memberi masukan sejak awal.</p>
+      </li>
+      <li>
+        <span class="step__n">4</span>
+        <h3>Luncurkan</h3>
+        <p>Pengujian akhir, peluncuran, dan pendampingan setelahnya.</p>
+      </li>
+    </ol>
   </section>
 
   <!-- KEAHLIAN -->
@@ -210,27 +417,167 @@
     </ol>
   </section>
 
+  <!-- TESTIMONI -->
+  <section id="testimoni" class="wrap section" aria-labelledby="h-testimoni">
+    <div class="section__head">
+      <h2 id="h-testimoni">Kata mereka yang pernah ikut misi</h2>
+      <div class="round-btns">
+        <button class="round-btn round-btn--prev" id="quotePrev" type="button" aria-label="Testimoni sebelumnya"></button>
+        <button class="round-btn round-btn--next" id="quoteNext" type="button" aria-label="Testimoni berikutnya"></button>
+      </div>
+    </div>
+    <div class="quotes" id="quotes" tabindex="0" role="region" aria-label="Daftar testimoni">
+      <figure class="quote">
+        <blockquote><p>[Kutipan dari klien: apa masalahnya, apa yang kamu lakukan, dan hasilnya. Dua sampai tiga kalimat sudah cukup.]</p></blockquote>
+        <figcaption><span class="avatar" aria-hidden="true">?</span><span><b>[Nama klien]</b><br>[Jabatan, perusahaan]</span></figcaption>
+      </figure>
+      <figure class="quote">
+        <blockquote><p>[Kutipan dari klien: apa masalahnya, apa yang kamu lakukan, dan hasilnya. Dua sampai tiga kalimat sudah cukup.]</p></blockquote>
+        <figcaption><span class="avatar" aria-hidden="true">?</span><span><b>[Nama klien]</b><br>[Jabatan, perusahaan]</span></figcaption>
+      </figure>
+      <figure class="quote">
+        <blockquote><p>[Kutipan dari klien: apa masalahnya, apa yang kamu lakukan, dan hasilnya. Dua sampai tiga kalimat sudah cukup.]</p></blockquote>
+        <figcaption><span class="avatar" aria-hidden="true">?</span><span><b>[Nama klien]</b><br>[Jabatan, perusahaan]</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="wrap section" aria-labelledby="h-faq">
+    <div class="faq">
+      <div class="faq__intro">
+        <h2 id="h-faq">Pertanyaan yang sering diajukan</h2>
+        <p class="lede">Belum menemukan jawabannya? Kirim saja pesan lewat formulir di bawah.</p>
+      </div>
+      <div class="faq__list">
+        <details>
+          <summary>Berapa lama pengerjaan sebuah proyek?</summary>
+          <p>[Isi dengan estimasi waktumu, misalnya 2 sampai 6 minggu tergantung ruang lingkup dan jumlah halaman.]</p>
+        </details>
+        <details>
+          <summary>Bagaimana sistem pembayarannya?</summary>
+          <p>[Jelaskan skema pembayaranmu, misalnya uang muka di awal dan pelunasan setelah peluncuran.]</p>
+        </details>
+        <details>
+          <summary>Apakah ada revisi?</summary>
+          <p>[Sebutkan jumlah putaran revisi yang termasuk dalam paket dan bagaimana revisi tambahan dihitung.]</p>
+        </details>
+        <details>
+          <summary>Apakah menerima proyek dari luar kota atau luar negeri?</summary>
+          <p>[Jelaskan cara kerjamu dengan klien jarak jauh: zona waktu, alat komunikasi, dan jadwal rapat.]</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- KONTAK -->
   <section id="kontak" class="wrap section" aria-labelledby="h-kontak">
-    <div class="contact">
-      <h2 id="h-kontak">Ada proyek yang siap diluncurkan?</h2>
-      <p>Ceritakan idenya. Saya akan membalas secepatnya.</p>
-      <a class="btn btn--solid" href="mailto:">[EMAIL KAMU]</a>
-      <ul class="socials">
-        <li><a href="https://github.com/Naufalyoo">GitHub</a></li>
-        <li><a href="https://www.tiktok.com/@naufal_yoo?_r=1&_t=ZS-935Qg4qAuPo">TikTok</a></li>
-        <li><a href="https://www.instagram.com/naufalorailing?igsh=bnk4MTRwM3JvbzBu">Instagram</a></li>
-      </ul>
+    <div class="contact contact--split">
+      <div class="contact__info">
+        <h2 id="h-kontak">Ada proyek yang siap diluncurkan?</h2>
+        <p>Ceritakan idenya lewat formulir, atau kirim email langsung. Saya akan membalas secepatnya.</p>
+        <div class="contact__email">
+          <a class="btn btn--solid" href="mailto:">[EMAIL KAMU]</a>
+          <button class="btn btn--line" id="copyEmail" type="button" data-email="[EMAIL KAMU]">Salin email</button>
+        </div>
+        <p class="copy-note" id="copyNote" role="status" aria-live="polite"></p>
+        <ul class="socials">
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+
+      <!--
+        Cara kerja formulir:
+        - Isi data-endpoint dengan alamat layanan formulir (mis. Formspree) agar pesan terkirim otomatis, ATAU
+        - Biarkan kosong dan isi data-email: tombol kirim akan membuka aplikasi email dengan pesan terisi.
+      -->
+      <form class="form" id="contactForm" novalidate data-email="[EMAIL KAMU]" data-endpoint="">
+        <div class="field">
+          <label for="f-nama">Nama</label>
+          <input id="f-nama" name="nama" type="text" autocomplete="name" required aria-describedby="e-nama">
+          <p class="field__error" id="e-nama" hidden></p>
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="e-email">
+          <p class="field__error" id="e-email" hidden></p>
+        </div>
+        <div class="field">
+          <label for="f-jenis">Jenis proyek</label>
+          <select id="f-jenis" name="jenis">
+            <option>Situs web</option>
+            <option>Aplikasi</option>
+            <option>Desain antarmuka</option>
+            <option>Lainnya</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-pesan">Pesan</label>
+          <textarea id="f-pesan" name="pesan" required aria-describedby="e-pesan"></textarea>
+          <p class="field__error" id="e-pesan" hidden></p>
+        </div>
+        <div class="field--trap" aria-hidden="true">
+          <label for="f-web">Jangan diisi</label>
+          <input id="f-web" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <button class="btn btn--solid" type="submit">Kirim pesan</button>
+        <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 
 </main>
 
-<footer class="wrap footer">
-  <p>© <span id="year">2026</span> Naufal. Dibuat dengan rasa ingin tahu.</p>
-  <a class="link" href="#atas">Kembali ke atas</a>
+<footer class="wrap site-footer">
+  <div class="site-footer__top">
+    <div class="site-footer__brand">
+      <a class="brand" href="#atas">
+        <svg aria-hidden="true" viewBox="0 0 32 32" width="34" height="34">
+          <circle cx="16" cy="16" r="15" fill="#F4F7FC"/>
+          <rect x="6" y="9" width="20" height="14" rx="7" fill="#141B34"/>
+          <circle class="t-acc" cx="21" cy="14" r="2"/>
+        </svg>
+        <span>[NAMA]</span>
+      </a>
+      <p>[PERAN KAMU] yang suka membangun hal-hal rapi dan berguna.</p>
+    </div>
+    <nav class="site-footer__col" aria-label="Navigasi footer">
+      <h3>Jelajahi</h3>
+      <a href="#tentang">Tentang</a>
+      <a href="#proyek">Proyek</a>
+      <a href="#layanan">Layanan</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <nav class="site-footer__col" aria-label="Sosial media">
+      <h3>Terhubung</h3>
+      <a href="#">LinkedIn</a>
+      <a href="#">GitHub</a>
+      <a href="#">Instagram</a>
+    </nav>
+  </div>
+  <div class="site-footer__bottom">
+    <p>© <span id="year">2026</span> [NAMA KAMU]. Dibuat dengan rasa ingin tahu.</p>
+    <a class="link" href="studi-kasus.html">Contoh halaman studi kasus</a>
+  </div>
 </footer>
 
+<button class="to-top" id="toTop" type="button" aria-label="Kembali ke atas" hidden></button>
+
+<!-- Dialog detail proyek (diisi oleh js/ui.js) -->
+<dialog id="projectDialog" class="dialog" aria-labelledby="dlgTitle">
+  <form method="dialog"><button class="dialog__close" aria-label="Tutup detail proyek"></button></form>
+  <div class="dialog__thumb" id="dlgThumb"></div>
+  <div class="dialog__body">
+    <h3 id="dlgTitle"></h3>
+    <p id="dlgDesc"></p>
+    <ul class="tags" id="dlgTags"></ul>
+    <a class="btn btn--solid" href="studi-kasus.html">Buka studi kasus</a>
+  </div>
+</dialog>
+
 <script src="./script.js" defer></script>
+<script src="./ui.js" defer></script>
 </body>
 </html>

@@ -17,6 +17,11 @@
   --body: 'Albert Sans', system-ui, sans-serif;
 }
 
+/* Tema warna aksen (dipilih lewat tombol warna di navigasi) */
+[data-theme="mint"]   { --accent: #5EEAD4; --accent-ink: #04201C; }
+[data-theme="violet"] { --accent: #B79CFF; --accent-ink: #150B33; }
+[data-theme="rose"]   { --accent: #FF7A9C; --accent-ink: #2B0610; }
+
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
@@ -92,7 +97,7 @@ ul, ol, dl, dd { margin: 0; padding: 0; list-style: none; }
 }
 
 .btn--solid { background: var(--accent); color: var(--accent-ink); }
-.btn--solid:hover { background: #FFA566; transform: translateY(-2px); }
+.btn--solid:hover { background: color-mix(in srgb, var(--accent) 78%, #fff); transform: translateY(-2px); }
 
 .btn--line { border: 1px solid #3A4A7A; color: var(--text); }
 .btn--line:hover { border-color: var(--visor); color: var(--visor); }
@@ -107,7 +112,7 @@ ul, ol, dl, dd { margin: 0; padding: 0; list-style: none; }
   text-underline-offset: 5px;
   text-decoration-thickness: 1.5px;
 }
-.link:hover { color: #FFA566; }
+.link:hover { color: color-mix(in srgb, var(--accent) 78%, #fff); }
 
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .tags li {

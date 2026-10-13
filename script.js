@@ -24,9 +24,19 @@
     const ctx = canvas && canvas.getContext('2d');
     if (!ctx) return;
 
-    const css = getComputedStyle(document.documentElement);
-    const accent = css.getPropertyValue('--accent').trim() || '#FF8A3D';
-    const visor = css.getPropertyValue('--visor').trim() || '#7FE0FF';
+    let accent = '#FF8A3D';
+    let visor = '#7FE0FF';
+    function readColors() {
+      const css = getComputedStyle(document.documentElement);
+      accent = css.getPropertyValue('--accent').trim() || accent;
+      visor = css.getPropertyValue('--visor').trim() || visor;
+    }
+    readColors();
+    // warna aksen berubah saat pengunjung memilih tema lain (lihat js/ui.js)
+    document.addEventListener('themechange', () => {
+      readColors();
+      if (reduceMotion.matches) frame(0, 0);
+    });
 
     // Atur kerapatan dan kecepatan bintang di sini
     const layers = [
@@ -232,6 +242,21 @@
       frame(now / 1000, dt);
       if (!reduceMotion.matches) requestAnimationFrame(loop);
     }
+
+    // dipanggil dari js/ui.js saat astronot di hero diklik
+    document.addEventListener('spawn-streaks', () => {
+      if (reduceMotion.matches) return;
+      for (let i = 0; i < 4; i++) {
+        streaks.push({
+          x: rand(w * 0.4, w * 1.05),
+          y: rand(-20, h * 0.45),
+          angle: rand(0.45, 0.75),
+          speed: rand(800, 1200),
+          len: rand(140, 240),
+          life: rand(1.2, 2) + i * 0.15
+        });
+      }
+    });
 
     window.addEventListener('resize', resize);
     window.addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive: true });

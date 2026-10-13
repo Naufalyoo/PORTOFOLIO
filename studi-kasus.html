@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[Nama proyek] | Studi kasus | [NAMA KAMU]</title>
+<meta name="description" content="Studi kasus [Nama proyek]: tantangan, pendekatan, dan hasil.">
+<meta name="theme-color" content="#080C1E">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;700&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./sections.css">
+<script>
+(function () {
+  var d = document.documentElement;
+  d.classList.add('js');
+  try {
+    var t = localStorage.getItem('astro-theme');
+    if (t && t !== 'orange') d.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body id="atas">
+
+<canvas id="space" aria-hidden="true"></canvas>
+<div class="progress" id="progress" aria-hidden="true"><span></span></div>
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="index.html" aria-label="[NAMA], ke beranda">
+      <svg aria-hidden="true" viewBox="0 0 32 32" width="34" height="34">
+        <circle cx="16" cy="16" r="15" fill="#F4F7FC"/>
+        <rect x="6" y="9" width="20" height="14" rx="7" fill="#141B34"/>
+        <circle class="t-acc" cx="21" cy="14" r="2"/>
+      </svg>
+      <span>[NAMA]</span>
+    </a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Buka menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="menu" class="nav__menu" aria-label="Navigasi utama">
+      <a href="index.html#tentang">Tentang</a>
+      <a href="index.html#proyek">Proyek</a>
+      <a href="index.html#layanan">Layanan</a>
+      <a href="index.html#faq">FAQ</a>
+      <div class="swatches" role="group" aria-label="Warna tema">
+        <button class="swatch" type="button" data-theme="orange" aria-pressed="true"  aria-label="Tema oranye"  style="--c:#FF8A3D"></button>
+        <button class="swatch" type="button" data-theme="mint"   aria-pressed="false" aria-label="Tema tosca"   style="--c:#5EEAD4"></button>
+        <button class="swatch" type="button" data-theme="violet" aria-pressed="false" aria-label="Tema ungu"    style="--c:#B79CFF"></button>
+        <button class="swatch" type="button" data-theme="rose"   aria-pressed="false" aria-label="Tema merah muda" style="--c:#FF7A9C"></button>
+      </div>
+      <a class="btn btn--line" href="index.html#kontak">Hubungi saya</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="wrap case-hero" aria-labelledby="judul">
+    <a class="crumb link" href="index.html#proyek">Semua proyek</a>
+    <h1 id="judul" class="rise">[Nama proyek]</h1>
+    <p class="lead rise" style="--d:.12s">[Satu kalimat yang merangkum proyek ini: untuk siapa, masalah apa yang diselesaikan, dan apa hasilnya.]</p>
+
+    <dl class="meta rise" style="--d:.24s">
+      <div><dt>Peran</dt><dd>[Peranmu]</dd></div>
+      <div><dt>Tahun</dt><dd>[Tahun]</dd></div>
+      <div><dt>Durasi</dt><dd>[Lama pengerjaan]</dd></div>
+      <div><dt>Klien</dt><dd>[Nama klien]</dd></div>
+    </dl>
+
+    <div class="cover rise" style="--d:.34s">
+      <div class="thumb">
+        <svg aria-hidden="true" viewBox="0 0 200 150" class="thumb__art" style="max-width:360px">
+          <circle cx="100" cy="75" r="40" fill="#18213F" stroke="#3A4A7A" stroke-width="1.5"/>
+          <ellipse class="t-acc-s" cx="100" cy="75" rx="78" ry="20" transform="rotate(-18 100 75)" fill="none" stroke-width="2"/>
+        </svg>
+        <span class="thumb__label">[Gambar sampul proyek]</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" aria-labelledby="h-tantangan">
+    <div class="case-block">
+      <h2 id="h-tantangan">Tantangan</h2>
+      <div class="case-block__text">
+        <p>[Jelaskan situasi awal: siapa penggunanya, masalah apa yang mereka hadapi, dan kenapa itu penting bagi klien.]</p>
+        <p>[Sebutkan batasan yang kamu hadapi, misalnya waktu, anggaran, atau teknologi yang sudah ada.]</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" aria-labelledby="h-pendekatan">
+    <div class="case-block">
+      <h2 id="h-pendekatan">Pendekatan</h2>
+      <div class="case-block__text">
+        <p>[Ceritakan langkah yang kamu ambil: riset, keputusan desain penting, dan alasan di baliknya.]</p>
+        <p>[Tambahkan hal yang sempat gagal atau diubah di tengah jalan. Ini membuat studi kasus terasa jujur dan meyakinkan.]</p>
+        <ul class="tags" style="margin-top:24px"><li>[Teknologi]</li><li>[Alat]</li><li>[Metode]</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" aria-labelledby="h-hasil">
+    <div class="case-block">
+      <h2 id="h-hasil">Hasil</h2>
+      <div class="case-block__text">
+        <p>[Jelaskan apa yang berubah setelah peluncuran. Pakai angka nyata jika ada, dan sebutkan sumbernya.]</p>
+        <div class="results">
+          <div><b>[X]</b><span>[Metrik pertama]</span></div>
+          <div><b>[X]</b><span>[Metrik kedua]</span></div>
+          <div><b>[X]</b><span>[Metrik ketiga]</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" aria-labelledby="h-galeri">
+    <h2 id="h-galeri" style="font-size:clamp(24px,2.6vw,32px)">Galeri</h2>
+    <div class="gallery">
+      <div class="thumb">
+        <svg aria-hidden="true" viewBox="0 0 200 150" class="thumb__art">
+          <rect x="46" y="30" width="108" height="90" rx="14" fill="#18213F" stroke="#3A4A7A" stroke-width="1.5"/>
+          <path d="M46 56h108M78 56v64" stroke="#3A4A7A" stroke-width="1.5" fill="none"/>
+          <circle class="t-acc" cx="62" cy="43" r="5"/>
+        </svg>
+        <span class="thumb__label">[Tangkapan layar utama]</span>
+      </div>
+      <div class="thumb">
+        <svg aria-hidden="true" viewBox="0 0 200 150" class="thumb__art">
+          <circle class="t-vis" cx="100" cy="75" r="22"/>
+          <circle cx="100" cy="75" r="46" fill="none" stroke="#2E3B66" stroke-width="1.5" stroke-dasharray="3 6"/>
+        </svg>
+        <span class="thumb__label">[Gambar 2]</span>
+      </div>
+      <div class="thumb">
+        <svg aria-hidden="true" viewBox="0 0 200 150" class="thumb__art">
+          <circle cx="80" cy="76" r="30" fill="#18213F" stroke="#3A4A7A" stroke-width="1.5"/>
+          <circle class="t-acc" cx="140" cy="56" r="12"/>
+        </svg>
+        <span class="thumb__label">[Gambar 3]</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" aria-labelledby="h-lanjut">
+    <div class="next-case">
+      <h2 id="h-lanjut">Lihat misi lainnya</h2>
+      <a class="btn btn--solid" href="index.html#proyek">Kembali ke daftar proyek</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap site-footer">
+  <div class="site-footer__bottom" style="padding-top:0">
+    <p>© <span id="year">2026</span> [NAMA KAMU]. Dibuat dengan rasa ingin tahu.</p>
+    <a class="link" href="index.html#kontak">Mulai proyek bersama</a>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" type="button" aria-label="Kembali ke atas" hidden></button>
+
+<script src="./script.js" defer></script>
+<script src="./ui.js" defer></script>
+</body>
+</html>

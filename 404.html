@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Halaman tidak ditemukan | [NAMA KAMU]</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#080C1E">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;700&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./sections.css">
+<script>
+(function () {
+  var d = document.documentElement;
+  d.classList.add('js');
+  try {
+    var t = localStorage.getItem('astro-theme');
+    if (t && t !== 'orange') d.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body id="atas">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="astro" viewBox="0 0 480 540">
+    <ellipse cx="240" cy="290" rx="228" ry="64" transform="rotate(-16 240 290)" fill="none" stroke="#7FE0FF" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="4 8"/>
+    <circle cx="70" cy="110" r="38" fill="#18213F" stroke="#2E3B66" stroke-width="1.5"/>
+    <circle cx="58" cy="100" r="7" fill="#222C52"/>
+    <circle cx="82" cy="124" r="5" fill="#222C52"/>
+    <circle class="a-acc" cx="434" cy="236" r="14"/>
+    <path class="a-acc-s" d="M 340 330 C 440 340 450 450 410 520" fill="none" stroke-width="4" stroke-linecap="round"/>
+    <rect x="140" y="215" width="200" height="190" rx="34" fill="#26315A"/>
+    <rect x="186" y="385" width="54" height="100" rx="26" fill="#CED5E8"/>
+    <rect x="240" y="385" width="54" height="100" rx="26" fill="#CED5E8"/>
+    <rect x="180" y="470" width="64" height="38" rx="16" fill="#26315A"/>
+    <rect x="236" y="470" width="64" height="38" rx="16" fill="#26315A"/>
+    <rect x="166" y="235" width="148" height="170" rx="52" fill="#EEF2FA"/>
+    <rect x="208" y="290" width="64" height="46" rx="10" fill="#141B34"/>
+    <circle class="a-acc" cx="226" cy="313" r="7"/>
+    <rect x="240" y="306" width="22" height="6" rx="3" fill="#5B6A9A"/>
+    <rect x="240" y="318" width="14" height="6" rx="3" fill="#5B6A9A"/>
+    <rect x="88" y="232" width="100" height="44" rx="22" fill="#EEF2FA" transform="rotate(38 168 254)"/>
+    <circle class="a-acc" cx="100" cy="200" r="25"/>
+    <rect x="292" y="262" width="96" height="44" rx="22" fill="#EEF2FA" transform="rotate(28 300 284)"/>
+    <circle class="a-acc" cx="380" cy="328" r="24"/>
+    <rect x="186" y="238" width="108" height="24" rx="12" fill="#C3CBE0"/>
+    <line x1="300" y1="82" x2="322" y2="44" stroke="#C3CBE0" stroke-width="5" stroke-linecap="round"/>
+    <circle class="a-acc" cx="324" cy="40" r="8"/>
+    <rect x="136" y="150" width="20" height="40" rx="10" fill="#C3CBE0"/>
+    <rect x="324" y="150" width="20" height="40" rx="10" fill="#C3CBE0"/>
+    <circle cx="240" cy="165" r="98" fill="#F4F7FC"/>
+    <rect x="166" y="118" width="148" height="96" rx="46" fill="#141B34"/>
+    <path d="M 186 150 Q 200 130 226 128" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity="0.5"/>
+    <circle cx="288" cy="190" r="5" fill="#7FE0FF" opacity="0.9"/>
+  </symbol>
+</svg>
+
+<canvas id="space" aria-hidden="true"></canvas>
+
+<main class="wrap lost">
+  <div class="lost__copy">
+    <p class="lost__code rise" aria-hidden="true">404</p>
+    <h1 class="rise" style="--d:.1s">Kamu melayang terlalu jauh dari markas</h1>
+    <p class="rise" style="--d:.2s">Halaman yang kamu cari tidak ada atau sudah dipindahkan. Kembali ke beranda, lalu lanjutkan misinya dari sana.</p>
+    <div class="actions rise" style="--d:.3s">
+      <a class="btn btn--solid" href="index.html">Kembali ke beranda</a>
+      <a class="btn btn--line" href="index.html#kontak">Hubungi saya</a>
+    </div>
+  </div>
+  <div class="lost__art rise" style="--d:.2s">
+    <svg class="hero__astro" viewBox="0 0 480 540" role="img" aria-label="Astronot melayang sendirian di luar angkasa"><use href="#astro"/></svg>
+  </div>
+</main>
+
+<script src="./script.js" defer></script>
+<script src="./ui.js" defer></script>
+</body>
+</html>
