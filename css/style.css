@@ -26,7 +26,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 50px;
+  scroll-padding-top: 40px;
 }
 
 body {
@@ -598,4 +598,46 @@ ul, ol, dl, dd { margin: 0; padding: 0; list-style: none; }
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
   }
+}
+
+/* --- BINGKAI & BADGE SPOTIFY --- */
+.spotify-card {
+  background: rgba(15, 21, 37, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 24px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.spotify-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(29, 185, 84, 0.15);
+  border: 1px solid rgba(29, 185, 84, 0.4);
+  border-radius: 30px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #1db954;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.badge-icon {
+  font-size: 0.85rem;
+}
+
+.spotify-card__title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+}
+
+.spotify-card__subtitle {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin: 0 0 16px 0;
 }
