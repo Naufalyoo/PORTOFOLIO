@@ -64,11 +64,11 @@
     });
 
     const p = D.profil || {};
-    if (p.nama) document.title = p.nama + ' | Portofolio';
+    if (p.panggilan) document.title = p.panggilan + ' | Portofolio';
     const desc = $('meta[name="description"]');
-    if (desc && p.nama) desc.setAttribute('content', 'Portofolio ' + p.nama + ', ' + (p.peran || '') + '. Lihat proyek, keahlian, prestasi, dan cara menghubungi saya.');
+    if (desc && p.panggilan) desc.setAttribute('content', 'Portofolio ' + p.panggilan + ', ' + (p.peran || '') + '. Lihat proyek, keahlian, prestasi, dan cara menghubungi saya.');
     const ogTitle = $('meta[property="og:title"]');
-    if (ogTitle && p.nama) ogTitle.setAttribute('content', p.nama + ' | Portofolio');
+    if (ogTitle && p.panggilan) ogTitle.setAttribute('content', p.panggilan + ' | Portofolio');
 
     const form = $('#contactForm');
     if (form) {

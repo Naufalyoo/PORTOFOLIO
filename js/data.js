@@ -17,22 +17,22 @@ window.PORTFOLIO = {
 
   /* ---------- Profil ---------- */
   profil: {
-    nama: '[NAMA KAMU]',
-    panggilan: '[NAMA PANGGILAN]',
+    nama: 'Muhammad Naufal Athaillah Ghani',
+    panggilan: 'Naufal',
     peran: '[PERAN KAMU, mis. Siswa RPL / Web Developer Pemula]',
-    lencana: '[STATUS, mis. Terbuka untuk PKL]',
-    tagline: 'Siswa [JURUSAN] di [NAMA SEKOLAH] yang suka membangun situs, aplikasi, dan hal-hal kreatif dari nol sampai jadi.',
+    lencana: 'sedang magang',
+    tagline: 'Siswa TKJ di SMKN 1 Tuban yang suka membangun situs, aplikasi, dan hal-hal kreatif dari nol sampai jadi.',
 
     // Kata-kata yang diketik bergantian di halaman utama ("Saya seorang ...")
-    kataKata: ['[Jurusan kamu]', '[Minat pertama]', '[Minat kedua]', '[Minat ketiga]'],
+    kataKata: ['SISWA TKJ', 'ROBOTICS ENGINEER', 'NETWORK ENGINEER', 'WEB DEVELOPER'],
 
-    sekolah: '[NAMA SEKOLAH]',
-    jurusan: '[JURUSAN, mis. Rekayasa Perangkat Lunak]',
-    kelas: '[KELAS, mis. XI RPL 2]',
-    kota: '[KOTA]',
-    status: '[STATUS KETERSEDIAAN]',
+    sekolah: 'SMKN 1 TUBAN',
+    jurusan: 'Teknik Komputer dan Jaringan',
+    kelas: '12 TKJ 2',
+    kota: 'TUBAN, JAWA TIMUR',
+    status: 'Siswa SMK',
 
-    email: '[EMAIL KAMU]',
+    email: 'naufalghani190@gmail.com',
     cv: '#',                       // tautan file CV (PDF). Tombol "Cetak CV" tetap bisa dipakai.
     formEndpoint: '',              // opsional: alamat Formspree dsb. Kosong = formulir membuka aplikasi email.
 
@@ -43,7 +43,7 @@ window.PORTFOLIO = {
 
     sosial: [
       { nama: 'GitHub',    url: '#' },
-      { nama: 'LinkedIn',  url: '#' },
+      { nama: 'TikTok',  url: '#' },
       { nama: 'Instagram', url: '#' }
     ]
   },
@@ -131,24 +131,24 @@ window.PORTFOLIO = {
     {
       kelompok: 'Pemrograman dan web',
       item: [
-        { nama: '[Keahlian 1]', level: 80 },
-        { nama: '[Keahlian 2]', level: 70 },
+        { nama: 'Arduino', level: 85 },
+        { nama: 'HTML & CSS', level: 70 },
         { nama: '[Keahlian 3]', level: 60 }
       ]
     },
     {
-      kelompok: 'Desain dan multimedia',
+      kelompok: 'Jaringan dan Hardware',
       item: [
-        { nama: '[Keahlian 1]', level: 75 },
-        { nama: '[Keahlian 2]', level: 60 },
+        { nama: 'Konfigurasi Jaringan dan Subnetting', level: 85 },
+        { nama: 'Perakitan dan Perawatan Komputer', level: 85 },
         { nama: '[Keahlian 3]', level: 45 }
       ]
     },
     {
-      kelompok: 'Alat dan kerja tim',
+      kelompok: 'Alat dan Perangkat lunak',
       item: [
-        { nama: '[Alat 1]', level: 70 },
-        { nama: '[Alat 2]', level: 65 },
+        { nama: 'Cisco Packet Tracer', level: 85 },
+        { nama: 'VS Code & Tinkercad', level: 85 },
         { nama: '[Alat 3]', level: 50 }
       ]
     }
