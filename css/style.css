@@ -26,7 +26,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 96px;
+  scroll-padding-top: 50px;
 }
 
 body {
@@ -67,7 +67,7 @@ ul, ol, dl, dd { margin: 0; padding: 0; list-style: none; }
 
 .wrap {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
   padding-left: 32px;
   padding-right: 32px;

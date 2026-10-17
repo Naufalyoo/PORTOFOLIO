@@ -34,17 +34,17 @@ window.PORTFOLIO = {
 
     email: 'naufalghani190@gmail.com',
     cv: '#',                       // tautan file CV (PDF). Tombol "Cetak CV" tetap bisa dipakai.
-    formEndpoint: '',              // opsional: alamat Formspree dsb. Kosong = formulir membuka aplikasi email.
+    formEndpoint: 'https://formspree.io/f/moejrgvn',              // opsional: alamat Formspree dsb. Kosong = formulir membuka aplikasi email.
 
     tentang: [
-      '[Ceritakan singkat siapa kamu, apa jurusanmu, dan apa yang membuatmu tertarik pada bidang ini. Dua sampai tiga kalimat sudah cukup.]',
-      '[Tambahkan satu paragraf tentang cara belajarmu: proyek apa yang sedang kamu kerjakan, apa yang ingin kamu kuasai, dan apa yang kamu cari (PKL, magang, kolaborasi, atau pekerjaan pertama).]'
+      'Saya Muhammad Naufal Athaillah Ghani, siswa kelas 12 Teknik Komputer dan Jaringan (TKJ) di SMKN 1 Tuban. Saya memiliki ketertarikan mendalam di bidang konfigurasi jaringan komputer, perancangan sistem robotik mikrokontroler, dan pengembangan web.',
+      'Saya terbiasa belajar secara hands-on melalui praktikum—mulai dari merakit hardware PC, konfigurasi Cisco, hingga memprogram Arduino. Saat ini saya fokus memperdalam skill teknis dan terbuka untuk kesempatan magang, kolaborasi proyek, maupun peluang kerja di dunia IT.'
     ],
 
     sosial: [
-      { nama: 'GitHub',    url: '#' },
-      { nama: 'TikTok',  url: '#' },
-      { nama: 'Instagram', url: '#' }
+      { nama: 'GitHub',    url: 'https://github.com/Naufalyoo' },
+      { nama: 'TikTok',  url: 'https://tiktok.com/@naufal_yoo' },
+      { nama: 'Instagram', url: 'https://www.instagram.com/naufalorailing?cplk=bnk4MTRwM3JvbzBu' }
     ]
   },
 
