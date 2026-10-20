@@ -1,18 +1,3 @@
-/* ==========================================================
-   DATA PORTOFOLIO
-   Ini satu-satunya file yang perlu kamu edit untuk mengisi
-   website. Semua bagian (proyek, keahlian, sertifikat, dll)
-   dibuat otomatis oleh js/render.js dari data di bawah.
-
-   Cara pakai:
-   - Ganti semua teks dalam kurung siku [ ... ] dengan datamu.
-   - Mau menambah item? Salin satu blok { ... } lalu tempel
-     di bawahnya (jangan lupa tanda koma).
-   - Mau menghapus item? Hapus satu blok { ... } saja.
-   - Kalau satu daftar dikosongkan ( [] ), bagiannya otomatis
-     disembunyikan.
-   ========================================================== */
-
 window.PORTFOLIO = {
 
   /* ---------- Profil ---------- */

@@ -1,10 +1,3 @@
-/* ==========================================================
-   Portofolio Astronot - main.js
-   1. Wallpaper bergerak (canvas)
-   2. Layar loading + animasi peluncuran
-   3. Navigasi (menu mobile, menu aktif)
-   4. Jam "waktu di orbit"
-   ========================================================== */
 (() => {
   'use strict';
 

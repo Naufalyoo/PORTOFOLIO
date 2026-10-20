@@ -1,10 +1,3 @@
-/* ==========================================================
-   Portofolio Astronot - render.js
-   Membaca window.PORTFOLIO (js/data.js) lalu membangun isi
-   halaman: statistik, proyek, keahlian, perjalanan, prestasi,
-   sertifikat, testimoni, FAQ, dan tautan sosial.
-   Biasanya kamu tidak perlu mengubah file ini.
-   ========================================================== */
 (() => {
   'use strict';
 

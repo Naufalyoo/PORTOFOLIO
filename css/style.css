@@ -1,8 +1,3 @@
-/* ==========================================================
-   Portofolio Astronot
-   Ubah warna tema di blok :root di bawah ini.
-   ========================================================== */
-
 :root {
   --bg: #080C1E;          /* langit malam */
   --panel: rgba(16, 23, 58, 0.72);

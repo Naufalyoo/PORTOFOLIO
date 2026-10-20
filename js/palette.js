@@ -1,9 +1,3 @@
-/* ==========================================================
-   Portofolio Astronot - palette.js
-   Pintasan cepat. Buka dengan Ctrl+K (Cmd+K di Mac), tombol
-   "/" , atau tombol Cari di navigasi. Bisa lompat ke bagian,
-   membuka detail proyek, ganti tema, cetak CV, dan lainnya.
-   ========================================================== */
 (() => {
   'use strict';
 

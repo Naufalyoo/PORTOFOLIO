@@ -1,10 +1,3 @@
-/* ==========================================================
-   Portofolio Astronot - game.js
-   Mini game "Misi Orbit": gerakkan astronot untuk menangkap
-   bintang dan hindari batu angkasa. Skor tertinggi disimpan
-   di browser. Kontrol: panah kiri/kanan (atau A/D), geser
-   jari di layar sentuh, atau tombol di bawah area permainan.
-   ========================================================== */
 (() => {
   'use strict';
 

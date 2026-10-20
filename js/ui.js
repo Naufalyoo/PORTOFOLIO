@@ -1,15 +1,3 @@
-/* ==========================================================
-   Portofolio Astronot - ui.js
-   Interaksi halaman (dimuat setelah render.js dan main.js):
-   1. Pemilih warna tema (tersimpan di browser)
-   2. Progres scroll dan tombol kembali ke atas
-   3. Teks yang diketik bergantian di hero
-   4. Proyek: pencarian, filter, urutan, dialog detail
-   5. Animasi bar keahlian saat terlihat
-   6. Slider testimoni
-   7. Formulir kontak
-   8. Salin email, astronot yang bisa diklik, cetak CV
-   ========================================================== */
 (() => {
   'use strict';
 

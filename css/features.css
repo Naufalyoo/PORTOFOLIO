@@ -1,12 +1,3 @@
-/* ==========================================================
-   Portofolio Astronot - features.css
-   Komponen versi lengkap: pintasan cepat (Ctrl K), teks
-   mengetik, pencarian proyek, keahlian, perjalanan, prestasi,
-   sertifikat, game Misi Orbit, dan tampilan cetak untuk CV.
-   Dimuat paling akhir, setelah style.css dan sections.css.
-   ========================================================== */
-
-/* Judul bagian: ukuran seragam tanpa menimpa aturan yang lebih spesifik */
 :where(.section) h2,
 .section__head h2,
 #h-prestasi,

@@ -1,12 +1,3 @@
-/* ==========================================================
-   Portofolio Astronot - sections.css
-   Bagian dan komponen tambahan (dimuat setelah style.css):
-   progres scroll, pemilih warna, marquee, filter proyek,
-   dialog, proses, testimoni, FAQ, formulir kontak, footer.
-   ========================================================== */
-
-/* ---------- Utilitas ---------- */
-
 .sr-only {
   position: absolute;
   width: 1px;
