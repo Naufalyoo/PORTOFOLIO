@@ -2,6 +2,7 @@
   'use strict';
 
   const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const mod = (n, m) => ((n % m) + m) % m;
   const rand = (a, b) => a + Math.random() * (b - a);
@@ -402,6 +403,27 @@
     else start();
   }
 
+  /* ----------------------------------------------------------
+      5. SCROLL REVEAL
+      Elemen dengan class .reveal muncul saat masuk layar.
+      ---------------------------------------------------------- */
+  function reveal() {
+    const items = $$('.reveal');
+    if (!items.length) return;
+    if (!('IntersectionObserver' in window) || reduceMotion.matches) {
+      items.forEach((item) => item.classList.add('is-in'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    items.forEach((item) => io.observe(item));
+  }
+
   /* ---------- Jalankan ---------- */
   const year = $('#year');
   if (year) year.textContent = new Date().getFullYear();
@@ -410,4 +432,5 @@
   loader();
   nav();
   missionClock();
+  reveal();
 })();
