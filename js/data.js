@@ -21,41 +21,15 @@ window.PORTFOLIO = {
     cv: '#',                       // tautan file CV (PDF). Tombol "Cetak CV" tetap bisa dipakai.
     formEndpoint: 'https://formspree.io/f/moejrgvn',              // opsional: alamat Formspree dsb. Kosong = formulir membuka aplikasi email.
 
-    // Ikon yang tersedia: 'github', 'tiktok', 'instagram', 'whatsapp', 'linkedin', 'mail', 'link'
-    sosial: [
-      { nama: 'GitHub',    ikon: 'github',    url: 'https://github.com/Naufalyoo' },
-      { nama: 'WhatsApp',  ikon: 'whatsapp',  url: 'https://wa.me/6281234567890?text=Halo%20Naufal%2C%20saya%20lihat%20portofolio%20kamu' },
-      { nama: 'TikTok',    ikon: 'tiktok',    url: 'https://tiktok.com/@naufal_yoo' },
-      { nama: 'Instagram', ikon: 'instagram', url: 'https://www.instagram.com/naufalorailing' }
-    ],
-
-    // Urutan ikon media sosial: diisi lewat data di atas
-    ikonSosial: {},
-
-    // Spotify: tempel ID playlist kamu. Kosong = kartu Spotify disembunyikan.
-    spotify: {
-      playlistId: '6cAPGGOm2HRi5pgq5h5gRW',
-      judul: 'Daily Rotation',
-      subjudul: 'My Spotify Playlist...',
-      lencana: 'SPOTIFY / MY FAVORITE'
-    },
-
-    // GitHub: isi username untuk mengaktifkan bagian "Aktivitas di GitHub".
-    // Grafik kontribusi memakai layanan publik ghchart.rushland.dev
-    github: {
-      username: 'Naufalyoo',
-      grafik: true
-    },
-
-    // Penghitung pengunjung: 'counterapi' (gratis, tanpa daftar), 'countapi-style', atau 'local' (localStorage saja)
-    pengunjung: {
-      layanan: 'counterapi',
-      kunci: 'naufal-portofolio'
-    },
-
     tentang: [
       'Saya Muhammad Naufal Athaillah Ghani, siswa kelas 12 Teknik Komputer dan Jaringan (TKJ) di SMKN 1 Tuban. Saya memiliki ketertarikan mendalam di bidang konfigurasi jaringan komputer, perancangan sistem robotik mikrokontroler, dan pengembangan web.',
       'Saya terbiasa belajar secara hands-on melalui praktikum—mulai dari merakit hardware PC, konfigurasi Cisco, hingga memprogram Arduino. Saat ini saya fokus memperdalam skill teknis dan terbuka untuk kesempatan magang, kolaborasi proyek, maupun peluang kerja di dunia IT.'
+    ],
+
+    sosial: [
+      { nama: 'GitHub',    url: 'https://github.com/Naufalyoo' },
+      { nama: 'TikTok',  url: 'https://tiktok.com/@naufal_yoo' },
+      { nama: 'Instagram', url: 'https://www.instagram.com/naufalorailing?cplk=bnk4MTRwM3JvbzBu' }
     ]
   },
 
@@ -255,36 +229,6 @@ window.PORTFOLIO = {
     {
       tanya: 'Bagaimana cara menghubungimu?',
       jawab: '[Sebutkan cara tercepat: email, WhatsApp, atau media sosial.]'
-    }
-  ],
-
-  /* ---------- Blog / Catatan ----------
-     Tulisan pendek: pengalaman belajar, tutorial singkat, atau catatan proyek.
-     tautan: boleh kosong (kartu tetap tampil tanpa tombol baca).           */
-  blog: [
-    {
-      judul: 'Belajar konfigurasi VLAN di Cisco Packet Tracer',
-      ringkasan: 'Catatan langkah demi langkah membuat VLAN, trunk antar switch, dan inter-VLAN routing dengan router-on-a-stick.',
-      tanggal: '2026-09-12',
-      tag: ['Jaringan', 'Cisco'],
-      menit: 5,
-      tautan: ''
-    },
-    {
-      judul: 'Membuat line follower pertama dengan Arduino',
-      ringkasan: 'Dari merangkai sensor sampai mengatur kecepatan motor. Termasuk kesalahan umum yang saya alami di prosesnya.',
-      tag: ['Robotik', 'Arduino'],
-      tanggal: '2026-08-30',
-      menit: 7,
-      tautan: ''
-    },
-    {
-      judul: 'Portofolio pertama saya: dari nol sampai online',
-      ringkasan: 'Kenapa memakai HTML, CSS, dan JavaScript murni, bagaimana desain dibuat, dan apa yang dipelajari selama membangunnya.',
-      tanggal: '2026-08-02',
-      tag: ['Web', 'Refleksi'],
-      menit: 6,
-      tautan: ''
     }
   ]
 };

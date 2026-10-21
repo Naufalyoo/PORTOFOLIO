@@ -19,42 +19,25 @@
   const clickSwatch = (name) => () => { const b = $('.swatch[data-theme="' + name + '"]'); if (b) b.click(); };
 
   /* ---------- Daftar aksi ---------- */
-  const nav = (id) => ({ label: 'Ke bagian ' + id, hint: 'Navigasi', run: goTo(id) });
   const actions = [
-    nav('tentang'),
-    nav('proyek'),
-    nav('keahlian'),
-    nav('perjalanan'),
-    nav('blog'),
-    nav('github'),
-    nav('prestasi'),
-    nav('kontak'),
+    { label: 'Ke bagian Tentang',    hint: 'Navigasi', run: goTo('tentang') },
+    { label: 'Ke bagian Proyek',     hint: 'Navigasi', run: goTo('proyek') },
+    { label: 'Ke bagian Keahlian',   hint: 'Navigasi', run: goTo('keahlian') },
+    { label: 'Ke bagian Perjalanan', hint: 'Navigasi', run: goTo('perjalanan') },
+    { label: 'Ke bagian Prestasi dan sertifikat', hint: 'Navigasi', run: goTo('prestasi') },
+    { label: 'Ke bagian Kontak',     hint: 'Navigasi', run: goTo('kontak') },
     { label: 'Mainkan Misi orbit',   hint: 'Game', run: () => { goTo('game')(); setTimeout(() => { const b = $('#gameStart'); if (b) b.click(); }, reduceMotion.matches ? 50 : 700); } },
     { label: 'Cetak CV',             hint: 'Aksi', run: () => window.print() },
     { label: 'Salin email',          hint: 'Aksi', run: () => { const b = $('#copyEmail'); if (b) b.click(); } },
-    { label: 'Mode terang/gelap',    hint: 'Tampilan', run: () => { const b = $('#themeBtn'); if (b) b.click(); } },
     { label: 'Tema oranye',          hint: 'Tema', run: clickSwatch('orange') },
     { label: 'Tema tosca',           hint: 'Tema', run: clickSwatch('mint') },
     { label: 'Tema ungu',            hint: 'Tema', run: clickSwatch('violet') },
     { label: 'Tema merah muda',      hint: 'Tema', run: clickSwatch('rose') }
-  ].concat(
-    (D.proyek || []).map((p, i) => ({
-      label: 'Proyek: ' + p.judul,
-      hint: 'Proyek',
-      run: () => document.dispatchEvent(new CustomEvent('open-project', { detail: i }))
-    })),
-    (D.blog || []).map((b, i) => ({
-      label: 'Baca: ' + b.judul,
-      hint: 'Blog',
-      run: () => {
-        goTo('blog')();
-        setTimeout(() => {
-          const card = document.querySelectorAll('.blog-card')[i];
-          if (card) card.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'nearest', inline: 'center' });
-        }, reduceMotion.matches ? 50 : 700);
-      }
-    }))
-  );
+  ].concat((D.proyek || []).map((p, i) => ({
+    label: 'Proyek: ' + p.judul,
+    hint: 'Proyek',
+    run: () => document.dispatchEvent(new CustomEvent('open-project', { detail: i }))
+  })));
 
   let results = actions;
   let active = 0;

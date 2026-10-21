@@ -70,38 +70,6 @@
     }
     const copy = $('#copyEmail');
     if (copy) copy.dataset.email = p.email || '';
-
-    /* ---------- Spotify ---------- */
-    const spotifyCard = $('#spotifyCard');
-    const sp = p.spotify || {};
-    if (spotifyCard && sp.playlistId) {
-      spotifyCard.hidden = false;
-      const frame = $('#spotifyFrame');
-      if (frame) frame.src = 'https://open.spotify.com/embed/playlist/' + sp.playlistId + '?utm_source=generator&si=dc4ba9161a344f27';
-      const title = $('[data-spotify="title"]');
-      const subtitle = $('[data-spotify="subtitle"]');
-      const badge = $('[data-spotify="badge"]');
-      if (title && sp.judul) title.textContent = sp.judul;
-      if (subtitle && sp.subjudul) subtitle.textContent = sp.subjudul;
-      if (badge && sp.lencana) badge.textContent = sp.lencana;
-    }
-
-    /* ---------- SEO ---------- */
-    const ogDesc = $('meta[property="og:description"]');
-    if (ogDesc && p.tagline) ogDesc.setAttribute('content', p.tagline);
-    const canonical = $('link[rel="canonical"]');
-    if (canonical) canonical.href = window.location.href;
-    const jsonLd = $('#jsonLd');
-    if (jsonLd) {
-      try {
-        const data = JSON.parse(jsonLd.textContent);
-        data.name = p.nama || data.name;
-        data.jobTitle = p.peran || data.jobTitle;
-        data.url = window.location.href;
-        data.sameAs = (p.sosial || []).map((s) => s.url).filter(Boolean);
-        jsonLd.textContent = JSON.stringify(data, null, 2);
-      } catch (e) {}
-    }
   }
 
   /* ---------- Statistik ---------- */
@@ -291,11 +259,8 @@
   /* ---------- Tautan sosial ---------- */
   function renderSocials() {
     const links = list((D.profil || {}).sosial);
-    $$('[data-socials="list"]').forEach((ul) => links.forEach((s) => {
-      const icon = s.ikon ? svg('<svg class="socials__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-' + s.ikon + '"/></svg>') : null;
-      const label = el('span', { text: s.nama });
-      ul.append(el('li', {}, [el('a', { href: s.url, target: '_blank', rel: 'noopener', 'aria-label': s.nama }, icon ? [icon, label] : [label])]));
-    }));
+    $$('[data-socials="list"]').forEach((ul) => links.forEach((s) =>
+      ul.append(el('li', {}, [el('a', { href: s.url, target: '_blank', rel: 'noopener', text: s.nama })]))));
     $$('[data-socials="links"]').forEach((nav) => links.forEach((s) =>
       nav.append(el('a', { href: s.url, target: '_blank', rel: 'noopener', text: s.nama }))));
   }
