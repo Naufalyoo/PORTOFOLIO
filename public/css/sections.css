@@ -186,6 +186,24 @@ button.link {
   color: #8793AF;
   text-align: center;
 }
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+.portrait__astro {
+  width: 200px;
+  height: auto;
+  opacity: 0.6;
+}
+.portrait__hint {
+  position: absolute;
+  inset: auto 12px 12px;
+  font-size: 12px;
+  color: #8793AF;
+  opacity: 0.8;
+}
 
 /* ---------- Filter & proyek ---------- */
 
@@ -296,71 +314,6 @@ html.modal-open { overflow: hidden; }
 }
 .steps h3 { margin-top: 24px; font-size: 20px; font-weight: 500; }
 .steps p { margin-top: 10px; color: var(--muted); }
-
-/* ---------- Testimoni ---------- */
-
-.round-btns { display: flex; gap: 10px; }
-.round-btn {
-  position: relative;
-  width: 48px;
-  height: 48px;
-  border: 1px solid #3A4A7A;
-  border-radius: 50%;
-  background: transparent;
-  color: var(--text);
-  cursor: pointer;
-  transition: border-color .2s, color .2s;
-}
-.round-btn:hover { border-color: var(--visor); color: var(--visor); }
-.round-btn::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 10px;
-  height: 10px;
-  border-top: 2.5px solid currentColor;
-  border-right: 2.5px solid currentColor;
-}
-.round-btn--next::before { transform: translate(-65%, -50%) rotate(45deg); }
-.round-btn--prev::before { transform: translate(-35%, -50%) rotate(-135deg); }
-
-.quotes {
-  display: flex;
-  gap: 24px;
-  margin-top: 40px;
-  padding-bottom: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-  scrollbar-color: #2E3B66 transparent;
-}
-.quote {
-  flex: 0 0 min(560px, 86%);
-  margin: 0;
-  padding: 36px;
-  scroll-snap-align: start;
-  border: 1px solid var(--line);
-  border-radius: 24px;
-  background: var(--panel);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-}
-.quote blockquote { margin: 0; font-size: 20px; line-height: 1.55; }
-.quote figcaption { display: flex; align-items: center; gap: 14px; margin-top: 28px; color: var(--muted); line-height: 1.4; }
-.quote figcaption b { color: var(--text); }
-.avatar {
-  display: grid;
-  place-items: center;
-  flex: none;
-  width: 48px;
-  height: 48px;
-  border: 1.5px dashed #3A4A7A;
-  border-radius: 50%;
-  color: #8793AF;
-  font-family: var(--display);
-  font-size: 14px;
-}
 
 /* ---------- FAQ ---------- */
 
@@ -473,8 +426,6 @@ html.modal-open { overflow: hidden; }
 @media (max-width: 700px) {
   .steps { grid-template-columns: minmax(0, 1fr); }
   .contact--split { padding: 36px 22px; }
-  .quote { padding: 26px; }
-  .quote blockquote { font-size: 18px; }
   .filters__count { margin-left: 0; flex-basis: 100%; }
   .dialog__body { padding: 24px; }
 }

@@ -231,23 +231,7 @@
     if (!items.length && !certs.length) $('#prestasi').hidden = true;
   }
 
-  /* ---------- Testimoni ---------- */
-  function renderQuotes() {
-    const track = $('#quotes');
-    const items = list(D.testimoni);
-    if (!track) return;
-    if (!items.length) { $('#testimoni').hidden = true; return; }
-
-    items.forEach((q) => track.append(el('figure', { class: 'quote' }, [
-      el('blockquote', {}, [el('p', { text: q.kutipan })]),
-      el('figcaption', {}, [
-        el('span', { class: 'avatar', 'aria-hidden': 'true', text: (q.nama || '?').replace('[', '').charAt(0).toUpperCase() || '?' }),
-        el('span', {}, [el('b', { text: q.nama }), el('br'), q.jabatan])
-      ])
-    ])));
-  }
-
-  /* ---------- FAQ ---------- */
+/* ---------- FAQ ---------- */
   function renderFaq() {
     const box = $('#faqList');
     const items = list(D.faq);
@@ -273,7 +257,6 @@
   renderSkills();
   renderTimeline();
   renderAchievements();
-  renderQuotes();
   renderFaq();
   renderSocials();
 })();

@@ -311,7 +311,7 @@ button.btn--solid { border: 0; }
   }
   html, body { background: #fff !important; color: #111; font-size: 11.5pt; }
   #space, .loader, .nav, .progress, .to-top, .marquee, .hero__art, .clock, .roleline,
-  #game, #testimoni, #faq, #proses, .toolbar, .filters, .filters__count, .round-btns,
+  #game, #faq, #proses, .toolbar, .filters, .filters__count,
   dialog, .actions, .swatches, .portrait, .contact .form, #copyEmail, .thumb,
   .site-footer__col, .site-footer__bottom .link, .project .link {
     display: none !important;
@@ -322,7 +322,7 @@ button.btn--solid { border: 0; }
   .hero h1 { color: #111; font-size: 28pt; }
   .section { padding-top: 24px; }
   .section > h2, #h-prestasi { color: #111; font-size: 17pt; }
-  .stats, .brief, .skillgroup, .cert, .project, .contact, .quote {
+  .stats, .brief, .skillgroup, .cert, .project, .contact {
     background: #fff; border-color: #bbb; border-radius: 8px;
     -webkit-backdrop-filter: none; backdrop-filter: none;
   }
