@@ -339,13 +339,29 @@
   /* ----------------------------------------------------------
      3. NAVIGASI
      ---------------------------------------------------------- */
-  function nav() {
+function nav() {
     const header = $('.nav');
     const button = $('.nav__toggle');
     const menu = $('#menu');
     if (!header || !button || !menu) return;
 
-    const onScroll = () => header.classList.toggle('is-stuck', window.scrollY > 12);
+    const links = [...menu.querySelectorAll('a[href^="#"]')];
+    const homeLink = menu.querySelector('a[href="#atas"]');
+
+    // Paksa menu "Home" aktif jika posisi scroll masih di bagian paling atas
+    const updateNavAtTop = () => {
+      if (window.scrollY < 200) {
+        links.forEach((l) => l.removeAttribute('aria-current'));
+        if (homeLink) homeLink.setAttribute('aria-current', 'true');
+        return true;
+      }
+      return false;
+    };
+
+    const onScroll = () => {
+      header.classList.toggle('is-stuck', window.scrollY > 12);
+      updateNavAtTop();
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
 
@@ -359,18 +375,22 @@
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
 
     // tandai menu sesuai bagian yang sedang dilihat
-    const links = [...menu.querySelectorAll('a[href^="#"]')];
     const byId = new Map(links.map((a) => [a.getAttribute('href').slice(1), a]));
     if (!('IntersectionObserver' in window)) return;
+
     const io = new IntersectionObserver((entries) => {
+      if (updateNavAtTop()) return; // Abaikan jika masih di area Hero/Home
+
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         links.forEach((l) => l.removeAttribute('aria-current'));
         const active = byId.get(entry.target.id);
         if (active) active.setAttribute('aria-current', 'true');
       });
-    }, { rootMargin: '-45% 0px -50% 0px' });
+    }, { rootMargin: '-30% 0px -50% 0px' });
+
     byId.forEach((_, id) => {
+      if (id === 'atas') return; // Jangan amati elemen #atas agar tidak bentrok
       const section = document.getElementById(id);
       if (section) io.observe(section);
     });
