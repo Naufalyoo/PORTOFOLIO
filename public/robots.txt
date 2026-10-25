@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://naufalyoo.github.io/PORTOFOLIO/sitemap-index.xml

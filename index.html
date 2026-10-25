@@ -7,14 +7,8 @@
 <meta name="description" content="Portofolio siswa SMK: proyek, keahlian, prestasi, dan cara menghubungi saya.">
 <meta name="theme-color" content="#080C1E">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Naufal | Portofolio">
+<meta property="og:title" content="[NAMA KAMU] | Portofolio">
 <meta property="og:description" content="Portofolio siswa SMK: proyek, keahlian, prestasi, dan cara menghubungi saya.">
-<meta property="og:image" content="assets/astronaut.svg">
-<meta property="og:url" content="https://naufalyoo.github.io/PORTOFOLIO/">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Naufal | Portofolio">
-<meta name="twitter:description" content="Portofolio siswa SMK: proyek, keahlian, prestasi, dan cara menghubungi saya.">
-<meta name="twitter:image" content="assets/astronaut.svg">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -113,7 +107,6 @@
       <a href="#perjalanan">Perjalanan</a>
       <a href="#prestasi">Prestasi</a>
       <a href="#game">Game</a>
-      <a href="blog/">Blog</a>
       <div class="swatches" role="group" aria-label="Warna tema">
         <button class="swatch" type="button" data-theme="orange" aria-pressed="true"  aria-label="Tema oranye"  style="--c:#FF8A3D"></button>
         <button class="swatch" type="button" data-theme="mint"   aria-pressed="false" aria-label="Tema tosca"   style="--c:#5EEAD4"></button>
@@ -192,10 +185,7 @@
     </div>
 
     <div class="about__side">
-      <div class="portrait" role="img" aria-label="Foto profil">
-        <svg class="portrait__astro" viewBox="0 0 480 540" aria-hidden="true"><use href="#astro"/></svg>
-        <span class="portrait__hint">Ganti dengan foto kamu: simpan sebagai assets/foto.jpg lalu hapus SVG ini.</span>
-      </div>
+      <div class="portrait" role="img" aria-label="Tempat foto profil">[Foto kamu]</div>
       <aside class="brief" aria-label="Ringkasan misi">
         <h3>Ringkasan misi</h3>
         <dl id="briefList"></dl>
@@ -281,6 +271,18 @@
       <h2 class="h2-sub">Sertifikat</h2>
       <div class="certs" id="certs"></div>
     </div>
+  </section>
+
+  <!-- TESTIMONI -->
+  <section id="testimoni" class="wrap section" aria-labelledby="h-testimoni">
+    <div class="section__head">
+      <h2 id="h-testimoni">Kata guru dan rekan kerja</h2>
+      <div class="round-btns">
+        <button class="round-btn round-btn--prev" id="quotePrev" type="button" aria-label="Testimoni sebelumnya"></button>
+        <button class="round-btn round-btn--next" id="quoteNext" type="button" aria-label="Testimoni berikutnya"></button>
+      </div>
+    </div>
+    <div class="quotes" id="quotes" tabindex="0" role="region" aria-label="Daftar testimoni"></div>
   </section>
 
   <!-- GAME -->

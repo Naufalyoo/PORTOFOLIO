@@ -193,6 +193,25 @@ window.PORTFOLIO = {
     { nama: '[Nama sertifikat]', penerbit: '[Penerbit]', tahun: '[Tahun]', url: '#' }
   ],
 
+  /* ---------- Kata guru, pembimbing, atau teman satu tim ---------- */
+  testimoni: [
+    {
+      kutipan: '[Kutipan dari guru produktif, pembimbing PKL, atau teman satu tim: apa yang kamu kerjakan dan bagaimana sikap kerjamu.]',
+      nama: '[Nama]',
+      jabatan: '[Jabatan, mis. Guru produktif RPL]'
+    },
+    {
+      kutipan: '[Kutipan dari guru produktif, pembimbing PKL, atau teman satu tim: apa yang kamu kerjakan dan bagaimana sikap kerjamu.]',
+      nama: '[Nama]',
+      jabatan: '[Jabatan]'
+    },
+    {
+      kutipan: '[Kutipan dari guru produktif, pembimbing PKL, atau teman satu tim: apa yang kamu kerjakan dan bagaimana sikap kerjamu.]',
+      nama: '[Nama]',
+      jabatan: '[Jabatan]'
+    }
+  ],
+
   /* ---------- Tanya jawab ---------- */
   faq: [
     {

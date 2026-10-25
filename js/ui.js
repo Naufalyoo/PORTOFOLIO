@@ -202,6 +202,20 @@
     bars.forEach((b) => io.observe(b));
   }
 
+  /* ---------- 6. Slider testimoni ---------- */
+  function slider() {
+    const track = $('#quotes');
+    if (!track) return;
+    const go = (dir) => track.scrollBy({
+      left: dir * Math.max(track.clientWidth * 0.8, 280),
+      behavior: reduceMotion.matches ? 'auto' : 'smooth'
+    });
+    const prev = $('#quotePrev');
+    const next = $('#quoteNext');
+    if (prev) prev.addEventListener('click', () => go(-1));
+    if (next) next.addEventListener('click', () => go(1));
+  }
+
   /* ---------- 7. Formulir kontak ---------- */
   function contactForm() {
     const form = $('#contactForm');
@@ -325,6 +339,7 @@
   typed();
   projects();
   skillBars();
+  slider();
   contactForm();
   extras();
 })();
